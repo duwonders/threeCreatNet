@@ -30,12 +30,13 @@ export default class extends Base {
     file.path = uploadPath + '/' + basename;
 
     if(think.isFile(file.path)){
-      console.log('is file')
+      console.log(basename);
     }else{
-      console.log('not exist')
+      console.log("Failed");
     }
 
     this.assign('fileInfo', file);
-    // this.display();
+    this.success(basename);
+    //  this.suceess 用来返回值 vue 中 post().then 接收 返回链接
   }
 }
