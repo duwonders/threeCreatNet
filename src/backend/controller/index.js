@@ -15,6 +15,9 @@ export default class extends Base {
     return this.display();
   }
   uploadAction (){
+    this.setCorsHeader();
+    // 设置允许外部 请求
+
     //这里的 key 需要和 form 表单里的 name 值保持一致
     let file = think.extend({}, this.file('image'));
 
@@ -38,5 +41,8 @@ export default class extends Base {
     this.assign('fileInfo', file);
     this.success(basename);
     //  this.suceess 用来返回值 vue 中 post().then 接收 返回链接
+  }
+  setCorsHeader(){ this.header("Access-Control-Allow-Origin", this.header("origin") || "*"); this.header("Access-Control-Allow-Headers", "x-requested-with"); this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE"); this.header("Access-Control-Allow-Credentials", "true");
+    //  设置 header
   }
 }
