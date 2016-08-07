@@ -47,11 +47,20 @@ export default class extends Base {
   }
 
 
-  //    然后下面是数据库操作
+  /*
+  * 数据库操作
+  * gallery 页面
+  */
   async getpicAction(){
     this.setCorsHeader();
     // 设置允许外部 请求
-    let data = await this.model('picture').select();
+
+    // let data = await this.model('picture').select();
+
+    let data = await this.model('picture').page([2, 4]).countSelect();
+    //  分页的查询 .page([现页数， 总页数])
+    console.log(data);
+
     return this.success(data);
   }
   /* 获取图片的信息 */
