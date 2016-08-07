@@ -1,0 +1,1 @@
+"use strict";$(document).ready(function(){function o(){var o=document.body.scrollTop;o>300?c.addClass("back-top-show"):c.removeClass("back-top-show"),c.css("left",t+"px")}var c=$("#back-top"),t=$("#header-row").offset().left+1050;$(window).on("scroll",function(){o()}),c.on("click",function(){$("html, body").animate({scrollTop:"0px"},600)}),c.css("left",t+"px")});
