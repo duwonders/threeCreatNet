@@ -67,6 +67,7 @@ export default class extends Base {
     let json = this.post();
     let data = await this.model('picture').page([json.currentPage, 5]).countSelect();
     //  分页的查询 .page([现页数， 总页数])
+
     console.log("获取图片列表 data");
     return this.success(data);
   }
@@ -184,5 +185,32 @@ export default class extends Base {
   }
   /* 更新相册信息 */
 
+  /*
+  *  Activity 页面
+  *     |
+  *     |----list
+  *     |----live
+  */
+
+  async getactivitylistAction () {
+        this.setCorsHeader();
+
+        let req_obj = this.post();
+        let hd = this.model('hd');
+        let data = await hd.page([req_obj.currentPage, 5]).countSelect();
+
+        return this.success(data);
+  }
+  /* 获取活动列表 */
+
+  async getsingleactivityAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let hd = this.model('hd');
+      let data = await hd.where({id: req_obj.hd_id}).find();
+
+      return this.success(data);
+  }
 
 }
