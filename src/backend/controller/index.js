@@ -56,10 +56,13 @@ export default class extends Base {
     // 设置允许外部 请求
 
     // let data = await this.model('picture').select();
+    let json = this.post();
 
-    let data = await this.model('picture').page([2, 4]).countSelect();
+    let data = await this.model('picture').page([json.currentPage, 5]).countSelect();
     //  分页的查询 .page([现页数， 总页数])
-    console.log(data);
+
+    // console.log(data);
+    console.log("获取图片列表 data");
 
     return this.success(data);
   }
@@ -67,36 +70,65 @@ export default class extends Base {
 
   async postpicAction(){
     this.setCorsHeader();
-      // 设置允许外部 请求
+
     let json = this.post();
-    // console.log(json);
-    //  this.post 方法获取 post 请求的数据
-    let model = this.model('picture');
-    //  存到 picture 表中
-    let retData = await model.add(json);
-    //  等待 sql 执行然后返取得回值
-    return this.success(retData);
-    //  将操作的值返回
+    let picture = this.model('picture');
+    let album = this.model('album');
+    let isAlbumExist = await album
+        .where({id: json.album_id})
+        .find();
+
+    if (!think.isEmpty(isAlbumExist)) {
+        let set_album_pages = parseInt(isAlbumExist.album_pages) + 1;
+        let affactedRows = await album
+            .where({id: json.album_id})
+            .update({album_pages: set_album_pages});
+        let retData = await picture.add(json);
+        return this.success(retData);
+    } else {
+        console.log("查询了一个不存在的图片 ID ");
+        return this.success("");
+    }
+    /*
+    *   相册表 图片表 都需要操作
+    *   上传图片的时候保证需要上传到的相册 id 是存在的
+    *   上传成功 图库中的图片数量 + 1
+    *   批量添加等会再说 = =
+    * */
   }
   /* 上传图片信息 */
 
   async deletesingleimgAction () {
       this.setCorsHeader();
-      //  设置允许外部 请求
-      let pic_id = this.post();
-      let model = this.model('picture');
-      let retData = await model.where({id: ["=", pic_id.id]}).delete();
+
+      let pic_id_obj = this.post();
+      let picture = this.model('picture');
+      let album = this.model('album');
+
+
+      let album_id = (await picture.where(pic_id_obj).find()).album_id;
+      let set_album_pages = (await album.where({id: album_id}).find()).album_pages - 1;
+      let affectedRows = await album
+          .where({id: album_id})
+          .update({album_pages: set_album_pages});
+      let retData = await picture.where({id: ["=", pic_id_obj.id]}).delete();
       return this.success(retData);
+
+      /*
+      *  单张删除图片
+      *  不用判断 因为相册 id 肯定是存在的
+      *  删除图片之后要将对应图库中的图片数量 - 1
+      * */
   }
   /* 删除单张图片信息 */
 
   async updatesingleimgAction () {
       this.setCorsHeader();
-      //  设置允许外部 请求
+
       let data = this.post();
       let model = this.model('picture');
 
-      console.log(data);
+      //console.log(data);
 
       let retData = await model.where({id: data.id}).update({
          album_id: data.album_id,
@@ -106,6 +138,63 @@ export default class extends Base {
 
       return this.success(retData);
   }
-  /* 删除单张图片信息 */
+  /* 更新单张图片信息 */
+
+
+  async getalbumAction(){
+    this.setCorsHeader();
+
+    let json = this.post();
+
+    let data = await this.model('album').page([json.currentPage, 5]).countSelect();
+    //  分页的查询 .page([现页数， 总页数])
+    //console.log(data);
+    return this.success(data);
+  }
+  /* 获取相册的信息 */
+  async postalbumAction(){
+    this.setCorsHeader();
+      // 设置允许外部 请求
+    let json = this.post();
+    let model = this.model('album');
+    let retData = await model.add(json);
+
+    return this.success(retData);
+  }
+  /* 上传相册信息 */
+  async deletesinglealbumAction () {
+      this.setCorsHeader();
+
+      let album_id_obj = this.post();
+      let album = this.model('album');
+      let picture = this.model('picture');
+
+      let affectedRows = await picture.where({album_id: ["=", album_id_obj.id]}).delete();
+      let retData = await album.where({id: ["=", album_id_obj.id]}).delete();
+      /*
+      *  删除相册的时候 把相册中图片的对应关系也一并删除
+      *  当然图片文件还是在里面的
+      */
+
+      return this.success(retData);
+  }
+  /* 删除相册 */
+  async updatesinglealbumAction () {
+      this.setCorsHeader();
+      //  设置允许外部 请求
+      let data = this.post();
+      let model = this.model('album');
+
+    //   console.log(data);
+      console.log("删除单张图片信息 data");
+
+      let retData = await model.where({id: data.id}).update({
+         album_name: data.album_name,
+         album_cover: data.album_cover
+      });
+
+      return this.success(retData);
+  }
+  /* 更新相册信息 */
 
 }
