@@ -212,5 +212,38 @@ export default class extends Base {
 
       return this.success(data);
   }
+  /* 根据活动 id 获取对应活动信息 */
+
+  async createactivityAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let hd = this.model('hd');
+      let ret_data = await hd.add(req_obj);
+
+      return this.success(ret_data);
+  }
+  /* 创建新的活动 */
+
+  async updateactivityAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let hd = this.model('hd');
+      let ret_data = await hd.where({id: req_obj.id}).update(req_obj);
+
+      return this.success(ret_data);
+  }
+  /* 更新活动信息 */
+
+  async deleteactivityAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let hd = this.model('hd');
+      let affectedRows = await hd.where({id: ["=", req_obj.id]}).delete();
+
+      this.success(affectedRows);
+  }
 
 }
