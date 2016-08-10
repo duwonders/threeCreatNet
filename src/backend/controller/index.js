@@ -245,5 +245,52 @@ export default class extends Base {
 
       this.success(affectedRows);
   }
+  /* 删除活动 */
 
+  async getlivelistAction () {
+        this.setCorsHeader();
+
+        let req_obj = this.post();
+        let direct = this.model('direct');
+        let ret_data = await direct.page([req_obj.currentPage, 5]).countSelect();
+
+        console.log(ret_data);
+
+        return this.success(ret_data);
+  }
+  /* 获取直播内容列表 */
+
+  async postliveAction () {
+        this.setCorsHeader();
+
+        let req_obj = this.post();
+        let direct = this.model('direct');
+        let ret_data = await direct.add(req_obj);
+
+        return this.success(ret_data);
+  }
+  /* post 新的直播内容 */
+
+  async deleteliveAction () {
+        this.setCorsHeader();
+
+        let req_obj = this.post();
+        let direct = this.model('direct');
+        let ret_data = await direct.where({id: ["=", req_obj.id]}).delete();
+
+        return this.success(ret_data);
+  }
+  /* 删除直播内容 */
+
+
+  async updateliveAction () {
+        this.setCorsHeader();
+
+        let req_obj = this.post();
+        let direct = this.model('direct');
+        let ret_data = await direct.where({id: req_obj.id}).update(req_obj);
+
+        return this.success(ret_data);
+  }
+  /* 删除直播内容 */
 }
