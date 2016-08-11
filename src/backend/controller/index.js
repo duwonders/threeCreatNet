@@ -282,7 +282,6 @@ export default class extends Base {
   }
   /* 删除直播内容 */
 
-
   async updateliveAction () {
         this.setCorsHeader();
 
@@ -293,4 +292,114 @@ export default class extends Base {
         return this.success(ret_data);
   }
   /* 删除直播内容 */
+
+  /*
+  *  Sayings 页面
+  *     |
+  *     |----list
+  *     |----detail
+  */
+
+  async getarticlelistAction () {
+        this.setCorsHeader();
+
+        let req_obj = this.post();
+        let article = this.model('article');
+        let data = await article.page([req_obj.currentPage, 5]).countSelect();
+
+        return this.success(data);
+  }
+  /* 获取文章列表 */
+
+  async deletearticleAction () {
+        this.setCorsHeader();
+
+        let req_obj = this.post();
+        let article = this.model('article');
+        let ret_data = await article.where({id: ["=", req_obj.id]}).delete();
+
+        return this.success(ret_data);
+  }
+  /* 删除文章内容 */
+
+  async getsinglearticleAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let article = this.model('article');
+      let data = await article.where({id: req_obj.atc_id}).find();
+
+      console.log(data);
+
+      return this.success(data);
+  }
+  /* 根据文章 id 获取对应文章信息 */
+
+  async updatearticleAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let article = this.model('article');
+      let ret_data = await article.where({id: req_obj.id}).update(req_obj);
+
+      return this.success(ret_data);
+  }
+  /* 更新文章信息 */
+
+  async createarticleAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let article = this.model('article');
+      let ret_data = await article.add(req_obj);
+
+      return this.success(ret_data);
+  }
+  /* 创建新的活动 */
+
+
+  /*
+  *  Download 页面
+  *     |
+  *     |----list
+  *     |----upload
+  */
+
+  async getfilelistAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let download = this.model('download');
+      let ret_data = await download.page([req_obj.currentPage, 5]).countSelect();
+
+      return this.success(ret_data);
+  }
+  /* 获取文件列表信息 */
+
+  async deletefileAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let download = this.model('download');
+      let ret_data = await download.where({id: ["=", req_obj.id]}).delete();
+
+      return this.success(ret_data);
+  }
+  /* 删除文件信息 */
+
+  async updatefileAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let download = this.model('download');
+
+      let ret_data = await download.where({id: ["=", req_obj.id]}).update({
+          file_title: req_obj.file_title,
+          file_url: req_obj.file_url
+      });
+
+      return this.success(ret_data);
+  }
+  /* 更新文件信息 */
+
 }

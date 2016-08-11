@@ -13,7 +13,7 @@ export default {
       port: '',
       database: 'threeCreate',
       user: 'root',
-      password: '',
+      password: 'fuck',
       prefix: '',
       encoding: 'utf8'
     },
