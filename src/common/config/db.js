@@ -18,7 +18,7 @@ export default {
       encoding: 'utf8'
     },
     mongo: {
-
+      
     }
   }
 };
