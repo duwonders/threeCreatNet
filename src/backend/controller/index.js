@@ -14,21 +14,48 @@ export default class extends Base {
     //auto render template file index_index.html
     return this.display();
   }
-  uploadAction (){
+  uploadimgAction (){
     this.setCorsHeader();
 
-    //这里的 key 需要和 form 表单里的 name 值保持一致
     let file = think.extend({}, this.file('image'));
+    /*
+    *   think.extend(目录对象, 原对象)
+    *   this.file(name) 传入的值是 form 表单中 <input type="file"> 的 name 属性
+    */
+
+    /*
+    *   console.log(file);
+    *
+    *   {
+    *       fieldName: 'image',
+    *       originalFilename: '论语.docx',
+    *       path: '/Users/macbookair/Desktop/threeCreatNet/runtime/upload/0sTsLzTH09vRA9HAZZLwnuER.docx',
+    *       headers:
+    *           {
+    *               'content-disposition': 'form-data; name="image"; filename="论语.docx"',
+    *               'content-type': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+    *           },
+    *       size: 14179
+    *   }
+    */
 
     let filepath = file.path;
-    //文件上传后，需要将文件移动到项目其他地方，否则会在请求结束时删除掉该文件
     let uploadPath = think.RESOURCE_PATH + '/upload';
-    think.mkdir(uploadPath);
+    /*
+    *   文件上传之后会先放到 runtime 目录下作为缓存
+    *   如果不继续对文件进行处理，保存到自定目录下的话，缓存会清除，文件不会保留
+    */
 
+    think.mkdir(uploadPath);
     let basename = path.basename(filepath);
     fs.renameSync(filepath, uploadPath + '/' + basename);
-
     file.path = uploadPath + '/' + basename;
+
+    /*
+    *   创建指定文件夹
+    *   basename 文件上传后的名称
+    *   fs.renameSync 异步改文件名，待文件上传之后把文件的路径变一下，就能看到文件实体了 = =
+    */
 
     if(think.isFile(file.path)){
       console.log(basename);
@@ -37,8 +64,11 @@ export default class extends Base {
     }
 
     this.assign('fileInfo', file);
-    this.success(basename);
-    //  this.suceess 用来返回值 vue 中 post().then 接收 返回链接
+
+    this.success({
+        prevName: file.originalFilename,
+        currName: basename
+    });
   }
 
   setCorsHeader(){
