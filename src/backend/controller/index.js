@@ -70,6 +70,7 @@ export default class extends Base {
         currName: basename
     });
   }
+  /* 相册上传图片接口 */
 
   setCorsHeader(){
       this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
@@ -431,5 +432,16 @@ export default class extends Base {
       return this.success(ret_data);
   }
   /* 更新文件信息 */
+
+  async postfileAction(){
+    this.setCorsHeader();
+
+    let json = this.post();
+    let download = this.model('download');
+    let retData = await download.add(json);
+
+    return this.success(retData);
+  }
+  /* 上传文件信息 */
 
 }
