@@ -7,22 +7,9 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
-    browserSync = require('browser-sync'),
-    base64 = require('gulp-base64');
+    browserSync = require('browser-sync');
 
 var reload = browserSync.reload;
-
-var base64Conf = {
-  src:  './src/html/*.html',
-  dest:  './dist/html/*.html',
-  options: {
-    baseDir: './src',
-    extensions: ['png','jpg','jpeg'],
-    maxImageSize: 100 * 1024, // bytes
-    debug: false
-  }
-}
-
 
 var files = {
     source: './src/**/*.*',
@@ -30,17 +17,17 @@ var files = {
     base: "./dist",
     src: {
         html: './src/html/*.html',
-        js: ['./src/js/index.js', './src/js/login.js'],
+        js: './src/js/*.js',
         less: './src/styles/*.less',
         css: './src/styles/*.css',
         imgs: './src/imgs/*.*'
     },
     dist: {
-        html: './dist/html',
-        js: './dist/js/',
-        less: './dist/less/',
-        css: './dist/styles/',
-        imgs: './dist/imgs/'
+        html: '../view/home',
+        js: '../www/static/js',
+        less: '../www/static/css',
+        css: '../www/static/css',
+        imgs: '../www/static/imgs'
     }
 };
 
@@ -72,12 +59,6 @@ gulp.task('css-task', function () {
         .pipe(reload({
             stream: true
         }));
-});
-
-gulp.task('base64', function(){
-    return gulp.src(base64Conf.src)
-        .pipe(base64(base64Conf.options))
-        .pipe(gulp.dest(base64Conf.dest));
 });
 
 gulp.task('babel', function() {
@@ -141,6 +122,7 @@ gulp.task('watch', function () {
 });
 
 gulp.task('init-project', ['less-task', 'css-task', 'babel', 'html', 'img-min']);
+gulp.task('bs-restart', ['init-project', 'browser-sync']);
 
 /*
  *   @params
