@@ -96,7 +96,7 @@ export default class extends Base {
     this.setCorsHeader();
 
     let json = this.post();
-    let data = await this.model('picture').page([json.currentPage, 5]).countSelect();
+    let data = await this.model('picture').page([json.currentPage, 5]).order("id DESC").countSelect();
     //  分页的查询 .page([现页数， 总页数])
 
     console.log("获取图片列表 data");
@@ -172,7 +172,9 @@ export default class extends Base {
     this.setCorsHeader();
 
     let json = this.post();
-    let data = await this.model('album').page([json.currentPage, 5]).countSelect();
+    let data = await this.model('album')
+                .page([json.currentPage, 5])
+                .order("id DESC").countSelect();
     return this.success(data);
   }
   /* 获取相册的信息 */
@@ -215,6 +217,16 @@ export default class extends Base {
       return this.success(retData);
   }
   /* 更新相册信息 */
+  async detailbyidAction () {
+      this.setCorsHeader();
+
+      let data = this.post();
+      let picture = this.model('picture');
+      let retData = await picture.where({album_id: ["=", data.id]}).countSelect();
+
+      return this.success(retData);
+  }
+
 
   /*
   *  Activity 页面
@@ -228,7 +240,8 @@ export default class extends Base {
 
         let req_obj = this.post();
         let hd = this.model('hd');
-        let data = await hd.page([req_obj.currentPage, 5]).countSelect();
+        let data = await hd.page([req_obj.currentPage, 5])
+                    .order("id DESC").countSelect();
 
         return this.success(data);
   }
@@ -283,9 +296,8 @@ export default class extends Base {
 
         let req_obj = this.post();
         let direct = this.model('direct');
-        let ret_data = await direct.page([req_obj.currentPage, 5]).countSelect();
-
-        console.log(ret_data);
+        let ret_data = await direct.page([req_obj.currentPage, 5])
+                        .order("id DESC").countSelect();
 
         return this.success(ret_data);
   }
@@ -336,7 +348,8 @@ export default class extends Base {
 
         let req_obj = this.post();
         let article = this.model('article');
-        let data = await article.page([req_obj.currentPage, 5]).countSelect();
+        let data = await article.page([req_obj.currentPage, 5])
+                    .order("id DESC").countSelect();
 
         return this.success(data);
   }
@@ -401,7 +414,8 @@ export default class extends Base {
 
       let req_obj = this.post();
       let download = this.model('download');
-      let ret_data = await download.page([req_obj.currentPage, 5]).countSelect();
+      let ret_data = await download.page([req_obj.currentPage, 5])
+                        .order("id DESC").countSelect();
 
       return this.success(ret_data);
   }
