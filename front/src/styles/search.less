@@ -1,0 +1,245 @@
+body {
+  transition: margin-top 1s;
+}
+.icon-atom {
+  font-size: 30px;
+  vertical-align: sub;
+}
+.icon-tag {
+  margin-left: 10px;
+  margin-right: 5px;
+  font-size: 15px;
+  vertical-align: middle;
+}
+.icon-download {
+  display: inline-block;
+  font-size: 15px;
+  float: right;
+}
+/* 本页特有 iconfont 样式 */
+.nav-outer-container {
+  background-color: #000;
+  color: #fff;
+  .nav-container {
+    display: inline-block;
+  }
+  .hot:before {
+    content: url("../imgs/home-hot.png");
+    width: 27px;
+    height: 22px;
+    position: absolute;
+    top: 5px;
+    right: -15px;
+    z-index: 10;
+  } //  hot 使用伪元素, 定位相对于所处的 li
+  .nav-item {
+    display: inline-block;
+    position: relative; // 用来 hot 定位
+    a {
+      display: inline-block;
+      padding: 0 10px;
+      height: 55px;
+      line-height: 55px;
+      font-size: 15px;
+      color: #fff;
+      transition: all 1s;
+    }
+  }
+  .nav-item:nth-of-type(1) {
+    a {
+      padding: 0 25px;
+    }
+  } // 对于 首页 两个字做得微调
+  .nav-item:hover a {
+    background-color: #044881;
+  }
+  .nav-links {
+    float: right;
+    text-align: right;
+    line-height: 53px;
+    a {
+      color: #fff;
+      font-size: 13px;
+      padding: 0 0 0 10px;
+    }
+  }
+}
+/* 顶部导航 */
+
+.slogan-outer-container {
+  background-color: #00264e;
+  .slogan {
+    width: 100%;
+    height: 410px;
+    background-image: url(../imgs/home-slogan.png);
+  }
+}
+/* 标语图部分 */
+
+.main-outer-container {
+  margin-top: 20px;
+  overflow: hidden;
+  .banner {
+    margin: 12px 0;
+    width: 100%;
+    height: 110px;
+    background: url("../imgs/home-banner.png") no-repeat;
+  }
+  .title {
+    width: 100%;
+    line-height: 40px;
+    padding-left: 10px;
+    background: linear-gradient(to right, #e6e6e6, #fff);
+    font-size: 18px;
+    font-weight: 100;
+    color: #333;
+    vertical-align: sub;
+  }
+  // 每个栏目的标题
+  .more {
+    display: inline-block;
+    font-size: 13px;
+  }
+  // 更多
+  .circle {
+    display: inline-block;
+    margin-right: 10px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #868686;
+  }
+  // 标题圆圈部分
+  .main-left {
+    display: inline-block;
+    width: 695px;
+    overflow: hidden;
+  }
+  // 主区域左侧大块
+  .main-right {
+    float: right;
+    width: 310px;
+    overflow: hidden;
+  }
+  // 主区域右侧大块
+  .main-items {
+    margin-bottom: 12px;
+  }
+  // 每小块距下边 12px
+}
+
+
+.result-container {
+  .result-item {
+    display: block;
+    padding: 12px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+  .result-img {
+    width: 200px;
+    height: 160px;
+  }
+  .result-text {
+    float: right;
+    width: 460px;
+  }
+  .result-title {
+    font-size: 16px;
+    line-height: 30px;
+  }
+  .result-para {
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 20px;
+    max-height: 100px;
+    overflow: hidden;
+    color: #666;
+  }
+  .result-status {
+    margin-top: 6px;
+    line-height: 20px;
+    span {
+      margin-right: 20px;
+      font-size: 13px;
+      color: #aaa;
+    }
+  }
+}
+
+.title-search {
+  width: 100%;
+  line-height: 40px;
+  padding-left: 10px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 100;
+  color: #333;
+  background-color: #fff;
+  vertical-align: sub;
+}
+.search-form {
+  .search-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    input {
+      float: left;
+      box-sizing: border-box;
+      outline: none;
+      width: 240px;
+      height: 50px;
+      font-size: 16px;
+      font-weight: 100;
+      padding-left: 15px;
+      border: 2px solid #012245;
+    }
+  }
+  .search-btn {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    background-color: #012245;
+    input {
+      float: left;
+      display: inline-block;
+      outline: none;
+      border: none;
+      height: 50px;
+      width: 65px;
+      cursor: pointer;
+      background: url("../imgs/home-search.png") no-repeat 12px 10px;
+    }
+  }
+}
+/* 搜索的几个东西相关 */
+
+.hot-news {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px;
+  .news-img {
+    width: 100%;
+    height: 190px;
+    background-color: #00cc99;
+  }
+  .news-title {
+    color: #06f;
+    font-size: 13px;
+    text-indent: 26px;
+    line-height: 30px;
+  }
+  .news-detail {
+    font-size: 13px;
+    text-indent: 26px;
+  }
+}
+/* 热门资讯 */
+
+.weibo {
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  padding: 10px;
+  height: 500px;
+}
+/* 微博 */

@@ -1,0 +1,318 @@
+.nav-outer-container {
+  background-color: #4f4f4f;
+  ul, li, a {
+    display: inline-block;
+  }
+  a {
+    padding: 0 10px;
+    line-height: 35px;
+    font-size: 15px;
+    color: #d5d5d5;
+  }
+  .nav-links {
+    a:first-of-type {
+      padding-left: 0;
+    }
+  }
+  .nav-about {
+    float: right;
+    a:last-of-type {
+      padding-right: 0;
+    }
+  }
+}
+/* 导航部分 */
+
+.search-outer-container {
+  background-color: #3594ff;
+  .inner-container {
+    height: 85px;
+    line-height: 85px;
+  }
+  .title-img {
+    margin-right: 10px;
+    vertical-align: sub;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url("../imgs/activity-title.png") no-repeat;
+  }
+  .title {
+    color: #fff;
+    font-size: 30px;
+  }
+  form {
+    float: right;
+    height: 35px;
+    margin-top: 10px;
+  }
+  .search-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    input {
+      float: left;
+      padding-left: 15px;
+      box-sizing: border-box;
+      font-size: 16px;
+      font-weight: 100;
+      width: 220px;
+      height: 35px;
+      border-radius: 3px 0 0 3px;
+    }
+  }
+  .search-btn {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    background-color: #fff;
+    border-left: 1px solid #aaa;
+    border-radius: 0 3px 3px 0;
+    input {
+      float: left;
+      display: inline-block;
+      outline: none;
+      height: 35px;
+      width: 45px;
+      cursor: pointer;
+      background: url("../imgs/activity-search.png") no-repeat 10px 8px;
+    }
+  }
+}
+/* 标题 + 搜索部分（样式可以复用） */
+
+.main-outer-container {
+  margin-top: 15px;
+  overflow: hidden;
+}
+.main-left {
+  display: inline-block;
+  width: 715px;
+}
+.main-right {
+  float: right;
+  width: 290px;
+  overflow: hidden;
+}
+/* main 区域样式控制 */
+
+.location {
+  display: inline-block;
+  padding: 0 10px;
+  line-height: 30px;
+  background-color: #888;
+  font-size: 13px;
+  border-radius: 5px;
+  color: #fff;
+}
+/* 现在所在区域位置 */
+
+.info {
+  margin-top: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ccc;
+  .info-img {
+    display: inline-block;
+    width: 240px;
+    height: 325px;
+    background-color: #00cc99;
+    border: 1px solid #ccc;
+  }
+  .info-content {
+    float: right;
+    width: 400px;
+    p {
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .title {
+      font-size: 18px;
+    }
+    .msg {
+      font-size: 15px;
+      line-height: 15px;
+      margin-top: 25px;
+      text-indent: 10px;
+    }
+    .msg:first-of-type {
+      margin-top: 30px;
+    }
+    .tags {
+      color: #80a9fc;
+    }
+  }
+}
+/* 包含赛事信息 */
+
+.intro {
+  margin-top: 10px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #ccc;
+  overflow: hidden;
+  .intro-title {
+    color: #333;
+    font-size: 18px;
+    line-height: 40px;
+  }
+}
+/* 活动介绍 此处内容样式为富文本编辑器生成 */
+
+.lecturer {
+  .lecturer-img {
+    width: 190px;
+    height: 170px;
+    background-color: #00cc99;
+  }
+  .lecturer-detail {
+    float: right;
+    padding: 0 10px;
+    width: 470px;
+    font-size: 15px;
+    line-height: 20px;
+    text-indent: 30px;
+  }
+}
+
+.links {
+  .links-item {
+    position: relative;
+    margin: 20px 0;
+    padding-left: 20px;
+    font-size: 15px;
+    line-height: 15px;
+  }
+
+  .link-for:before {
+    content: url("../imgs/competition-dot.png");
+    position: absolute;
+    top: -1px;
+    left: 3px;
+    z-index: 10;
+  }
+  a {
+    color: #0b35a0;
+  }
+}
+/* 相关链接 */
+
+.right-wrapper {
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px 7px;
+  background-color: #ccc;
+  border-radius: 5px;
+  .title {
+    padding-left: 15px;
+    padding-bottom: 5px;
+
+  }
+}
+.right-wrapper-inner {
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+/* 右边部分统一样式 */
+
+.now-item {
+  margin-bottom: 10px;
+}
+.now-item:last-of-type {
+  margin-bottom: 0;
+}
+.now-img {
+  box-sizing: border-box;
+  width: 90px;
+  height: 115px;
+  background-color: #00cc99;
+  border: 1px solid #ccc;
+}
+.now-content {
+  float: right;
+  width: 160px;
+  height: 115px;
+  .title {
+    padding: 0;
+    display: inline-block;
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    line-height: 20px;
+    color: #6887cb;
+  }
+  .tag {
+    box-sizing: border-box;
+    padding: 0 5px;
+    line-height: 18px;
+    float: right;
+    font-size: 13px;
+    border: 1px solid #b3c3e5;
+    border-radius: 5px;
+    color: #b3c3e5;
+  }
+  .words {
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .words:first-of-type {
+    margin-top: 10px;
+  }
+  .words:last-of-type {
+    margin-bottom: 10px;
+  }
+  .detail {
+    padding: 0 10px;
+    display: inline-block;
+    background-color: #f55;
+    border-radius: 5px;
+  }
+  .detail a {
+    color: #fff;
+    font-size: 15px;
+    line-height: 25px;
+    width: 65px;
+  }
+}
+/* 正在进行 */
+
+.hot-item {
+  position: relative;
+  padding-left: 20px;
+  a {
+    margin: 8px 0;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    line-height: 20px;
+    color: #6887cb;
+  }
+  a:before {
+    content: url("../imgs/activity-hot.png");
+    position: absolute;
+    top: 8px;
+    left: 0;
+    z-index: 10;
+  }
+}
+/* 热门活动推荐 */
