@@ -83,4 +83,7 @@ export default class extends Base {
     async speechliveAction () {
         return this.display();
     }
+    async searchAction () {
+        return this.display();
+    }
 }
