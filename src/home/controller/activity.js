@@ -60,11 +60,27 @@ export default class extends Base {
  	}
  	/**
  	 * return: 最热门的三条记录
- 	 * 
+ 	 *
  	 */
  	async get_hotAct(){
  		let data = await this.model('hd').order('hd_time').limit(3).select();
  		return data;
  	}
 
+    /**
+    *  16-08-22
+    *  加了几个页面的 display
+    */
+    async competitiondetailAction () {
+        return this.display();
+    }
+    async speechdetailAction () {
+        return this.display();
+    }
+    async speechlistAction () {
+        return this.display();
+    }
+    async speechliveAction () {
+        return this.display();
+    }
 }
