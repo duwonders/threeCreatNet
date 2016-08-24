@@ -7,7 +7,8 @@ var gulp = require('gulp'),
     htmlmin = require('gulp-htmlmin'),
     imagemin = require('gulp-imagemin'),
     pngquant = require('imagemin-pngquant'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    plumber = require('gulp-plumber');
 
 var reload = browserSync.reload;
 
@@ -35,6 +36,7 @@ var files = {
 
 gulp.task('less-task', function() {
     return gulp.src(files.src.less)
+        .pipe(plumber())
         .pipe(less())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
@@ -50,6 +52,7 @@ gulp.task('less-task', function() {
 
 gulp.task('css-task', function () {
     return gulp.src(files.src.css)
+        .pipe(plumber())
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
@@ -63,6 +66,7 @@ gulp.task('css-task', function () {
 
 gulp.task('babel', function() {
     return gulp.src(files.src.js)
+        .pipe(plumber())
         .pipe(babel({
             presets: ['es2015']
         }))
@@ -86,6 +90,7 @@ gulp.task('html', function() {
 
 gulp.task('img-min', function() {
     return gulp.src(files.src.imgs)
+        .pipe(plumber())
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],

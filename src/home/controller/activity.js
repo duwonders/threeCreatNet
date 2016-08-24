@@ -12,7 +12,7 @@ export default class extends Base {
   		typeAct: await this.per_page(),
   		hotAct: await this.get_hotAct()
   	}
-  	console.log(data);
+  	// console.log(data.typeAct.pageCount.totalPages);
   	this.assign('data', data);
     return this.display();
   }
@@ -24,37 +24,92 @@ export default class extends Base {
  	 * 		'page': 页数
  	 * }
  	 */
- 	async per_page(num = 6){
+  async competitionDetailAction(){
+    return this.display();
+  }
+
+ 	async per_page(num = 3){
+
  		let golePage = this.get('page') || 1;
+
  		let type = this.get('type') || '全部';
+
  		let state = this.get('state') || '最近';
+
  		let data = {};
+
  		if(type == '全部' && state == '最近'){
- 			data.pageData = await this.model('hd').page(golePage, num).order('hd_time').select();
- 			data.pageCount = await this.model('hd').page(golePage, num).order('hd_time').countSelect();
+
+ 			data.pageData = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .order('hd_time')
+                      .select();
+
+ 			data.pageCount = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .order('hd_time')
+                      .countSelect();
+
  		}else if(type != '全部' && state == '最近'){
- 			data.pageData = await this.model('hd').page(golePage, num).where({
- 				hd_type: type
- 			}).order('hd_time').select();
- 			data.pageCount = await this.model('hd').page(golePage, num).where({
- 				hd_type: type
- 			}).order('hd_time').countSelect();
+
+ 			data.pageData = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .where({
+ 				                 hd_type: type
+ 			                })
+                      .order('hd_time')
+                      .select();
+
+ 			data.pageCount = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .where({
+ 				                 hd_type: type
+ 			                })
+                      .order('hd_time')
+                      .countSelect();
+
  		}else if(type == '全部' && state != '最近'){
- 			data.pageData = await this.model('hd').page(golePage, num).where({
- 				hd_state: state
- 			}).order('hd_time').select();
- 			data.pageCount = await this.model('hd').page(golePage, num).where({
- 				hd_state: state
- 			}).order('hd_time').countSelect();
- 		}else{
- 			data.pageData = await this.model('hd').page(golePage, num).where({
- 				hd_state: state,
- 				hd_type: type
- 			}).order('hd_time').select();
- 			data.pageCount = await this.model('hd').page(golePage, num).where({
- 				hd_state: state,
- 				hd_type: type
- 			}).order('hd_time').countSelect();
+
+ 			data.pageData = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .where({
+ 				                 hd_state: state
+ 			                })
+                      .order('hd_time')
+                      .select();
+ 			data.pageCount = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .where({
+ 				                 hd_state: state
+ 			                }).order('hd_time').countSelect();
+ 		
+    }else{
+
+ 			data.pageData = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .where({
+ 				                 hd_state: state,
+ 				                 hd_type: type
+ 			                })
+                      .order('hd_time')
+                      .select();
+
+ 			data.pageCount = await this
+                      .model('hd')
+                      .page(golePage, num)
+                      .where({
+ 				                 hd_state: state,
+ 				                 hd_type: type
+ 			                })
+                      .order('hd_time')
+                      .countSelect();
  		}
  		return data;
  	}

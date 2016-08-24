@@ -77,8 +77,8 @@
                     <div class="swiper-pagination"></div>
                 </div>
                 <div class="main-nav">
-                    <ul>
-                        <li class="current">
+                    <ul class="mid-bar">
+                        <li>
                             最近
                         </li>
                         <li>
@@ -149,25 +149,15 @@
     <section class="outer-container page-outer-container">
         <div class="inner-container">
             <span class="page-btn">
-                <a href="#" class="prev">上一页</a>
+                <a class="prev">上一页</a>
             </span>
-            <span class="page-btn">
-                <a href="#" class="pager current-page">1</a>
+            <% for(var i = 1; i <= data.typeAct.pageCount.totalPages; i++){ %>
+            <span class="page-btn  page-redirect">
+                <a class="pager current-page"><%= i %></a>
             </span>
+            <% } %>
             <span class="page-btn">
-                <a href="#" class="pager">2</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager">3</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager">4</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager">5</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="next">下一页</a>
+                <a class="next">下一页</a>
             </span>
             <span>转到</span>
             <span class="page-btn">
@@ -304,9 +294,9 @@
 
     </div>
     <nav id="aside-nav" class="aside-nav">
-        <ul>
-            <li class="current"><a href="./">全部</a></li>
-            <li><a href="./?type='讲座'">讲座</a></li>
+        <ul class="left-bar">
+            <li>全部</li>
+            <li>讲座</li>
             <li>竞赛</li>
             <li>展览</li>
             <li>内部</li>
