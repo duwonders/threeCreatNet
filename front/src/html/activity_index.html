@@ -12,16 +12,16 @@
         <nav class="inner-container">
             <ul class="nav-links">
                 <li>
-                    <a href="#">首页</a>
+                    <a href="/home/index">首页</a>
                 </li>
                 <li>
-                    <a href="#">活动赛事</a>
+                    <a href="/home/activity">活动赛事</a>
                 </li>
                 <li>
-                    <a href="#">精彩图库</a>
+                    <a href="/home/album">精彩图库</a>
                 </li>
                 <li>
-                    <a href="#">下载专区</a>
+                    <a href="/home/download">下载专区</a>
                 </li>
                 <li>
                     <a href="#">文峰青年大讲堂</a>
@@ -35,7 +35,7 @@
             </ul>
             <ul class="nav-about">
                 <li>
-                    <a href="#">我语科联</a>
+                    <a href="/home/speak">我语科联</a>
                 </li>
                 <li>
                     <a href="#">关于我们</a>
@@ -97,7 +97,11 @@
                     <div class="activity-item">
                         <img src="../static/covers/<%=item.hd_cover%>" class="activity-img">
                         <div class="activity-content">
-                            <a href="#" class="title"><%=item.hd_title%></a>
+                            <%if(item.hd_type == '竞赛'){%>
+                                <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}else{%>
+                                <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}%>
                             <p class="msg">地点: <%=item.hd_place%></p>
                             <p class="msg">时间: <%=item.hd_time%></p>
                             <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
@@ -114,12 +118,16 @@
                         <div class="now-item">
                             <img src="../static/covers/<%=item.hd_cover%>" class="now-img">
                             <div class="now-content">
-                                <a href="#" class="title"><%=item.hd_title%></a>
+                            <%if(item.hd_type == '竞赛'){%>
+                                <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}else{%>
+                                <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}%>
                                 <span class="tag">抢票</span>
                                 <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
                                 <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">
-                                    <a href="#">点击详情</a>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>">点击详情</a>
                                 </div>
                             </div>
                         </div>

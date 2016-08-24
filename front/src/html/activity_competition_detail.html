@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>活动赛事-竞赛-详情</title>
-    <link rel="stylesheet" href="../static/css/public-style.css">
-    <link rel="stylesheet" href="../static/css/activity-competition-detail.css">
+    <link rel="stylesheet" href="/static/css/public-style.css">
+    <link rel="stylesheet" href="/static/css/activity-competition-detail.css">
 </head>
 <body>
     <section class="outer-container nav-outer-container">
         <div class="inner-container">
             <ul class="nav-links">
                 <li>
-                    <a href="#">首页</a>
+                    <a href="/home/index">首页</a>
                 </li>
                 <li>
-                    <a href="#">活动赛事</a>
+                    <a href="/home/activity">活动赛事</a>
                 </li>
                 <li>
-                    <a href="#">精彩图库</a>
+                    <a href="/home/album">精彩图库</a>
                 </li>
                 <li>
-                    <a href="#">下载专区</a>
+                    <a href="/home/download">下载专区</a>
                 </li>
                 <li>
                     <a href="#">文峰青年大讲堂</a>
@@ -34,7 +34,7 @@
             </ul>
             <ul class="nav-about">
                 <li>
-                    <a href="#">我语科联</a>
+                    <a href="/home/speak">我语科联</a>
                 </li>
                 <li>
                     <a href="#">关于我们</a>
@@ -62,22 +62,22 @@
         <div class="inner-container">
             <div class="main-left">
                 <p class="location">
-                    首页>赛事活动>【设计】软件设计大赛
+                    首页>赛事活动><%= data.detail[0].hd_title%>
                 </p>
                 <div class="info">
-                    <img src="../static/imgs/home-gallery-test1.png" class="info-img">
+                    <img src="/static/imgs/home/-gallery-test1.png" class="info-img">
                     <div class="info-content">
-                        <p class="title">【设计】软件设计大赛</p>
-                        <p class="msg">地点: 2105教室</p>
-                        <p class="msg">时间: 2014年11月11日 18:00-22:00</p>
-                        <p class="msg">抢票地点: 雨红莲现场报名处</p>
-                        <p class="msg">宣讲培训: 11月2日 17:00 2117教室</p>
-                        <p class="msg">主办单位: 红岩网校工作站</p>
-                        <p class="msg tags">标签: 万圣节 party 舞会</p>
+                        <p class="title"><%= data.detail[0].hd_title%></p>
+                        <p class="msg">地点: <%= data.detail[0].hd_place%></p>
+                        <p class="msg">时间: <%= data.detail[0].hd_time%></p>
+                        <p class="msg">抢票地点: <%= data.detail[0].hd_getTicket_time%></p>
+                        <p class="msg">宣讲培训: <%= data.detail[0].hd_peixun%></p>
+                        <p class="msg">主办单位: <%= data.detail[0].hd_unit%></p>
                     </div>
                 </div>
                 <div class="intro">
-                    <p class="intro-title">活动介绍</p>
+                    <p class="intro-title">活动介绍:</p>
+                    <p><%= data.detail[0].hd_detail%></p>
                 </div>
                 <div class="links intro">
                     <p class="intro-title">相关链接</p>
@@ -95,42 +95,24 @@
                 <div class="right-wrapper">
                     <p class="title">热门活动</p>
                     <div class="right-wrapper-inner">
+                        <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
-                            <img src="../static/imgs/actitity.png" class="now-img">
+                            <img src="../static/covers/<%=item.hd_cover%>" class="now-img">
                             <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂</a>
+                            <%if(item.hd_type == '竞赛'){%>
+                                <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}else{%>
+                                <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}%>
                                 <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
+                                <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
+                                <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">
-                                    <a href="#">点击详情</a>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>">点击详情</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="now-item">
-                            <img src="../static/imgs/actitity.png" class="now-img">
-                            <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂放的萨芬</a>
-                                <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
-                                <div class="detail">
-                                    <a href="#">点击详情</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="now-item">
-                            <img src="../static/imgs/actitity.png" class="now-img">
-                            <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂放的萨芬</a>
-                                <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
-                                <div class="detail">
-                                    <a href="#">点击详情</a>
-                                </div>
-                            </div>
-                        </div>
+                        <% }) %>
                     </div>
                 </div>
                 <div class="right-wrapper">
@@ -286,7 +268,7 @@
 
     </div>
 
-    <script src="../static/js/jquery-3.1.0.min.js"></script>
-    <script src="../static/js/activity-competition-detail.js"></script>
+    <script src="/static/js/jquery-3.1.0.min.js"></script>
+    <script src="/static/js/activity-competition-detail.js"></script>
 </body>
 </html>

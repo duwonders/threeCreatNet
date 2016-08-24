@@ -8,26 +8,67 @@ export default class extends Base {
    * @return {Promise} []
    */
   async indexAction(){
+
   	let data = {
+
   		typeAct: await this.per_page(),
+
   		hotAct: await this.get_hotAct()
+
   	}
   	// console.log(data.typeAct.pageCount.totalPages);
   	this.assign('data', data);
-    return this.display();
-  }
- 	/**
- 	 * [per_page description]
- 	 * 参数：{
- 	 * 		'type': 竞赛类型
- 	 * 		'num' : 每页条数
- 	 * 		'page': 页数
- 	 * }
- 	 */
-  async competitionDetailAction(){
+
     return this.display();
   }
 
+  async assigness(){
+    let activityId = this.get('id');
+
+    let detail = await this.model('hd')
+                     .where({
+                        id: activityId 
+                     })
+                     .select();
+
+    let data = {
+
+      hotAct: await this.get_hotAct(),
+
+      detail: detail
+
+    }
+    console.log(data);
+    this.assign('data', data);
+
+    return this.display();
+  }
+
+
+  async speechDetailAction(){
+
+    this.assigness();
+
+  }
+ 	
+  async competitionDetailAction(){
+
+    this.assigness();
+
+  }
+
+  async speechLiveAction(){
+    this.assigness();
+  }
+
+/**
+   * [per_page description]
+   * 参数：{
+   *    'type': 竞赛类型
+   *    'num' : 每页条数
+   *    'page': 页数
+   * }
+   */
  	async per_page(num = 3){
 
  		let golePage = this.get('page') || 1;
