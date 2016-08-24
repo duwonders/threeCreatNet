@@ -1,0 +1,350 @@
+.icon-time {
+    font-size: 15px;
+}
+
+.nav-outer-container {
+  background-color: #4f4f4f;
+  ul, li, a {
+    display: inline-block;
+  }
+  a {
+    padding: 0 10px;
+    line-height: 35px;
+    font-size: 15px;
+    color: #d5d5d5;
+  }
+  .nav-links {
+    a:first-of-type {
+      padding-left: 0;
+    }
+  }
+  .nav-about {
+    float: right;
+    a:last-of-type {
+      padding-right: 0;
+    }
+  }
+}
+/* 导航部分 */
+
+.search-outer-container {
+  background-color: #3594ff;
+  .inner-container {
+    height: 85px;
+    line-height: 85px;
+  }
+  .title-img {
+    margin-right: 10px;
+    vertical-align: sub;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url("../imgs/activity-title.png") no-repeat;
+  }
+  .title {
+    color: #fff;
+    font-size: 30px;
+  }
+  form {
+    float: right;
+    height: 35px;
+    margin-top: 10px;
+  }
+  .search-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    input {
+      float: left;
+      padding-left: 15px;
+      box-sizing: border-box;
+      font-size: 16px;
+      font-weight: 100;
+      width: 220px;
+      height: 35px;
+      border-radius: 3px 0 0 3px;
+    }
+  }
+  .search-btn {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    background-color: #fff;
+    border-left: 1px solid #aaa;
+    border-radius: 0 3px 3px 0;
+    input {
+      float: left;
+      display: inline-block;
+      outline: none;
+      height: 35px;
+      width: 45px;
+      cursor: pointer;
+      background: url("../imgs/activity-search.png") no-repeat 10px 8px;
+    }
+  }
+}
+/* 标题 + 搜索部分（样式可以复用） */
+
+.main-outer-container {
+  margin-top: 15px;
+  overflow: hidden;
+}
+.main-left {
+  display: inline-block;
+  width: 715px;
+}
+.main-right {
+  float: right;
+  width: 290px;
+  overflow: hidden;
+}
+/* main 区域样式控制 */
+
+.main-nav {
+  ul {
+    padding: 15px 0;
+  }
+  li {
+    transition: all 500ms;
+    position: relative;
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  li:hover {
+    background-color: #c5deff;
+    border-radius: 6px;
+  }
+  .current {
+    background-color: #358bff;
+    border-radius: 6px;
+    color: #fff;
+  }
+  .current:after {
+    content: url("../imgs/arrow.png");
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    margin-left: -9px;
+  }
+  .new:after {
+    content: url("../imgs/new.png");
+    position: absolute;
+    top: 0;
+    left: 85%;
+  }
+
+}
+/* 导航 */
+.left-wrapper {
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px 7px;
+    background-color: #ccc;
+    border-radius: 5px;
+}
+.activity-item {
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  width: 700px;
+  padding: 15px;
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.activity-img {
+  box-sizing: border-box;
+  width: 130px;
+  height: 165px;
+  background-color: #00cc99;
+  border: 1px solid #ccc;
+}
+.activity-content {
+  box-sizing: border-box;
+  float: right;
+  padding-left: 20px;
+  width: 535px;
+  height: 165px;
+  overflow: hidden;
+  .title {
+      padding: 0;
+    line-height: 20px;
+    font-size: 16px;
+    color: #3965be;
+  }
+  .content:first-of-type {
+    margin-top: 20px;
+  }
+  .content {
+      margin-bottom: 5px;
+      font-size: 14px;
+      line-height: 20px;
+      height: 100px;
+      overflow: hidden;
+  }
+  .tags {
+      span {
+          margin-right: 20px;
+          font-size: 13px;
+          line-heigh: 15px;
+          color: #aaa;
+      }
+  }
+}
+/* 各种活动 */
+
+.right-wrapper {
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 10px 7px;
+  background-color: #ccc;
+  border-radius: 5px;
+  .title {
+    padding-left: 15px;
+    padding-bottom: 5px;
+
+  }
+}
+.right-wrapper-inner {
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.now-item {
+  margin-bottom: 10px;
+}
+.now-item:last-of-type {
+  margin-bottom: 0;
+}
+.now-img {
+  box-sizing: border-box;
+  width: 90px;
+  height: 115px;
+  background-color: #00cc99;
+  border: 1px solid #ccc;
+}
+.now-content {
+  float: right;
+  width: 160px;
+  height: 115px;
+  .title {
+    padding: 0;
+    display: inline-block;
+    width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    line-height: 20px;
+    color: #6887cb;
+  }
+  .tag {
+    box-sizing: border-box;
+    padding: 0 5px;
+    line-height: 18px;
+    float: right;
+    font-size: 13px;
+    border: 1px solid #b3c3e5;
+    border-radius: 5px;
+    color: #b3c3e5;
+  }
+  .words {
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 5px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .words:first-of-type {
+    margin-top: 10px;
+  }
+  .words:last-of-type {
+    margin-bottom: 10px;
+  }
+  .detail {
+    padding: 0 10px;
+    display: inline-block;
+    background-color: #f55;
+    border-radius: 5px;
+  }
+  .detail a {
+    color: #fff;
+    font-size: 15px;
+    line-height: 25px;
+    width: 65px;
+  }
+}
+/* 正在进行 */
+
+.hot-item {
+  position: relative;
+  padding-left: 20px;
+  a {
+    margin: 8px 0;
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    line-height: 20px;
+    color: #6887cb;
+  }
+  a:before {
+    content: url("../imgs/activity-hot.png");
+    position: absolute;
+    top: 8px;
+    left: 0;
+    z-index: 10;
+  }
+}
+/* 热门活动推荐 */
+
+.page-outer-container {
+  margin: 30px 0;
+  .page-btn {
+    margin: 0 5px;
+    overflow: hidden;
+    a {
+      transition: all 500ms;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      display: inline-block;
+      padding: 10px 15px;
+      background-color: #fff;
+      font-size: 13px;
+      line-height: 13px;
+    }
+    a:hover {
+      border: 1px solid #3794ff;
+      background-color: #e4f1ff;
+    }
+  }
+  .page-btn:first-of-type {
+    margin-left: 0;
+  }
+  .page-input {
+    margin: 0 10px;
+    display: inline-block;
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    font-size: 15px;
+  }
+  .page-go {
+    display: inline-block;
+    width: 40px;
+    height: 35px;
+    font-size: 15px;
+  }
+  .current-page {
+    background-color: #3794ff !important;
+    color: #fff;
+  }
+}
+/* 分页的样式 */
