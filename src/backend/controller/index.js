@@ -252,11 +252,43 @@ export default class extends Base {
 
       let req_obj = this.post();
       let hd = this.model('hd');
+      let related = this.model('related');
+
       let data = await hd.where({id: req_obj.hd_id}).find();
 
       return this.success(data);
   }
   /* 根据活动 id 获取对应活动信息 */
+
+  async getlinksAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let related = this.model('related');
+      let data = await related.where({activity_id: req_obj.hd_id}).select();
+
+      return this.success(data);
+  }
+  /* 根据活动 id 获取相关链接 */
+
+  async submitlinksAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let related = this.model('related');
+      let arr = JSON.parse(req_obj.data).arr;
+
+      arr.forEach((item, index) => {
+        //   console.log(item.id);
+        if (item.activity_id == -1) {
+            console.log(item);
+        }
+      });
+
+    //   return this.success(1);
+
+  }
+  /* 根据活动 id 获取相关链接 */
 
   async createactivityAction () {
       this.setCorsHeader();
@@ -372,8 +404,6 @@ export default class extends Base {
       let req_obj = this.post();
       let article = this.model('article');
       let data = await article.where({id: req_obj.atc_id}).find();
-
-      console.log(data);
 
       return this.success(data);
   }
