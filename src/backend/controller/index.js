@@ -240,8 +240,16 @@ export default class extends Base {
 
         let req_obj = this.post();
         let hd = this.model('hd');
-        let data = await hd.page([req_obj.currentPage, 5])
-                    .order("id DESC").countSelect();
+        let data = {};
+
+        if (req_obj.selected == 0) {
+            data = await hd.page([req_obj.currentPage, 5])
+                        .order("id DESC").countSelect();
+        } else {
+            data = await hd.where({hd_type: req_obj.selected})
+                            .page([req_obj.currentPage, 5])
+                            .order("id DESC").countSelect();
+        }
 
         return this.success(data);
   }
@@ -277,22 +285,31 @@ export default class extends Base {
       let req_obj = this.post();
       let related = this.model('related');
       let arr = JSON.parse(req_obj.data).arr;
-      
-      arr = (() => {
-        let count = 0;
-        arr.map((item, index) => {
-          if (item.id >= 0) {
-            count++;
-          } else {
-            delete(item.id);
-          }
-        });
-        arr.splice(0, count);
-        return arr;
-      })(arr);
-      /* 去掉不是新添加的数字 */
+      let res_data;
 
-      let res_data = await related.addMany(arr);
+      console.log(arr);
+
+      if (arr.length != 0) {
+          arr = (() => {
+            let count = 0;
+            arr.map((item, index) => {
+              if (item.id >= 0) {
+                count++;
+              } else {
+                delete(item.id);
+              }
+            });
+            arr.splice(0, count);
+            return arr;
+          })(arr);
+          if (arr.length != 0) {
+              res_data = await related.addMany(arr);
+          } else {
+            res_data = true;
+          }
+      } else {
+          res_data = true;
+      }
 
       return this.success(res_data);
 
@@ -326,7 +343,10 @@ export default class extends Base {
 
       let req_obj = this.post();
       let hd = this.model('hd');
+      let related = this.model('related');
+
       let affectedRows = await hd.where({id: ["=", req_obj.id]}).delete();
+      let rows = await related.where({activity_id: ["=", req_obj.id]}).delete();
 
       this.success(affectedRows);
   }
