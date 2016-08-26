@@ -277,15 +277,24 @@ export default class extends Base {
       let req_obj = this.post();
       let related = this.model('related');
       let arr = JSON.parse(req_obj.data).arr;
+      
+      arr = (() => {
+        let count = 0;
+        arr.map((item, index) => {
+          if (item.id >= 0) {
+            count++;
+          } else {
+            delete(item.id);
+          }
+        });
+        arr.splice(0, count);
+        return arr;
+      })(arr);
+      /* 去掉不是新添加的数字 */
 
-      arr.forEach((item, index) => {
-        //   console.log(item.id);
-        if (item.activity_id == -1) {
-            console.log(item);
-        }
-      });
+      let res_data = await related.addMany(arr);
 
-    //   return this.success(1);
+      return this.success(res_data);
 
   }
   /* 根据活动 id 获取相关链接 */
