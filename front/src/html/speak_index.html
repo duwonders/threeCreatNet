@@ -69,14 +69,8 @@
 	<section class="outer-container page-outer-container">
         <div class="inner-container">
             <span class="page-btn">
-                <a class="prev">上一页</a>
+                <a class="prev" id="prev">上一页</a>
             </span>
-
-			<!-- <% for (let i = 1; i <= data.getArticle.totalPages; i ++) { %>
-            <span class="page-btn page-redirect">
-                <a class="pager"><%=i %></a>
-            </span>
-			<% } %> -->
 
 			<span class="page-btn page-redirect">
                 <a class="pager">1</a>
@@ -95,15 +89,15 @@
             </span>
 
 			<span class="page-btn">
-                <a class="next">下一页</a>
+                <a class="next" id="next">下一页</a>
             </span>
             <span>转到</span>
             <span class="page-btn">
-                <input type="text" class="page-input">
+                <input type="text" class="page-input" id="page-input">
             </span>
-            <input type="button" class="page-go" value="go">
-			<span>总共
-				<span id="total-page"><%= data.getArticle.totalPages%></span> 页
+            <input type="button" class="page-go" value="go" id="page-go">
+			<span id="total-page" style="display: none">
+				<%= data.getArticle.totalPages%>
 			</span>
 			<span id="current-page" style="display: none">
 				<%= data.getArticle.currentPage%>
