@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>我语科联</title>
 	<link rel="stylesheet" href="../static/css/glob.css">
-	<link rel="stylesheet" href="../static/css/downLoad.css">
+	<link rel="stylesheet" href="../static/css/speak.css">
 </head>
 <body>
 	<div id="head">
@@ -34,32 +34,37 @@
 		<div class="top-page">
 			<ul>
 				<li><a href="##">最近上传</a></li>
-				<li><a href="##">办公室</a></li>
-				<li><a href="##">项目管理</a></li>
-				<li><a href="##">科技人文</a></li>
-				<li><a href="##">竞赛活动</a></li>
-				<li><a href="##">信息</a></li>
-				<li><a href="##">对外合作</a></li>
-				<li><a href="##">宣传</a></li>
-				<li><a href="##">新媒体</a></li>
+				<li><a href="##">综合部</a></li>
+				<li><a href="##">项目管理部</a></li>
+				<li><a href="##">科技人文部</a></li>
+				<li><a href="##">科创竞赛部</a></li>
+				<li><a href="##">信息部</a></li>
+				<li><a href="##">媒体运营部</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="main-con-top">
 	</div>
+
 	<div class="main-con" id="no-margin">
 		<span class="title mian-title">文章标题</span>
 		<span>时间</span>
 		<span>浏览</span>
 		<span>赞</span>
 
-		<span class="line"></span>
-		<span id="logo">信息</span>
-		<span class="title speak-per-title">第xx届全国大学生xxxx比赛说明文档</span>
-		<span>2015.03.14</span>
-		<span class="eye"></span>
-		<span class="downLoad"></span>
+		<% data.getArticle.data.forEach(function (item) { %>
+		<div class="main-con-item">
+			<span class="logo"><%=item.atc_type %></span>
+			<span class="title speak-per-title"><%=item.atc_title %></span>
+			<span><%=item.atc_time %></span>
+			<span><%=item.atc_view %></span>
+			<span><%=item.atc_likes %></span>
+			<span class="content"><%=item.atc_likes %></span>
+		</div>
+		<% }) %>
+
 	</div>
+
 	<div id="bottom">
 		<div class="bottom-con">
 			<ul>
@@ -116,5 +121,8 @@
 			<p class="bottom-info">Powered by Redcock Team</p>
 		</div>
 	</div>
+
+	<script src="../static/js/jquery-3.1.0.min.js"></script>
+    <script src="../static/js/speak.js"></script>
 </body>
 </html>
