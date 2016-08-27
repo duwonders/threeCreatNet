@@ -40,35 +40,51 @@ export default class extends Base {
     */
 
     let filepath = file.path;
+    let originalFilename = file.originalFilename;
+    let suffix = (originalFilename.split('.')).pop();
     let uploadPath = think.RESOURCE_PATH + '/upload';
+
+    if (/(jpg|png|jpeg|gif)/.test(suffix)) {
+        uploadPath = `${uploadPath}/img`;
+    } else if (/(ppt|pptx|pp*|key)/.test(suffix)) {
+        uploadPath = `${uploadPath}/ppt`;
+    } else if (/(doc|docx|do*)/.test(suffix)) {
+        uploadPath = `${uploadPath}/word`;
+    } else if (/(xls|xlsx|xl*)/.test(suffix)) {
+        uploadPath = `${uploadPath}/excel`;
+    } else {
+        uploadPath = `${uploadPath}/other`;
+    }
     /*
     *   文件上传之后会先放到 runtime 目录下作为缓存
     *   如果不继续对文件进行处理，保存到自定目录下的话，缓存会清除，文件不会保留
     */
 
     think.mkdir(uploadPath);
-    let basename = path.basename(filepath);
-    fs.renameSync(filepath, uploadPath + '/' + basename);
-    file.path = uploadPath + '/' + basename;
 
+    // let basename = path.basename(filepath);
+    /**
+     *  basename 是哈希之后的名字
+     *  此处使用原文件名 所以暂时不用 basename
+     *  若需要使用 则将下方 originalFilename 全部替换为 basename 即可
+     */
+
+    fs.renameSync(filepath, uploadPath + '/' + originalFilename);
+    file.path = uploadPath + '/' + originalFilename;
     /*
     *   创建指定文件夹
     *   basename 文件上传后的名称
     *   fs.renameSync 异步改文件名，待文件上传之后把文件的路径变一下，就能看到文件实体了 = =
     */
 
-    if(think.isFile(file.path)){
-      console.log(basename);
-    }else{
-      console.log("Failed");
-    }
-
     this.assign('fileInfo', file);
-
     this.success({
         prevName: file.originalFilename,
-        currName: basename
+        currName: originalFilename
     });
+    /*
+    *   然后等上线了 后端改一下 currName 字段 返回 URL
+    */
   }
   /* 相册上传图片接口 */
 
