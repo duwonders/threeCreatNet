@@ -14,27 +14,27 @@
 
 			</div>
 			<p id="article-title" class="article-title" >
-				这是标题
+				加载中
 			</p>
 			<p class="article-about">
-				作者：<span id="article-author">尼玛逼 又加字段</span>
+				作者：<span id="article-author">加载中</span>
 				时间：<span id="article-date">2016-08-29</span>
 			</p>
 			<div id="article-content" class="article-content">
-				雅儿吗
+				加载中
 			</div>
 			<p class="article-status">
 				<div class="icon-cont">
 					<i class="iconfont-speak icon-heart">&#xe611;</i>
 				</div>
 				<span id="article-like" class="article-like">
-					100
+					0
 				</span>
 				<div class="icon-cont">
 					<i class="iconfont-speak icon-eye">&#xe660;</i>
 				</div>
 				<span id="article-view">
-					100
+					0
 				</span>
 			</p>
 		</article>
@@ -89,10 +89,11 @@
 		<div class="main-con-item">
 			<span class="logo"><%=item.atc_type %></span>
 			<span class="title speak-per-title"><%=item.atc_title %></span>
-			<span><%=item.atc_time %></span>
-			<span><%=item.atc_view %></span>
-			<span><%=item.atc_likes %></span>
+			<span class="item-time"><%=item.atc_time %></span>
+			<span class="item-view"><%=item.atc_view %></span>
+			<span class="item-like"><%=item.atc_likes %></span>
 			<span class="content"><%=item.atc_content %></span>
+			<span class="item-author" style="display: none"><%=item.atc_likes %></span>
 		</div>
 		<% }) %>
 

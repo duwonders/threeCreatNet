@@ -102,12 +102,14 @@ $(document).ready(() => {
     $(".main-con-item").bind('click', function () {
         let $cover = $("#cover");
         $cover.addClass('cover-show');
-        $("#article-title").text($(this.children[1]).text());
-        $("#article-author").text($(this.children[0]).text());
-        $("#article-date").text($(this.children[2]).text());
-        $("#article-like").text($(this.children[4]).text());
-        $("#article-view").text($(this.children[3]).text());
-        document.querySelector("#article-content").innerHTML = $(this.children[5]).text();
+
+        $("#article-title").text($(this.querySelector(".title")).text());
+        $("#article-author").text($(this.querySelector(".item-author")).text());
+        $("#article-date").text($(this.querySelector(".item-time")).text());
+        $("#article-like").text($(this.querySelector(".item-like")).text());
+        $("#article-view").text($(this.querySelector(".item-like")).text());
+        document.querySelector("#article-content").innerHTML = $(this.querySelector(".content")).text();
+        //  加上 XSS 过滤
     });
     //  点击展示文章
 
