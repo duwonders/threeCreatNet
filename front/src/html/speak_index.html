@@ -8,6 +8,38 @@
 	<link rel="stylesheet" href="../static/css/speak.css">
 </head>
 <body>
+	<section id="cover" class="cover">
+		<article id="article">
+			<div id="cover-close" class="cover-close">
+
+			</div>
+			<p id="article-title" class="article-title" >
+				这是标题
+			</p>
+			<p class="article-about">
+				作者：<span id="article-author">尼玛逼 又加字段</span>
+				时间：<span id="article-date">2016-08-29</span>
+			</p>
+			<div id="article-content" class="article-content">
+				雅儿吗
+			</div>
+			<p class="article-status">
+				<div class="icon-cont">
+					<i class="iconfont-speak icon-heart">&#xe611;</i>
+				</div>
+				<span id="article-like" class="article-like">
+					100
+				</span>
+				<div class="icon-cont">
+					<i class="iconfont-speak icon-eye">&#xe660;</i>
+				</div>
+				<span id="article-view">
+					100
+				</span>
+			</p>
+		</article>
+	</section>
+
 	<div id="head">
 		<div class="top-menu">
 			<ul>
@@ -60,7 +92,7 @@
 			<span><%=item.atc_time %></span>
 			<span><%=item.atc_view %></span>
 			<span><%=item.atc_likes %></span>
-			<span class="content"><%=item.atc_likes %></span>
+			<span class="content"><%=item.atc_content %></span>
 		</div>
 		<% }) %>
 

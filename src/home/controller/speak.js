@@ -23,14 +23,15 @@ export default class extends Base {
 
       let article = this.model('article');
       let res = {};
+      let per_page = 10;
 
       if (type == '最近') {
-          res = await article.page(page, 10)
+          res = await article.page(page, per_page)
                             .order("id DESC")
                             .countSelect();
       } else {
           res = await article.where({atc_type: type})
-                            .page(page, 3)
+                            .page(page, per_page)
                             .order("id DESC")
                             .countSelect();
       }

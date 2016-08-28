@@ -4,6 +4,7 @@ $(document).ready(() => {
          var r = window.location.search.substr(1).match(reg);
          if(r!=null)return  decodeURI(r[2]); return null;
     }
+    //  通过 url 获取
 
     function pagersSet () {
         let totalPage = $("#total-page").text(),
@@ -49,9 +50,7 @@ $(document).ready(() => {
             window.location.href = `/speak?type=${type}&page=${page}`;
         }
     })();
-    /**
-    *   gotoPage 用来跳转连接
-    */
+    //  跳转链接 通过 url 请求页面
 
     $('.top-page').bind('click', (e) => {
         e = e || window.event;
@@ -98,4 +97,23 @@ $(document).ready(() => {
 
         toPage >= 1 && toPage <= totalPage ? gotoPage(toPage) : alert(`无效的页数`);
     });
+    //  点击 input 的 value 地址跳转到相应页面
+
+    $(".main-con-item").bind('click', function () {
+        let $cover = $("#cover");
+        $cover.addClass('cover-show');
+        $("#article-title").text($(this.children[1]).text());
+        $("#article-author").text($(this.children[0]).text());
+        $("#article-date").text($(this.children[2]).text());
+        $("#article-like").text($(this.children[4]).text());
+        $("#article-view").text($(this.children[3]).text());
+        document.querySelector("#article-content").innerHTML = $(this.children[5]).text();
+    });
+    //  点击展示文章
+
+    $("#cover-close").bind('click', () => {
+        let $cover = $("#cover");
+        $cover.removeClass('cover-show');
+    });
+    //  点击关闭文章
 });
