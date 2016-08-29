@@ -4,9 +4,45 @@
 	<meta charset="UTF-8">
 	<title>我语科联</title>
 	<link rel="stylesheet" href="../static/css/glob.css">
-	<link rel="stylesheet" href="../static/css/downLoad.css">
+	<link rel="stylesheet" href="../static/css/public-style.css">
+	<link rel="stylesheet" href="../static/css/speak.css">
 </head>
 <body>
+	<section id="cover" class="cover">
+		<article id="article">
+			<div id="cover-close" class="cover-close">
+
+			</div>
+			<p id="article-title" class="article-title" >
+				加载中
+			</p>
+			<p class="article-about">
+				作者：<span id="article-author">加载中</span>
+				时间：<span id="article-date">2016-08-29</span>
+			</p>
+			<div id="article-content" class="article-content">
+				加载中
+			</div>
+			<p class="article-status">
+				<div class="icon-cont">
+					<i class="iconfont-speak icon-heart">&#xe611;</i>
+				</div>
+				<span id="article-like" class="article-like">
+					0
+				</span>
+				<div class="icon-cont">
+					<i class="iconfont-speak icon-eye">&#xe660;</i>
+				</div>
+				<span id="article-view">
+					0
+				</span>
+			</p>
+			<span id="article-current" style="display: none"> 
+
+			</span>
+		</article>
+	</section>
+
 	<div id="head">
 		<div class="top-menu">
 			<ul>
@@ -34,32 +70,78 @@
 		<div class="top-page">
 			<ul>
 				<li><a href="##">最近上传</a></li>
-				<li><a href="##">办公室</a></li>
-				<li><a href="##">项目管理</a></li>
-				<li><a href="##">科技人文</a></li>
-				<li><a href="##">竞赛活动</a></li>
-				<li><a href="##">信息</a></li>
-				<li><a href="##">对外合作</a></li>
-				<li><a href="##">宣传</a></li>
-				<li><a href="##">新媒体</a></li>
+				<li><a href="##">综合部</a></li>
+				<li><a href="##">项目管理部</a></li>
+				<li><a href="##">科技人文部</a></li>
+				<li><a href="##">科创竞赛部</a></li>
+				<li><a href="##">信息部</a></li>
+				<li><a href="##">媒体运营部</a></li>
 			</ul>
 		</div>
 	</div>
 	<div class="main-con-top">
 	</div>
+
 	<div class="main-con" id="no-margin">
 		<span class="title mian-title">文章标题</span>
 		<span>时间</span>
 		<span>浏览</span>
 		<span>赞</span>
 
-		<span class="line"></span>
-		<span id="logo">信息</span>
-		<span class="title speak-per-title">第xx届全国大学生xxxx比赛说明文档</span>
-		<span>2015.03.14</span>
-		<span class="eye"></span>
-		<span class="downLoad"></span>
+		<% data.getArticle.data.forEach(function (item) { %>
+		<div class="main-con-item">
+			<span class="logo"><%=item.atc_type %></span>
+			<span class="title speak-per-title"><%=item.atc_title %></span>
+			<span class="item-time"><%=item.atc_time %></span>
+			<span class="item-view"><%=item.atc_view %></span>
+			<span class="item-like"><%=item.atc_likes %></span>
+			<span class="content"><%=item.atc_content %></span>
+			<span class="item-author" style="display: none"><%=item.atc_likes %></span>
+			<span class="item-id" style="display: none"><%=item.id %></span>
+		</div>
+		<% }) %>
+
 	</div>
+
+	<section class="outer-container page-outer-container">
+        <div class="inner-container">
+            <span class="page-btn">
+                <a class="prev" id="prev">上一页</a>
+            </span>
+
+			<span class="page-btn page-redirect">
+                <a class="pager">1</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">2</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">3</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">4</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">5</a>
+            </span>
+
+			<span class="page-btn">
+                <a class="next" id="next">下一页</a>
+            </span>
+            <span>转到</span>
+            <span class="page-btn">
+                <input type="text" class="page-input" id="page-input">
+            </span>
+            <input type="button" class="page-go" value="go" id="page-go">
+			<span id="total-page" style="display: none">
+				<%= data.getArticle.totalPages%>
+			</span>
+			<span id="current-page" style="display: none">
+				<%= data.getArticle.currentPage%>
+			</span>
+        </div>
+    </section>
+
 	<div id="bottom">
 		<div class="bottom-con">
 			<ul>
@@ -116,5 +198,8 @@
 			<p class="bottom-info">Powered by Redcock Team</p>
 		</div>
 	</div>
+
+	<script src="../static/js/jquery-3.1.0.min.js"></script>
+    <script src="../static/js/speak.js"></script>
 </body>
 </html>
