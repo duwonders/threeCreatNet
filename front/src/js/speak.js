@@ -99,15 +99,20 @@ $(document).ready(() => {
     });
     //  点击 input 的 value 地址跳转到相应页面
 
+    let current_ele = {};
+    // 存放当前展示的元素
+
     $(".main-con-item").bind('click', function () {
         let $cover = $("#cover");
         $cover.addClass('cover-show');
+        current_ele = this;
 
         $("#article-title").text($(this.querySelector(".title")).text());
         $("#article-author").text($(this.querySelector(".item-author")).text());
         $("#article-date").text($(this.querySelector(".item-time")).text());
         $("#article-like").text($(this.querySelector(".item-like")).text());
-        $("#article-view").text($(this.querySelector(".item-like")).text());
+        $("#article-view").text(~~$(this.querySelector(".item-view")).text() + 1);
+        $("#article-current").text($(this.querySelector(".item-id")).text());
         document.querySelector("#article-content").innerHTML = $(this.querySelector(".content")).text();
         //  加上 XSS 过滤
     });
@@ -115,7 +120,35 @@ $(document).ready(() => {
 
     $("#cover-close").bind('click', () => {
         let $cover = $("#cover");
+        let data = {};
+
+        data.id = $("#article-current").text();
+        data.atc_view = $("#article-view").text();
+        data.atc_likes = $("#article-like").text();
+
+        $.ajax({
+            url: `/home/speak/updatedata`,
+            data: data,
+            type: `POST`,
+            dataType:'json'
+        });
+
+        $(current_ele.querySelector('.item-like')).text(data.atc_likes);
+        $(current_ele.querySelector('.item-view')).text(data.atc_view);
+
         $cover.removeClass('cover-show');
+        $(".icon-heart").removeClass('liked');
     });
     //  点击关闭文章
+
+    $(".icon-heart").bind('click', function () {
+        let text = ~~$("#article-like").text();
+
+        if (!$(this).hasClass('liked')) {
+            $("#article-like").text(++text);
+            $(".icon-heart").addClass('liked');
+        }
+    });
+
+
 });
