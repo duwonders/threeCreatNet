@@ -43,7 +43,9 @@ export default class extends Base {
       let article = this.model('article');
       let req_data = this.post();
 
-      let affectedRows = await article.where({id: req_data.id}).update(req_data);
+      let affectedRows = await article
+                            .where({id: req_data.id})
+                            .update(req_data);
       this.success(affectedRows);
   }
 }
