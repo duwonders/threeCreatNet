@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>活动赛事</title>
-    <link rel="stylesheet" href="../static/css/public-style.css">
-    <link rel="stylesheet" href="../static/css/swiper-3.3.1.min.css">
-    <link rel="stylesheet" href="../static/css/activity.css">
+    <link rel="stylesheet" href="/static/css/public-style.css">
+    <link rel="stylesheet" href="/static/css/swiper-3.3.1.min.css">
+    <link rel="stylesheet" href="/static/css/activity.css">
 </head>
 <body>
     <section class="outer-container nav-outer-container">
@@ -65,13 +65,13 @@
                 <div class="slider-container swiper-container">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
-                            <img src="../static/imgs/home-speech.png">
+                            <img src="/static/imgs/home-speech.png">
                         </div>
                         <div class="swiper-slide">
-                            <img src="../static/imgs/home-slider-test.png">
+                            <img src="/static/imgs/home-slider-test.png">
                         </div>
                         <div class="swiper-slide" >
-                            <img src="../static/imgs/home-speech.png">
+                            <img src="/static/imgs/home-speech.png">
                         </div>
                     </div>
                     <div class="swiper-pagination"></div>
@@ -95,13 +95,17 @@
                 <div class="activity-container">
                     <% data.typeAct.pageData.forEach(function(item){ %>
                     <div class="activity-item">
-                        <img src="../static/covers/<%=item.hd_cover%>" class="activity-img">
+                        <img src="/static/covers/<%=item.hd_cover%>" class="activity-img">
                         <div class="activity-content">
+                        <%if(item.hd_state == '直播间'){%>
+                            <a href="/home/activity/speech_live?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                        <%}else{%>
                             <%if(item.hd_type == '竞赛'){%>
                                 <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
                             <%}else{%>
                                 <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
                             <%}%>
+                        <%}%>
                             <p class="msg">地点: <%=item.hd_place%></p>
                             <p class="msg">时间: <%=item.hd_time%></p>
                             <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
@@ -116,13 +120,13 @@
                     <div class="right-wrapper-inner">
                         <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
-                            <img src="../static/covers/<%=item.hd_cover%>" class="now-img">
+                            <img src="/static/covers/<%=item.hd_cover%>" class="now-img">
                             <div class="now-content">
-                            <%if(item.hd_type == '竞赛'){%>
-                                <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
-                            <%}else{%>
-                                <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
-                            <%}%>
+                                <%if(item.hd_type == '竞赛'){%>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                                <%}else{%>
+                                    <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                                <%}%>
                                 <span class="tag">抢票</span>
                                 <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
                                 <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
@@ -312,8 +316,8 @@
         </ul>
     </nav>
 
-    <script src="../static/js/jquery-3.1.0.min.js"></script>
-    <script src="../static/js/swiper-3.3.1.jquery.min.js"></script>
-    <script src="../static/js/activity.js"></script>
+    <script src="/static/js/jquery-3.1.0.min.js"></script>
+    <script src="/static/js/swiper-3.3.1.jquery.min.js"></script>
+    <script src="/static/js/activity.js"></script>
 </body>
 </html>

@@ -87,12 +87,12 @@
                 </div>
                 <div class="intro links">
                     <p class="intro-title">相关文章链接</p>
+                    <% data.related.forEach(function(item){ %>
                     <p class="links-item">
-                        <span class="link-for"><a href="#">【资料】演讲有关资料下载</a></span>
+                        <span class="link-for"><%= item.related_type%>： </span>
+                        <a href="<%= item.related_url%>"><%= item.related_title%></a>
                     </p>
-                    <p class="links-item">
-                        <span class="link-for"><a href="#">【资料】演讲有关资料下载</a></span>
-                    </p>
+                    <%})%>
                 </div>
             </div>
             <aside class="main-right">

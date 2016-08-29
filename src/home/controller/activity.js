@@ -31,11 +31,19 @@ export default class extends Base {
                      })
                      .select();
 
+    let related = await this.model('related')
+                            .where({
+                              activity_id: activityId
+                            })
+                            .select();
+
     let data = {
 
       hotAct: await this.get_hotAct(),
 
-      detail: detail
+      detail: detail,
+
+      related: related 
 
     }
     console.log(data);
@@ -58,7 +66,15 @@ export default class extends Base {
   }
 
   async speechLiveAction(){
-    this.assigness();
+    let activityId = this.get('id');
+
+    let detail = await this.model('hd')
+                     .where({
+                        id: activityId 
+                     })
+                     .select();
+
+        
   }
 
 /**

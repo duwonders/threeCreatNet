@@ -81,14 +81,12 @@
                 </div>
                 <div class="links intro">
                     <p class="intro-title">相关链接</p>
+                    <% data.related.forEach(function(item){ %>
                     <p class="links-item">
-                        <span class="link-for">报名表格下载:</span>
-                        <a href="#">http://hongyan.cqupt.edu.cn</a>
+                        <span class="link-for"><%= item.related_type%>： </span>
+                        <a href="<%= item.related_url%>"><%= item.related_title%></a>
                     </p>
-                    <p class="links-item">
-                        <span class="link-for">报名表格下载:</span>
-                        <a href="#">http://hongyan.cqupt.edu.cn</a>
-                    </p>
+                    <%})%>
                 </div>
             </div>
             <aside class="main-right">
