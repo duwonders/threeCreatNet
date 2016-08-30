@@ -1,1 +1,1 @@
-"use strict";$(document).ready(function(){new Swiper(".swiper-container",{autoplay:0})});
+"use strict";$(document).ready(function(){new Swiper(".swiper-container",{autoplay:0,prevButton:".prev",nextButton:".next"})});

@@ -14,29 +14,59 @@
           <div class="swiper-wrapper full-page">
             <div class="swiper-slide full-page">
                 <div class="main">
-                    <img src="../static/imgs/spread/avatar-1.png" class="avatar">
+                    <img src=<%= data.msg.img %> class="avatar">
                     <div class="bref-container">
-                        <!-- <span class="bref-name">
-                            媒体运营部
-                        </span> -->
-                        <p class="bref-name">媒体运营部</p>
+                        <p class="bref-name">
+                            <%= data.msg.apartment %>
+                        </p>
                         <p class="bref-guide">部门简介</p>
                         <div class="next"></div>
                     </div>
                 </div>
                 <nav>
                     <ul>
-                        <li>综合部</li>
-                        <li>科创竞赛部</li>
-                        <li>项目管理部</li>
-                        <li class="logo"></li>
-                        <li>科技人文部</li>
-                        <li>媒体运营部</li>
-                        <li>信息部</li>
+                        <li>
+                            <a href="/spread/apartment?type=综合部">综合部</a>
+                        </li>
+                        <li>
+                            <a href="/spread/apartment?type=科创竞赛部">科创竞赛部</a>
+                        </li>
+                        <li>
+                            <a href="/spread/apartment?type=项目管理部">项目管理部</a>
+                        </li>
+                        <li class="logo">
+                            <a href="/spread"></a>
+                        </li>
+                        <li>
+                            <a href="/spread/apartment?type=科技人文部">科技人文部</a>
+                        </li>
+                        <li>
+                            <a href="/spread/apartment?type=媒体运营部">媒体运营部</a>
+                        </li>
+                        <li>
+                            <a href="/spread/apartment?type=信息部">信息部</a>
+                        </li>
                     </ul>
                 </nav>
             </div>
-            <div class="swiper-slide full-page">slider2</div>
+            <div class="swiper-slide full-page intro-detail">
+                <div class="prev"></div>
+                <div class="intro-container">
+                    <div class="intro-item">
+                        <span class="intro-title-small">
+                            <%= data.msg.apartment %>
+                        </span>
+                        <span class="intro-title-big">
+                            <%= data.msg.apartment %>
+                        </span>
+                    </div>
+                    <div class="intro-item">
+                        <p class="intro-content">
+                             <%= data.msg.intro %>
+                        </p>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
     </section>
