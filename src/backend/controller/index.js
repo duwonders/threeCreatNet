@@ -577,4 +577,19 @@ export default class extends Base {
       return this.success(req_data);
   }
   //    更新链接列表
+
+
+  /*
+  *  admin
+  */
+  async testuserAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let admin = this.model('admin');
+
+      console.log(req_obj);
+
+      return this.success();
+  }
 }
