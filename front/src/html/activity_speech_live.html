@@ -65,13 +65,12 @@
                     首页>赛事活动>【设计】软件设计大赛
                 </p>
                 <div class="info">
-                    <img src="/static/imgs/home-slider-test.png" class="info-img">
+                    <img src="/static/imgs/<%= data.detail[0].hd_cover%>" class="info-img">
                     <div class="info-content">
-                        <p class="title">高雅艺术进校园—音乐鉴赏</p>
-                        <p class="msg">地点: 2105教室</p>
-                        <p class="msg">时间: 2014年11月11日 18:00-22:00</p>
-                        <p class="msg">抢票地点: 雨红莲现场报名处</p>
-                        <p class="msg tags">标签: 万圣节 party 舞会</p>
+                        <p class="title"><%= data.detail[0].hd_title%></p>
+                        <p class="msg">地点: <%= data.detail[0].hd_place%></p>
+                        <p class="msg">时间: <%= data.detail[0].hd_time%></p>
+                        <p class="msg">抢票地点: <%= data.detail[0].hd_getTicket_place%></p>
                     </div>
                 </div>
                 <div class="intro lecturer">
@@ -79,10 +78,14 @@
                     <img src="/static/imgs/home-slider-test.png" class="lecturer-img">
                     <div class="lecturer-container">
                         <div class="lecturer-detail">
-                            重庆邮电大学创办于1950年3月，前身是东川邮政管理局邮政人员培训班；1951年1月，改建为西南邮电分校；1953年3月，分建重庆邮电学校；1955年5月，更名为重庆电信学校；1959年3月，升格为重庆邮电学院；1970年4月，改建为电信总局529厂；1973年7月，再次改建为邮电部第九研究所；1979年5月，恢复为重庆邮电学院；2006年，更名为重庆邮电大学。
+                            <%= data.detail[0].hd_detail%>
                         </div>
                         <div class="detail">
-                            <a href="#">点击详情</a>
+                            <%if(data.detail[0].hd_type == '竞赛'){%>
+                                <a href="/home/activity/competition_detail?id=<%= data.detail[0].id%>" class="title">点击详情</a>
+                            <%}else{%>
+                                <a href="/home/activity/speech_detail?id=<%= data.detail[0].id%>" class="title">点击详情</a>
+                            <%}%>
                         </div>
                     </div>
                 </div>
@@ -126,42 +129,24 @@
                 <div class="right-wrapper">
                     <p class="title">热门活动</p>
                     <div class="right-wrapper-inner">
+                        <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
-                            <img src="/static/imgs/actitity.png" class="now-img">
+                            <img src="../static/covers/<%=item.hd_cover%>" class="now-img">
                             <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂</a>
+                            <%if(item.hd_type == '竞赛'){%>
+                                <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}else{%>
+                                <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                            <%}%>
                                 <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
+                                <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
+                                <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">
-                                    <a href="#">点击详情</a>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>">点击详情</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="now-item">
-                            <img src="/static/imgs/actitity.png" class="now-img">
-                            <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂放的萨芬</a>
-                                <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
-                                <div class="detail">
-                                    <a href="#">点击详情</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="now-item">
-                            <img src="/static/imgs/actitity.png" class="now-img">
-                            <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂放的萨芬</a>
-                                <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
-                                <div class="detail">
-                                    <a href="#">点击详情</a>
-                                </div>
-                            </div>
-                        </div>
+                        <% }) %>
                     </div>
                 </div>
                 <div class="right-wrapper">

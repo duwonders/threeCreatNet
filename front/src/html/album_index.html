@@ -46,46 +46,16 @@
 	<div id="main-con">
 		
 		<div class="img-con">
+			<%data.forEach(function(item){%>
 			<div class="img-home">
-				<div class="img">
-					<span class="page-num">55</span>
+				<div class="img" style="background:url(/static/imgs/<%= item.album_cover%>)">
+					<span class="page-num"><%= item.album_pages%></span>
 				</div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
+				<span><%= item.album_name%></span>
+				<span class="likes"><%= item.album_likes%></span>
 				<span class="taoxin"></span>
 			</div>
-			<div class="img-home">
-				<div class="img">
-					<span class="page-num">55</span>
-				</div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
-			<div class="img-home">
-				<div class="img">
-					<span class="page-num">55</span>
-				</div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
-			<div class="img-home">
-				<div class="img">
-					<span class="page-num">55</span>
-				</div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
-			<div class="img-home">
-				<div class="img">
-					<span class="page-num">55</span>
-				</div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
+			<%})%>
 		</div>
 	</div>
 	<div id="bottom">
