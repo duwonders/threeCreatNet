@@ -411,7 +411,16 @@ export default class extends Base {
 
         return this.success(ret_data);
   }
-  /* 删除直播内容 */
+  /* 更新直播内容 */
+
+  async startliveAction () {
+      this.setCorsHeader();
+
+      let direct = this.model('direct');
+      let req_data = await direct.execute(`Truncate direct`);
+
+      this.success(req_data);
+  }
 
   /*
   *  Sayings 页面
@@ -533,4 +542,54 @@ export default class extends Base {
   }
   /* 上传文件信息 */
 
+  /*
+  *  Slider 页面
+  */
+
+  async getsliderlistAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let slider = this.model('slider');
+      let home = await slider.where({type: 'home'}).select();
+      let activity = await slider.where({type: 'activity'}).select();
+      let ret_data = {
+          home: home,
+          activity: activity
+      }
+
+      return this.success(ret_data);
+  }
+  //    获取链接列表
+
+  async updatesliderlistAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let slider = this.model('slider');
+      let home = JSON.parse(req_obj.home);
+      let activity = JSON.parse(req_obj.activity);
+
+      let req_data = await slider.execute(`Truncate slider`);
+      req_data = await slider.addMany(home);
+      req_data = await slider.addMany(activity);
+
+      return this.success(req_data);
+  }
+  //    更新链接列表
+
+
+  /*
+  *  admin
+  */
+  async testuserAction () {
+      this.setCorsHeader();
+
+      let req_obj = this.post();
+      let admin = this.model('admin');
+
+      console.log(req_obj);
+
+      return this.success();
+  }
 }

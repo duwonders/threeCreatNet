@@ -47,7 +47,7 @@ $(document).ready(() => {
         return function (page, type = GetQueryString('type')) {
             cache.type = type || '最近';
             cache.page = page || 1;
-            window.location.href = `/speak?type=${type}&page=${page}`;
+            window.location.href = `/speak?type=${cache.type}&page=${cache.page}`;
         }
     })();
     //  跳转链接 通过 url 请求页面
