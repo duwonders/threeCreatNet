@@ -61,44 +61,25 @@
                     </div>
                     <div class="slider swiper-container">
                         <div class="swiper-wrapper">
+                            <%data.newActivity.topAll.forEach(function(item){ %>
                             <div class="swiper-slide">
-                                <img src="/static/imgs/home-speech.png">
+                                <img src="/static/imgs/<%= item.hd_cover%>">
                             </div>
-                            <div class="swiper-slide">
-                                <img src="/static/imgs/home-slider-test.png">
-                            </div>
-                            <div class="swiper-slide" >
-                                <img src="/static/imgs/home-speech.png">
-                            </div>
+                            <%})%>
                         </div>
                         <div class="swiper-pagination"></div>
                     </div>
                     <div class="news-container">
                         <ul class="news-list">
+                            <%data.newActivity.topAll.forEach(function(item){ %>
                             <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
+                                <%if(item.hd_type == "讲座"){%>
+                                    <a href='/home/activity/speech_detail?id=<%= item.id%>'><%= item.hd_title%></a>
+                                <%}else{%>
+                                    <a href='/home/activity/competition_detail?id=<%= item.id%>'><%= item.hd_title%></a>
+                                <%}%>
                             </li>
-                            <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
-                            </li>
-                            <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
-                            </li>
-                            <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
-                            </li>
-                            <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
-                            </li>
-                            <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
-                            </li>
-                            <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
-                            </li>
-                            <li class="news-item">
-                                <a href="#">第二届全国高校物联网创新应用大赛大数据奥克兰讲点啥卡里</a>
-                            </li>
+                            <%})%>
                         </ul>
                         <!--以上 ul 最多包含 8 条项目,多了会自动隐藏-->
                         <a href="#" class="more"> &lt;&lt; 更多 </a>
