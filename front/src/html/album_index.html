@@ -44,11 +44,10 @@
 		</div>
 	</div>
 	<div id="main-con">
-		
 		<div class="img-con">
 			<%data.forEach(function(item){%>
-			<div class="img-home">
-				<div class="img" style="background:url(/static/imgs/<%= item.album_cover%>)">
+			<div class="img-home"">
+				<div class="img" id="<%= item.id%>" style="background:url(/static/imgs/<%= item.album_cover%>)">
 					<span class="page-num"><%= item.album_pages%></span>
 				</div>
 				<span><%= item.album_name%></span>
@@ -114,6 +113,16 @@
 			<p class="bottom-info">Powered by Redcock Team</p>
 		</div>
 	</div>
+	<script src="/static/js/jquery-3.1.0.min.js"></script>
+	<script>
+	!function(){
+		$('.img').on('click', function(e){
+			var id = $(e.target).attr('id');
+			console.log(e.target);
+			window.location.href = `/home/album/imagef?id=${id}`;
+		})
+	}()
+	</script>
 </body>
 </html>
 </html>

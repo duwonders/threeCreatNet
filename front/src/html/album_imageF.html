@@ -3,8 +3,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>精彩图集</title>
-	<link rel="stylesheet" href="../static/css/glob.css">
-	<link rel="stylesheet" href="../static/css/imageF.css">
+	<link rel="stylesheet" href="/static/css/glob.css">
+	<link rel="stylesheet" href="/static/css/imageF.css">
 <body>
 	<div id="head">
 		<div class="top-menu">
@@ -46,43 +46,20 @@
 	<div id="main-con">
 		<div class="top-info">
 			<div class="top-img"></div>
-			<p class="top-img-info">重邮樱花季
-				<span> /56张</span>
+			<p class="top-img-info"><%= data.album[0].album_name%>
+				<span> /<%= data.album[0].album_pages%></span>
 				<br><br>
-				<span>详情介绍</span>
 			</p>
 		</div>
 		<div class="img-con">
+		<%data.pic.forEach(function(item){%>
 			<div class="img-home">
-				<div class="img"></div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
+				<div class="img" style="background:url(/static/imgs/<%= item.pic_url%>)"></div>
+				<span><%= item.pic_name%></span>
+				<span class="likes"><%= item.pic_likes%></span>
+				<span class="taoxin" id="<%= item.id%>"></span>
 			</div>
-			<div class="img-home">
-				<div class="img"></div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
-			<div class="img-home">
-				<div class="img"></div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
-			<div class="img-home">
-				<div class="img"></div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
-			<div class="img-home">
-				<div class="img"></div>
-				<span>重邮樱花季</span>
-				<span class="likes">12</span>
-				<span class="taoxin"></span>
-			</div>
+			<%})%>
 		</div>
 	</div>
 	<div id="bottom">
@@ -141,6 +118,27 @@
 			<p class="bottom-info">Powered by Redcock Team</p>
 		</div>
 	</div>
+	<script src="/static/js/jquery-3.1.0.min.js"></script>
+	<script>
+		$('.taoxin').on('click', function(e){
+			var target = e.target;
+			var id = $(target).attr('id');
+			$.ajax({
+			  type: 'GET',
+			  url: '/home/album/vote?id='+id,
+			  dataType: 'json',
+			  timeout: 300,
+			  success: function(data){
+			  	var html = $(target).prev().html();
+			  	$(target).prev().html(++html);
+			    alert('投票成功')
+			  },
+			  error: function(xhr, type){
+			    alert('投票失败')
+			  }
+			})
+		})
+	</script>
 </body>
 </html>
 </html>
