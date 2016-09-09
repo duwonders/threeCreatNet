@@ -82,7 +82,7 @@
                             <%})%>
                         </ul>
                         <!--以上 ul 最多包含 8 条项目,多了会自动隐藏-->
-                        <a href="#" class="more"> &lt;&lt; 更多 </a>
+                        <a href="/home/activity" class="more"> &lt;&lt; 更多 </a>
                     </div>
                 </div>
                 <div class="main-items competitions">
@@ -92,65 +92,39 @@
                     </div>
                     <div class="sub-title">
                         竞赛
-                        <a href="#" class="more"> &lt;&lt; 更多 </a>
+                        <a href="/home/activity?type=竞赛" class="more"> &lt;&lt; 更多 </a>
                     </div>
                     <div class="activity-container">
+                        <%data.newActivity.competitions.forEach(function(item){ %>
                         <div class="activity-item">
-                            <a href="#">
-                                <span class="activity-title">第二届全国高校物联网创新大赛啦拉拉</span>
+                            <a href='/home/activity/competition_detail?id=<%= item.id%>'>
+                                <span class="activity-title"><%= item.hd_title%></span>
                                 <img src="/static/img/home-speech.png" class="activity-img">
                             </a>
                             <div class="activity-tag">
                                 <i class="iconfont icon-tag">&#xe60a;</i>
-                                物联网 创新 国家级比赛
+                                <%= item.hd_detail%>
                             </div>
                         </div>
-                        <div class="activity-item">
-                            <a href="#">
-                                <span class="activity-title">第二届全国高校物联网创新大赛啦拉拉</span>
-                                <img src="/static/img/home-speech.png" class="activity-img">
-                            </a>
-                            <div class="activity-tag">
-                                <i class="iconfont icon-tag">&#xe60a;</i>
-                                物联网 创新 国家级比赛
-                            </div>
-                        </div>
+                        <%})%>
                     </div>
                     <div class="sub-title">
                         讲座
-                        <a href="#" class="more"> &lt;&lt; 更多 </a>
+                        <a href="/home/activity?type=讲座" class="more"> &lt;&lt; 更多 </a>
                     </div>
                     <div class="activity-container">
+                        <%data.newActivity.speech.forEach(function(item){%>
                         <div class="activity-item">
-                            <a href="#">
-                                <span class="activity-title">第二届全国高校物联网创新大赛啦拉拉</span>
+                            <a href="/home/activity/speech_detail?id=<%= item.id%>">
+                                <span class="activity-title"><%= item.hd_title%></span>
                                 <img src="/static/img/home-speech.png" class="activity-img">
                             </a>
                             <div class="activity-tag">
                                 <i class="iconfont icon-tag">&#xe60a;</i>
-                                物联网 创新 国家级比赛
+                                <%= item.hd_detail%>
                             </div>
                         </div>
-                        <div class="activity-item">
-                            <a href="#">
-                                <span class="activity-title">第二届全国高校物联网创新大赛啦拉拉</span>
-                                <img src="/static/img/home-speech.png" class="activity-img">
-                            </a>
-                            <div class="activity-tag">
-                                <i class="iconfont icon-tag">&#xe60a;</i>
-                                物联网 创新 国家级比赛
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <a href="#">
-                                <span class="activity-title">第二届全国高校物联网创新大赛啦拉拉</span>
-                                <img src="/static/img/home-speech.png" class="activity-img">
-                            </a>
-                            <div class="activity-tag">
-                                <i class="iconfont icon-tag">&#xe60a;</i>
-                                物联网 创新 国家级比赛
-                            </div>
-                        </div>
+                        <%})%>
                     </div>
                 </div>
                 <div class="main-items gallery">
@@ -177,76 +151,18 @@
                         下载专区
                     </div>
                     <table class="downloads-table" cellspacing="0" cellpadding="0">
+                        <%data.download.forEach(function(item, index){%>
                         <tr>
-                            <th class="word">
-                                <a href="#">第一行第一列返回的健第一行第一列返回的健第一行第一列返回的健</a>
+                            <th class="<%= item[0].file_type%>">
+                                <a href="<%= item[0].file_url%>"><%= item[0].file_title%></a>
                                 <i class="iconfont icon-download">&#xe6a2;</i>
                             </th>
-                            <th class="ppt">
-                                <a href="#">第一行第一列返回的健</a>
+                            <th class="<%= item[0].file_type%>">
+                                <a href="<%= item[0].file_url%>"><%= item[0].file_title%></a>
                                 <i class="iconfont icon-download">&#xe6a2;</i>
                             </th>
                         </tr>
-                        <tr>
-                            <th class="word">
-                                <a href="#">第一行第一列返回的健第一行第一列返回的健第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                            <th class="excel">
-                                <a href="#">第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="word">
-                                <a href="#">第一行第一列返回的健第一行第一列返回的健第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                            <th class="excel">
-                                <a href="#">第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="word">
-                                <a href="#">第一行第一列返回的健第一行第一列返回的健第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                            <th class="excel">
-                                <a href="#">第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="word">
-                                <a href="#">第一行第一列返回的健第一行第一列返回的健第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                            <th class="excel">
-                                <a href="#">第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="word">
-                                <a href="#">第一行第一列返回的健第一行第一列返回的健第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                            <th class="excel">
-                                <a href="#">第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                        </tr>
-                        <tr>
-                            <th class="word">
-                                <a href="#">第一行第一列返回的健第一行第一列返回的健第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                            <th class="excel">
-                                <a href="#">第一行第一列返回的健</a>
-                                <i class="iconfont icon-download">&#xe6a2;</i>
-                            </th>
-                        </tr>
+                        <%})%>
                     </table>
                 </div>
             </div>

@@ -16,7 +16,7 @@ export default class extends Base {
 
         competitions: await this.getCompetition(),
 
-        speeach: await this.getSpeech()
+        speech: await this.getSpeech()
 
       },
 
@@ -25,6 +25,8 @@ export default class extends Base {
       download: await this.getDownload(),
 
     }
+
+    // console.log(data);
 
     this.assign('data', data);
 
@@ -85,8 +87,14 @@ export default class extends Base {
                          .limit(14)
                          .order('file_time')
                          .select();
+    let res = [];
+        for(let i = 0; i <= data.length / 2; i++){
 
-        return data;
+          res[i] = [ data[2 * i], data[2 * i + 1] || null ];
+          
+        }
+
+    return res;
   }
   /**
   *  16-08-22
