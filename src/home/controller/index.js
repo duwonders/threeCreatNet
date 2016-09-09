@@ -26,7 +26,7 @@ export default class extends Base {
 
     }
 
-    // console.log(data);
+    console.log(data);
 
     this.assign('data', data);
 
@@ -88,7 +88,7 @@ export default class extends Base {
                          .order('file_time')
                          .select();
     let res = [];
-        for(let i = 0; i <= data.length / 2; i++){
+        for(let i = 0; i < data.length / 2; i++){
 
           res[i] = [ data[2 * i], data[2 * i + 1] || null ];
           

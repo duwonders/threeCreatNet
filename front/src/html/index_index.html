@@ -134,14 +134,26 @@
                     </div>
                     <div class="img-container">
                         <aside class="img-left">
-                            <img src="/static/img/home-gallery-test1.png" class="gallery-img up">
-                            <img src="/static/img/home-gallery-test2.png" class="gallery-img down">
-                            <img src="/static/img/home-slider-test.png" class="gallery-img down">
+                            <a href="/home/album/imagef?id=<%= data.album[0].id%>">
+                                <img src="/static/img/<%= data.album[0].album_cover%>" class="gallery-img up">
+                            </a>
+                            <a href="/home/album/imagef?id=<%= data.album[1].id%>">
+                                <img src="/static/img/<%= data.album[1].album_cover%>" class="gallery-img down">
+                            </a>
+                            <a href="/home/album/imagef?id=<%= data.album[2].id%>">
+                                <img src="/static/img/<%= data.album[2].album_cover%>" class="gallery-img down">
+                            </a>
                         </aside>
                         <aside class="img-right">
-                            <img src="/static/img/home-slider-test.png" class="gallery-img item">
-                            <img src="/static/img/home-gallery-test1.png" class="gallery-img item">
-                            <img src="/static/img/home-gallery-test2.png" class="gallery-img item">
+                            <a href="/home/album/imagef?id=<%= data.album[3].id%>">
+                                <img src="/static/img/<%= data.album[3].album_cover%>" class="gallery-img item">
+                            </a>
+                            <a href="/home/album/imagef?id=<%= data.album[4].id%>">
+                                <img src="/static/img/<%= data.album[4].album_cover%>" class="gallery-img item">
+                            </a>
+                            <a href="/home/album/imagef?id=<%= data.album[5].id%>">
+                                <img src="/static/img/<%= data.album[5].album_cover%>" class="gallery-img item">
+                            </a>
                         </aside>
                     </div>
                 </div>
@@ -157,8 +169,8 @@
                                 <a href="<%= item[0].file_url%>"><%= item[0].file_title%></a>
                                 <i class="iconfont icon-download">&#xe6a2;</i>
                             </th>
-                            <th class="<%= item[0].file_type%>">
-                                <a href="<%= item[0].file_url%>"><%= item[0].file_title%></a>
+                            <th class="<%= item[1].file_type%>">
+                                <a href="<%= item[1].file_url%>"><%= item[1].file_title%></a>
                                 <i class="iconfont icon-download">&#xe6a2;</i>
                             </th>
                         </tr>
