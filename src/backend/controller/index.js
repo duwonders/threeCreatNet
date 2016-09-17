@@ -11,7 +11,7 @@ export default class extends Base {
    * @return {Promise} []
    */
   indexAction(){
-    //auto render template file index_index.html
+
     return this.display();
   }
   uploadimgAction (){
@@ -581,15 +581,51 @@ export default class extends Base {
 
   /*
   *  admin
+  *  测试用户登录
   */
   async testuserAction () {
       this.setCorsHeader();
 
       let req_obj = this.post();
       let admin = this.model('admin');
+      let res = {};
 
-      console.log(req_obj);
+      let data = await this.model('admin').where({
+          name: req_obj.name,
+          code: think.md5(req_obj.code)
+      }).select();
 
-      return this.success();
+      let info = data[0];
+
+      if (info) {
+          res.msg = 'success';
+      } else {
+          res.msg = 'fail';
+      }
+
+      return this.success(res);
   }
+
+  async testloginAction () {
+      this.setCorsHeader();
+
+      let res = {};
+      let req_obj = this.post()
+
+      let data = await this.model('admin').where({
+          name: req_obj.name,
+          code: think.md5(req_obj.code)
+      }).select();
+
+      let info = data[0];
+
+      if (info) {
+          res.msg = 'success';
+      } else {
+          res.msg = 'fail'
+      }
+
+      return this.success(res);
+  }
+
 }

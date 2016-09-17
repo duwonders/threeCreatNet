@@ -3,18 +3,18 @@
 /**
  * session configs
  */
-export default {
-  name: 'thinkjs',
-  type: 'file',
-  secret: '&~XD8ZTR',
-  timeout: 24 * 3600,
-  cookie: { // cookie options
-    length: 32,
-    httponly: true
-  },
-  adapter: {
-    file: {
-      path: think.RUNTIME_PATH + '/session',
-    }
-  }
-};
+ export default {
+   name: 'thinkjs',
+   type: 'file',
+   secret: '4L*%#NG$',
+   timeout: 24 * 3600,
+   cookie: { // cookie options
+     length: 32,
+     httponly: true
+   },
+   adapter: {
+     file: {
+       path: think.RUNTIME_PATH + '/session',
+     }
+   }
+ };
