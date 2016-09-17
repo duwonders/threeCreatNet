@@ -43,17 +43,23 @@ export default class extends Base {
     let originalFilename = file.originalFilename;
     let suffix = (originalFilename.split('.')).pop();
     let uploadPath = think.RESOURCE_PATH + '/upload';
+    let prefix = '';
 
     if (/(jpg|png|jpeg|gif)/.test(suffix)) {
         uploadPath = `${uploadPath}/img`;
+        prefix = '/upload/img/';
     } else if (/(ppt|pptx|pp*|key)/.test(suffix)) {
         uploadPath = `${uploadPath}/ppt`;
+        prefix = '/upload/ppt/';
     } else if (/(doc|docx|do*)/.test(suffix)) {
         uploadPath = `${uploadPath}/word`;
+        prefix = '/upload/word/';
     } else if (/(xls|xlsx|xl*)/.test(suffix)) {
         uploadPath = `${uploadPath}/excel`;
+        prefix = '/upload/excel/';
     } else {
         uploadPath = `${uploadPath}/other`;
+        prefix = '/upload/other/';
     }
     /*
     *   文件上传之后会先放到 runtime 目录下作为缓存
@@ -68,9 +74,10 @@ export default class extends Base {
      *  此处使用原文件名 所以暂时不用 basename
      *  若需要使用 则将下方 originalFilename 全部替换为 basename 即可
      */
+     let d = new Date();
 
-    fs.renameSync(filepath, uploadPath + '/' + originalFilename);
-    file.path = uploadPath + '/' + originalFilename;
+    fs.renameSync(filepath, uploadPath + '/' + d.toLocaleDateString().replace(/\//g, `-`) + '-' + originalFilename);
+    file.path = uploadPath + '/' + d.toLocaleDateString().replace(/\//g, `-`) + '-' + originalFilename;
     /*
     *   创建指定文件夹
     *   basename 文件上传后的名称
@@ -80,8 +87,9 @@ export default class extends Base {
     this.assign('fileInfo', file);
     this.success({
         prevName: file.originalFilename,
-        currName: originalFilename
+        currName: prefix + d.toLocaleDateString().replace(/\//g, `-`) + '-' + originalFilename
     });
+
     /*
     *   然后等上线了 后端改一下 currName 字段 返回 URL
     */
