@@ -54,7 +54,7 @@
 		<div class="img-con">
 		<%data.pic.forEach(function(item){%>
 			<div class="img-home">
-				<div class="img" style="background:url(<%= item.pic_url%>)"></div>
+				<div class="img" style="background:url(<%= item.pic_url%>) no-repeat; background-size: 100% 100%" ></div>
 				<span><%= item.pic_name%></span>
 				<span class="likes"><%= item.pic_likes%></span>
 				<span class="taoxin" id="<%= item.id%>"></span>
@@ -120,6 +120,7 @@
 	</div>
 	<script src="/static/js/jquery-3.1.0.min.js"></script>
 	<script>
+	!function(){
 		$('.taoxin').on('click', function(e){
 			var target = e.target;
 			var id = $(target).attr('id');
@@ -138,6 +139,15 @@
 			  }
 			})
 		})
+
+		$('.img').on('click', function(e){
+			var _url = e.target.style.background;
+			var dom = "<div style='position: absolute; width: 400px; height:400px; margin: 0 auto; background: " + _url + "; z-index: 1000'></div>"
+			var p = document.createElement(dom);
+			$('body').append(p)
+			console.log('adsa')
+		})
+	}()
 	</script>
 </body>
 </html>
