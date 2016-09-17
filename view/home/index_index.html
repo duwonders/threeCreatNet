@@ -6,5 +6,6 @@
     var e = "<%=data.newActivity.topAll[0].hd_detail%>";
     var f = e.replace(/\&gt;/g, '>');
     var g = f.replace(/\&lt;/g, '<');
-    $( $('.news-detail')[0] ).html(g);
+    $( $('.news-detail')[0] ).html(g.replace(/<img.*#34;>/g, ""));
+    console.log(g);
 }()</script></body></html>

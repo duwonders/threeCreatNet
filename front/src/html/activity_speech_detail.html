@@ -277,11 +277,14 @@
     var a = "<%= data.detail[0].hd_detail%>";
     var b = a.replace(/\&gt;/g, '>');
     var c = b.replace(/\&lt;/g, '<');
-    $( $('.lecturer-detail')[0] ).html(c);
+    var n = c.replace(/\&#34;/g, '"');
+    $( $('.lecturer-detail')[0] ).html(n);
     var e = "<%= data.detail[0].hd_compere%>";
     var f = e.replace(/\&gt;/g, '>');
     var g = f.replace(/\&lt;/g, '<');
-    $( $('.lecturer-detail')[1] ).html(g);
+    var h = g.replace(/;\&#34/g, '"');
+    $( $('.lecturer-detail')[1] ).html(h);
+    console.log(n);
 }()
 </script>
 </body>
