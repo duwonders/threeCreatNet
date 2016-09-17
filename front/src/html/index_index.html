@@ -63,7 +63,7 @@
                         <div class="swiper-wrapper">
                             <%data.newActivity.topAll.forEach(function(item){ %>
                             <div class="swiper-slide">
-                                <img src="/static/imgs/<%= item.hd_cover%>">
+                                <img src="<%= item.hd_cover%>">
                             </div>
                             <%})%>
                         </div>
@@ -135,24 +135,24 @@
                     <div class="img-container">
                         <aside class="img-left">
                             <a href="/home/album/imagef?id=<%= data.album[0].id%>">
-                                <img src="/static/img/<%= data.album[0].album_cover%>" class="gallery-img up">
+                                <img src="<%= data.album[0].album_cover%>" class="gallery-img up">
                             </a>
                             <a href="/home/album/imagef?id=<%= data.album[1].id%>">
-                                <img src="/static/img/<%= data.album[1].album_cover%>" class="gallery-img down">
+                                <img src="<%= data.album[1].album_cover%>" class="gallery-img down">
                             </a>
                             <a href="/home/album/imagef?id=<%= data.album[2].id%>">
-                                <img src="/static/img/<%= data.album[2].album_cover%>" class="gallery-img down">
+                                <img src="<%= data.album[2].album_cover%>" class="gallery-img down">
                             </a>
                         </aside>
                         <aside class="img-right">
                             <a href="/home/album/imagef?id=<%= data.album[3].id%>">
-                                <img src="/static/img/<%= data.album[3].album_cover%>" class="gallery-img item">
+                                <img src="<%= data.album[3].album_cover%>" class="gallery-img item">
                             </a>
                             <a href="/home/album/imagef?id=<%= data.album[4].id%>">
-                                <img src="/static/img/<%= data.album[4].album_cover%>" class="gallery-img item">
+                                <img src="<%= data.album[4].album_cover%>" class="gallery-img item">
                             </a>
                             <a href="/home/album/imagef?id=<%= data.album[5].id%>">
-                                <img src="/static/img/<%= data.album[5].album_cover%>" class="gallery-img item">
+                                <img src="<%= data.album[5].album_cover%>" class="gallery-img item">
                             </a>
                         </aside>
                     </div>
@@ -198,7 +198,7 @@
                         热门资讯
                     </div>
                     <div class="hot-news">
-                        <img src="/static/img/<%=data.newActivity.topAll[0].hd_cover%>" class="news-img">
+                        <img src="<%=data.newActivity.topAll[0].hd_cover%>" class="news-img">
                         <p class="news-title">
                             <%=data.newActivity.topAll[0].hd_title%>
                         </p>

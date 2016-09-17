@@ -47,7 +47,7 @@
 		<div class="img-con">
 			<%data.forEach(function(item){%>
 			<div class="img-home"">
-				<div class="img" id="<%= item.id%>" style="background:url(/static/imgs/<%= item.album_cover%>)">
+				<div class="img" id="<%= item.id%>" style="background:url(<%= item.album_cover%>)">
 					<span class="page-num"><%= item.album_pages%></span>
 				</div>
 				<span><%= item.album_name%></span>

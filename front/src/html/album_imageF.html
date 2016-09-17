@@ -54,7 +54,7 @@
 		<div class="img-con">
 		<%data.pic.forEach(function(item){%>
 			<div class="img-home">
-				<div class="img" style="background:url(/static/imgs/<%= item.pic_url%>)"></div>
+				<div class="img" style="background:url(<%= item.pic_url%>)"></div>
 				<span><%= item.pic_name%></span>
 				<span class="likes"><%= item.pic_likes%></span>
 				<span class="taoxin" id="<%= item.id%>"></span>

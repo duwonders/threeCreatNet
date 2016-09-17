@@ -67,7 +67,7 @@
                         <% data.slider.forEach(function(item){ %>
                             <%if(item.type == 'home'){%>
                                 <div class="swiper-slide">
-                                    <img src="/static/imgs/<%= item.url%>">
+                                    <img src="<%= item.url%>">
                                 </div>
                             <%}%>
                         <%})%>
@@ -93,7 +93,7 @@
                 <div class="activity-container">
                     <% data.typeAct.pageData.forEach(function(item){ %>
                     <div class="activity-item">
-                        <img src="/static/covers/<%=item.hd_cover%>" class="activity-img">
+                        <img src="<%=item.hd_cover%>" class="activity-img">
                         <div class="activity-content">
                         <%if(item.hd_state == '直播间'){%>
                             <a href="/home/activity/speech_live?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
@@ -118,7 +118,7 @@
                     <div class="right-wrapper-inner">
                         <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
-                            <img src="/static/covers/<%=item.hd_cover%>" class="now-img">
+                            <img src="<%=item.hd_cover%>" class="now-img">
                             <div class="now-content">
                                 <%if(item.hd_type == '竞赛'){%>
                                     <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
