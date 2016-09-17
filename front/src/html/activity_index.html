@@ -65,9 +65,11 @@
                 <div class="slider-container swiper-container">
                     <div class="swiper-wrapper">
                         <% data.slider.forEach(function(item){ %>
-                        <div class="swiper-slide">
-                            <img src="/static/imgs/<%= item.url%>">
-                        </div>
+                            <%if(item.type == 'home'){%>
+                                <div class="swiper-slide">
+                                    <img src="/static/imgs/<%= item.url%>">
+                                </div>
+                            <%}%>
                         <%})%>
                     </div>
                     <div class="swiper-pagination"></div>
