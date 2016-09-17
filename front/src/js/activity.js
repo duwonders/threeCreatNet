@@ -1,7 +1,7 @@
 $(document).ready(() => {
 
     let type = GetQueryString('type') || '全部',
-        state = GetQueryString('state') || '等待上线';
+        state = GetQueryString('state') || '最近';
 
         $('.left-bar').children().map( (i, item) => {
 
@@ -21,7 +21,7 @@ $(document).ready(() => {
         $('.page-redirect').on('click', (e) => {
 
             let type = GetQueryString('type') || '全部',
-                state = GetQueryString('state') || '等待上线',
+                state = GetQueryString('state') || '最近',
                 page = e.target.innerHTML;
             window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
 
@@ -32,7 +32,7 @@ $(document).ready(() => {
 
             if(page && page > 1){
                 let type = GetQueryString('type') || '全部',
-                    state = GetQueryString('state') || '等待上线';
+                    state = GetQueryString('state') || '最近';
                 page--
                 window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
 
@@ -49,7 +49,7 @@ $(document).ready(() => {
             if(page < $('.page-redirect').length){
 
                 let type = GetQueryString('type') || '全部',
-                    state = GetQueryString('state') || '等待上线';
+                    state = GetQueryString('state') || '最近';
                 page++;
                 window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
             
@@ -66,7 +66,7 @@ $(document).ready(() => {
 
             let page = $('.page-input').val(),
                 type = GetQueryString('type') || '全部',
-                state = GetQueryString('state') || '等待上线';
+                state = GetQueryString('state') || '最近';
 
             window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
         })
