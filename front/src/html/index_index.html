@@ -169,10 +169,12 @@
                                 <a href="<%= item[0].file_url%>"><%= item[0].file_title%></a>
                                 <i class="iconfont icon-download">&#xe6a2;</i>
                             </th>
+                            <%if(item[1] != null){%>
                             <th class="<%= item[1].file_type%>">
                                 <a href="<%= item[1].file_url%>"><%= item[1].file_title%></a>
                                 <i class="iconfont icon-download">&#xe6a2;</i>
                             </th>
+                            <%}%>
                         </tr>
                         <%})%>
                     </table>
@@ -200,10 +202,10 @@
                     <div class="hot-news">
                         <img src="<%=data.newActivity.topAll[0].hd_cover%>" class="news-img">
                         <p class="news-title">
-                            <%=data.newActivity.topAll[0].hd_title%>
+                            
                         </p>
                         <p class="news-detail">
-                            <%=data.newActivity.topAll[0].hd_detail%>
+                           
                         </p>
                     </div>
                 </div>
@@ -352,5 +354,15 @@
     <script src="/static/js/jquery-3.1.0.min.js"></script>
     <script src="/static/js/swiper-3.3.1.jquery.min.js"></script>
     <script src="/static/js/home.js"></script>
+    <script>!function(){
+    var a = "<%=data.newActivity.topAll[0].hd_title%>";
+    var b = a.replace(/\&gt;/g, '>');
+    var c = b.replace(/\&lt;/g, '<');
+    $( $('.news-title')[0] ).html(c);
+    var e = "<%=data.newActivity.topAll[0].hd_detail%>";
+    var f = e.replace(/\&gt;/g, '>');
+    var g = f.replace(/\&lt;/g, '<');
+    $( $('.news-detail')[0] ).html(g);
+}()</script>
 </body>
 </html>
