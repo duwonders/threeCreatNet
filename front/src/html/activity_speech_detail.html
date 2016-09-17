@@ -76,7 +76,7 @@
                     </div>
                 </div>
                 <div class="intro">
-                    <p class="intro-title"><%= data.detail[0].hd_detail%></p>
+                    <p class="intro-title"></p>
                 </div>
                 <div class="intro lecturer">
                     <p class="intro-title">主讲人介绍</p>
@@ -269,10 +269,16 @@
 </div>
 <script src="/static/js/jquery-3.1.0.min.js"></script>>
 <script>
+!function(){
     var a = "<%= data.detail[0].hd_compere%>";
     var b = a.replace(/\&gt;/g, '>');
     var c = b.replace(/\&lt;/g, '<');
     $('.lecturer-detail').html(c);
+    var e = "<%= data.detail[0].hd_detail%>";
+    var f = e.replace(/\&gt;/g, '>');
+    var g = f.replace(/\&lt;/g, '<');
+    $( $('.intro-title')[0] ).html(g);
+}()
 </script>
 </body>
 </html>
