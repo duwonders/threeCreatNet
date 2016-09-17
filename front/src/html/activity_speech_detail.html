@@ -76,7 +76,11 @@
                     </div>
                 </div>
                 <div class="intro">
-                    <p class="intro-title"></p>
+                    <p class="intro-title">活动详情</p>
+                    <p class="lecturer-detail">
+                        
+                    </p>
+
                 </div>
                 <div class="intro lecturer">
                     <p class="intro-title">主讲人介绍</p>
@@ -270,14 +274,14 @@
 <script src="/static/js/jquery-3.1.0.min.js"></script>>
 <script>
 !function(){
-    var a = "<%= data.detail[0].hd_compere%>";
+    var a = "<%= data.detail[0].hd_detail%>";
     var b = a.replace(/\&gt;/g, '>');
     var c = b.replace(/\&lt;/g, '<');
-    $('.lecturer-detail').html(c);
-    var e = "<%= data.detail[0].hd_detail%>";
+    $( $('.lecturer-detail')[0] ).html(c);
+    var e = "<%= data.detail[0].hd_compere%>";
     var f = e.replace(/\&gt;/g, '>');
     var g = f.replace(/\&lt;/g, '<');
-    $( $('.intro-title')[0] ).html(g);
+    $( $('.lecturer-detail')[1] ).html(g);
 }()
 </script>
 </body>

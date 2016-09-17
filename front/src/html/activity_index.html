@@ -64,15 +64,11 @@
             <div class="main-left">
                 <div class="slider-container swiper-container">
                     <div class="swiper-wrapper">
+                        <% data.slider.forEach(function(item){ %>
                         <div class="swiper-slide">
-                            <img src="/static/imgs/home-speech.png">
+                            <img src="/static/imgs/<%= item.url%>">
                         </div>
-                        <div class="swiper-slide">
-                            <img src="/static/imgs/home-slider-test.png">
-                        </div>
-                        <div class="swiper-slide" >
-                            <img src="/static/imgs/home-speech.png">
-                        </div>
+                        <%})%>
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>

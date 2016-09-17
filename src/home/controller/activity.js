@@ -13,13 +13,22 @@ export default class extends Base {
 
   		typeAct: await this.per_page(),
 
-  		hotAct: await this.get_hotAct()
+  		hotAct: await this.get_hotAct(),
+
+      slider: await this.get_slider()
 
   	}
   	// console.log(data.typeAct.pageCount.totalPages);
   	this.assign('data', data);
 
     return this.display();
+  }
+
+  async get_slider(){
+    let data = await this.model('slider')
+                         .select();
+                     
+    return data;
   }
 
   async assigness(){
