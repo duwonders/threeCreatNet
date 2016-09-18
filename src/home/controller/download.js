@@ -22,14 +22,23 @@ export default class extends Base {
 
 		}else{
 
-			let type = this.get('type') || '最近上传';
+			let type = this.get('type') || '最近上传',
 
-			let where = type == '最近上传' ? {} : {type : type}
+			    where = type == '最近上传' ? {} : {type : type},
 
-			data = await this.model('download')
+          page = this.get('page') || 1
+
+			data.pagedata = await this.model('download')
 											 .where(where)
+                       .page(page, 8)
 											 .order('file_time')
 											 .select()
+
+      data.pageMessage = await this.model('download')
+                       .where(where)
+                       .page(page, 8)
+                       .order('file_time')
+                       .countSelect()
 
 		}							
 		console.log(data);

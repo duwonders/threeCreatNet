@@ -49,7 +49,7 @@
 		<span>预览</span>
 		<span>下载</span>
 		
-		<% data.forEach(function(item){ %>
+		<% data.pagedata.forEach(function(item){ %>
 		<span class="line"></span>
 		<% if(item.file_type == "word"){%>
 		<span class="title per-title" style="background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABXElEQVRIx92VsUsCcRTHP3fJJXQcCYJR5g1ShEM3NEjW3FJLOHir/0DtrdJSk1NjW1yBW9DgVkMEDV6D0WBw2OKScpnGFdJQHiEYR96B9Nke/N73w3vw4wkAmmEJwCowx+i8A9emrjYABM2wZOACWPchvE8XyJu6eipohrUP7PkY3ucVmBeBtQDCAaaAFRGYCEgAMCkGGA7APxakY2EquQSVXGJo8/nmLJVcgmxSHsMJBonLIU42ZrjcjpOOhf0XHGSipCISiiRymImiSN5aPb3KJmVSEcmtFUlkd3naP0F+SQHgpvFG8a7lSr1M4UkQl0MAFM0WpVob2+m5k/xZ8PId0uf43qbadLCdHoXbZ0/r+VVQbTqUam0AyvWOu5rButp0KNc7QwWCZlhX+HsLfrI1Ph9tXAU9EXgKUPAoAgW+7qffnJm6+iAAaIa1AOwAi4y+ti5QBo5MXf34BEXVXVZQp6icAAAAAElFTkSuQmCC) no-repeat"><%= item.file_title%></span>
