@@ -51,10 +51,11 @@ $(document).ready(() => {
 
         let gotoPage = (() => {
             let cache = {};
-            return function (page, type = GetQueryString('type')) {
+            return function (page, type = GetQueryString('type'), state = GetQueryString('state')) {
                 cache.type = type || '全部';
                 cache.page = page || 1;
-                window.location.href = `/home/activity?type=${cache.type}&page=${cache.page}`;
+                cache.state = state || '最近';
+                window.location.href = `/home/activity?type=${cache.type}&state=${cache.state}&page=${cache.page}`;
             }
         })();
         //  跳转链接 通过 url 请求页面
