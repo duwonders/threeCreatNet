@@ -65,7 +65,7 @@
                 <div class="slider-container swiper-container">
                     <div class="swiper-wrapper">
                         <% data.slider.forEach(function(item){ %>
-                            <%if(item.type == 'home'){%>
+                            <%if(item.type == 'activity'){%>
                                 <div class="swiper-slide">
                                     <img src="<%= item.url%>">
                                 </div>
@@ -107,6 +107,7 @@
                             <p class="msg">地点: <%=item.hd_place%></p>
                             <p class="msg">时间: <%=item.hd_time%></p>
                             <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
+                            <p class="msg tags">标签: <%=item.hd_tags%></p>
                         </div>
                     </div>
                     <% }) %>
@@ -125,7 +126,7 @@
                                 <%}else{%>
                                     <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
                                 <%}%>
-                                <span class="tag">抢票</span>
+                                <span class="tag"><%=item.hd_tags.replace(/\s+/g, " ").split(" ")[0]%></span>
                                 <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
                                 <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">

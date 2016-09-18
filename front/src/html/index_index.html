@@ -99,11 +99,13 @@
                         <div class="activity-item">
                             <a href='/home/activity/competition_detail?id=<%= item.id%>'>
                                 <span class="activity-title"><%= item.hd_title%></span>
-                                <img src="/static/img/home-speech.png" class="activity-img">
+                                <img src="<%= item.hd_cover%>" class="activity-img">
                             </a>
                             <div class="activity-tag">
                                 <i class="iconfont icon-tag">&#xe60a;</i>
-                                <%= item.hd_tags%>
+                                <% for (var i = 0; i < 3; i++) {%>
+                                    <%= item.hd_tags.replace(/\s+/g, " ").split(" ")[i]%>
+                                <% }%>
                             </div>
                         </div>
                         <%})%>
@@ -117,7 +119,7 @@
                         <div class="activity-item">
                             <a href="/home/activity/speech_detail?id=<%= item.id%>">
                                 <span class="activity-title"><%= item.hd_title%></span>
-                                <img src="/static/img/home-speech.png" class="activity-img">
+                                <img src="<%= item.hd_cover%>" class="activity-img">
                             </a>
                             <div class="activity-tag">
                                 <i class="iconfont icon-tag">&#xe60a;</i>
@@ -202,10 +204,10 @@
                     <div class="hot-news">
                         <img src="<%=data.newActivity.topAll[0].hd_cover%>" class="news-img">
                         <p class="news-title">
-                            
+
                         </p>
                         <p class="news-detail">
-                           
+
                         </p>
                     </div>
                 </div>
