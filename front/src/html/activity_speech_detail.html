@@ -77,8 +77,8 @@
                 </div>
                 <div class="intro">
                     <p class="intro-title">活动详情</p>
-                    <p class="lecturer-detail">
-                        
+                    <p class="intro-content">
+
                     </p>
 
                 </div>
@@ -86,7 +86,7 @@
                     <p class="intro-title">主讲人介绍</p>
                     <img src="<%= data.detail[0].hd_speechmaker%>" class="lecturer-img">
                     <p class="lecturer-detail">
-                        
+
                     </p>
                 </div>
                 <div class="intro links">
@@ -271,19 +271,19 @@
         </p>
     </div>
 </div>
-<script src="/static/js/jquery-3.1.0.min.js"></script>>
+<script src="/static/js/jquery-3.1.0.min.js"></script>
 <script>
 !function(){
     var a = "<%= data.detail[0].hd_detail%>";
     var b = a.replace(/\&gt;/g, '>');
     var c = b.replace(/\&lt;/g, '<');
     var n = c.replace(/\&#34;/g, '"');
-    $( $('.lecturer-detail')[0] ).html(n);
+    $( $('.intro-content')[0] ).html(n);
     var e = "<%= data.detail[0].hd_compere%>";
     var f = e.replace(/\&gt;/g, '>');
     var g = f.replace(/\&lt;/g, '<');
     var h = g.replace(/;\&#34/g, '"');
-    $( $('.lecturer-detail')[1] ).html(h);
+    $( $('.lecturer-detail')[0] ).html(h);
     console.log(n);
 }()
 </script>
