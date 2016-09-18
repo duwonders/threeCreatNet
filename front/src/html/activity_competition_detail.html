@@ -73,11 +73,12 @@
                         <p class="msg">抢票地点: <%= data.detail[0].hd_getTicket_time%></p>
                         <p class="msg">宣讲培训: <%= data.detail[0].hd_peixun%></p>
                         <p class="msg">主办单位: <%= data.detail[0].hd_unit%></p>
+                        <p class="msg tags">标签: <%= data.detail[0].hd_tags%></p>
                     </div>
                 </div>
                 <div class="intro">
                     <p class="intro-title">活动介绍:</p>
-                    <p><%= data.detail[0].hd_detail%></p>
+                    <p class="intro-content"><%= data.detail[0].hd_detail%></p>
                 </div>
                 <div class="links intro">
                     <p class="intro-title">相关链接</p>
@@ -102,7 +103,7 @@
                             <%}else{%>
                                 <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
                             <%}%>
-                                <span class="tag">抢票</span>
+                                <span class="tag"><%= item.hd_tags.replace(/\s+/g, " ").split(" ")[0]%></span>
                                 <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
                                 <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">

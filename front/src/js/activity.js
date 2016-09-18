@@ -4,72 +4,107 @@ $(document).ready(() => {
         state = GetQueryString('state') || '最近';
 
         $('.left-bar').children().map( (i, item) => {
-
             if(item.innerHTML == type)
                 $(item).addClass('current')
-
         } )
 
         $('.mid-bar').children().map( (i, item) => {
-
             if(item.innerHTML == state)
-
                 $(item).addClass('current')
-
         } )
-        
-        $('.page-redirect').on('click', (e) => {
 
-            let type = GetQueryString('type') || '全部',
-                state = GetQueryString('state') || '最近',
-                page = e.target.innerHTML;
-            window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
-
-        })
-
-        $('.prev').on('click', () => {
-            let page = GetQueryString('page');
-
-            if(page && page > 1){
-                let type = GetQueryString('type') || '全部',
-                    state = GetQueryString('state') || '最近';
-                page--
-                window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
-
-            }else{
-                alert('已经是第一页了哦')
+        function pagersSet () {
+            let totalPage = $("#total-page").text(),
+                currentPage = $("#current-page").text();
+            let $pagers = $('.pager');
+            if (totalPage < 5) {
+                for (let i = 0; i < 5; i++) {
+                    if (totalPage < i+1) {
+                        $($pagers[i]).css('display', 'none');
+                    }
+                }
+            } else if (totalPage > 5) {
+                if (totalPage > 6 && currentPage > 3 && currentPage < totalPage - 2) {
+                    $($pagers[1]).text(`...`);
+                    $($pagers[2]).text(currentPage);
+                    $($pagers[3]).text(`...`);
+                }
+                if (currentPage <= 3) {
+                    $($pagers[3]).text(`...`);
+                } else if (totalPage - currentPage <= 2) {
+                    $($pagers[1]).text(`...`);
+                    $($pagers[2]).text(totalPage - 2);
+                    $($pagers[3]).text(totalPage - 1);
+                }
+                $($pagers[4]).text(totalPage);
             }
+            $pagers.map((index, item) => {
+                let i = $(item);
+                if (~~i.text() == ~~currentPage) {
+                    i.addClass('current');
+                }
+            });
+            $('.page-outer-container').css('display', 'block');
+        }
+        //  设置分页器的样式
+        pagersSet();
 
-        })
-
-        $('.next').on('click', () => {
-
-            let page = GetQueryString('page') || 1;
-
-            if(page < $('.page-redirect').length){
-
-                let type = GetQueryString('type') || '全部',
-                    state = GetQueryString('state') || '最近';
-                page++;
-                window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
-            
-            }else{
-
-                alert('已经是最后了哦');
-
+        let gotoPage = (() => {
+            let cache = {};
+            return function (page, type = GetQueryString('type')) {
+                cache.type = type || '全部';
+                cache.page = page || 1;
+                window.location.href = `/home/activity?type=${cache.type}&page=${cache.page}`;
             }
+        })();
+        //  跳转链接 通过 url 请求页面
 
+        $('.top-page').bind('click', (e) => {
+            e = e || window.event;
+            if (e.target.nodeName.toLowerCase() == 'a') {
+                e.preventDefault();
+                let type = $(e.target).text().trim().slice(0, 2);
+                gotoPage(1, type);
+            }
+        });
+        //  点击分类按钮
 
-        })
+        $('.page-outer-container').bind('click', (e) => {
+            e = e || window.event;
+            if (e.target.className == 'pager') {
+                let t = e.target;
+                let page = ~~$(e.target).text();
+                if (page > 0) {
+                    gotoPage(page);
+                }
+            }
+        });
+        //  点击分页按钮
 
-        $('.page-go').on('click', () => {
+        $('#prev').bind('click', () => {
+            let page = ~~GetQueryString('page');
+            let toPage = page - 1;
 
-            let page = $('.page-input').val(),
-                type = GetQueryString('type') || '全部',
-                state = GetQueryString('state') || '最近';
+            page == 1 ? alert(`已经是第一页`) : gotoPage(toPage);
+        });
+        //  点击上一页按钮
 
-            window.location.href = `/home/activity?type=${type}&state=${state}&page=${page}`;
-        })
+        $('#next').bind('click', () => {
+            let page = ~~GetQueryString('page');
+            let totalPage = ~~$("#total-page").text();
+            let toPage = page + 1;
+
+            page == totalPage ? alert(`已经是最后一页`) : gotoPage(toPage);
+        });
+        //  点击下一页按钮
+
+        $("#page-go").bind('click', () => {
+            let totalPage = ~~$("#total-page").text();
+            let toPage = ~~$("#page-input").val();
+
+            toPage >= 1 && toPage <= totalPage ? gotoPage(toPage) : alert(`无效的页数`);
+        });
+        //  点击 input 的 value 地址跳转到相应页面
 
     function GetQueryString(name){
          var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
@@ -160,4 +195,3 @@ $(document).ready(() => {
     })
 
 })();
-

@@ -65,7 +65,7 @@
                 <div class="slider-container swiper-container">
                     <div class="swiper-wrapper">
                         <% data.slider.forEach(function(item){ %>
-                            <%if(item.type == 'home'){%>
+                            <%if(item.type == 'activity'){%>
                                 <div class="swiper-slide">
                                     <img src="<%= item.url%>">
                                 </div>
@@ -107,6 +107,7 @@
                             <p class="msg">地点: <%=item.hd_place%></p>
                             <p class="msg">时间: <%=item.hd_time%></p>
                             <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
+                            <p class="msg tags">标签: <%=item.hd_tags%></p>
                         </div>
                     </div>
                     <% }) %>
@@ -125,7 +126,7 @@
                                 <%}else{%>
                                     <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
                                 <%}%>
-                                <span class="tag">抢票</span>
+                                <span class="tag"><%=item.hd_tags.replace(/\s+/g, " ").split(" ")[0]%></span>
                                 <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
                                 <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">
@@ -160,14 +161,15 @@
             </aside>
         </div>
     </section>
-    <section class="outer-container page-outer-container">
+
+    <!-- <section class="outer-container page-outer-container">
         <div class="inner-container">
             <span class="page-btn">
                 <a class="prev">上一页</a>
             </span>
             <% for(var i = 1; i <= data.typeAct.pageCount.totalPages; i++){ %>
             <span class="page-btn  page-redirect">
-                <a class="pager current-page"><%= i %></a>
+                <a class="pager"><%= i %></a>
             </span>
             <% } %>
             <span class="page-btn">
@@ -179,7 +181,47 @@
             </span>
             <input type="button" class="page-go" value="go">
         </div>
+    </section> -->
+
+    <section class="outer-container page-outer-container">
+        <div class="inner-container">
+            <span class="page-btn">
+                <a class="prev" id="prev">上一页</a>
+            </span>
+
+			<span class="page-btn page-redirect">
+                <a class="pager">1</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">2</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">3</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">4</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">5</a>
+            </span>
+
+			<span class="page-btn">
+                <a class="next" id="next">下一页</a>
+            </span>
+            <span>转到</span>
+            <span class="page-btn">
+                <input type="text" class="page-input" id="page-input">
+            </span>
+            <input type="button" class="page-go" value="go" id="page-go">
+			<span id="total-page" style="display: none">
+				<%= data.typeAct.pageCount.totalPages%>
+			</span>
+			<span id="current-page" style="display: none">
+				<%= data.typeAct.pageCount.currentPage%>
+			</span>
+        </div>
     </section>
+
     <footer class="outer-container footer-outer-container">
         <div class="inner-container">
             <div class="links-container">
