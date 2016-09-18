@@ -220,3 +220,11 @@ body{
 .bottom-info a{
 	color: #999;
 }
+#showpic{
+	position: absolute;
+	width: 50%;
+	height: 60%;
+	left: 25%;
+	top: 20%;
+	border: 2px solid #ccc;
+}

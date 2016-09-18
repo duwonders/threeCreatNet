@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="/static/css/glob.css">
 	<link rel="stylesheet" href="/static/css/imageF.css">
 <body>
+	<div id="showpic" style="display: none; background:url(); background-repeat: no-repeat; background-size: 100% 100%"></div>
 	<div id="head">
 		<div class="top-menu">
 			<ul>
@@ -121,6 +122,30 @@
 	<script src="/static/js/jquery-3.1.0.min.js"></script>
 	<script>
 	!function(){
+		function hidePic(){
+			$('#showpic').css({
+				"display": "none",
+			});
+			$('.img').on('click', showpic);
+			$("body").off('click', hidePic);
+		}
+
+		function showpic(e){
+			var tar = $(e.target);
+			var img = tar.css("background-image");
+			$('#showpic').css({
+				"display": "block",
+				"background-image": img
+			});
+
+			$('.img').off('click', showpic);
+
+			setTimeout(function(){
+				$("body").on('click', hidePic);
+			},200)
+		}
+		$('.img').on('click', showpic)
+
 		$('.taoxin').on('click', function(e){
 			var target = e.target;
 			var id = $(target).attr('id');
@@ -140,13 +165,7 @@
 			})
 		})
 
-		$('.img').on('click', function(e){
-			var _url = e.target.style.background;
-			var dom = "<div style='position: absolute; width: 400px; height:400px; margin: 0 auto; background: " + _url + "; z-index: 1000'></div>"
-			var p = document.createElement(dom);
-			$('body').append(p)
-			console.log('adsa')
-		})
+		
 	}()
 	</script>
 </body>

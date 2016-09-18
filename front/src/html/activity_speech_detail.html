@@ -116,7 +116,11 @@
                                 <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
                                 <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">
-                                    <a href="/home/activity/competition_detail?id=<%= item.id%>">点击详情</a>
+                                    <%if(item.hd_type == '竞赛'){%>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title">查看详情</a>
+                                <%}else{%>
+                                    <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title">查看详情</a>
+                                <%}%>
                                 </div>
                             </div>
                         </div>
