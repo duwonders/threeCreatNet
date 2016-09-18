@@ -4,7 +4,8 @@
 	<meta charset="UTF-8">
 	<title>下载专区</title>
 	<link rel="stylesheet" href="../static/css/glob.css">
-	<link rel="stylesheet" href="../static/css/downLoad.css">
+	<link rel="stylesheet" href="../static/css/download.css">
+	<link rel="stylesheet" href="/static/css/public-style.css">
 </head>
 <body>
 	<div id="head">
@@ -34,10 +35,10 @@
 		<div class="top-page">
 			<ul>
 				<li><a href="/home/download">最近上传</a></li>
-				<li><a href="/home/download?type=赛事报名">赛事报名</a></li>
-				<li><a href="/home/download?type=影像资料">影像资料</a></li>
-				<li><a href="/home/download?type=内部资料">内部资料</a></li>
-				<li><a href="/home/download?type=内部资料">其它</a></li>
+				<li><a href="/home/download?type=赛事报名&page=1">赛事报名</a></li>
+				<li><a href="/home/download?type=影像资料&page=1">影像资料</a></li>
+				<li><a href="/home/download?type=内部资料&page=1">内部资料</a></li>
+				<li><a href="/home/download?type=内部资料&page=1">其它</a></li>
 				<li><a href="##">文峰青年大讲堂</a></li>
 			</ul>
 		</div>
@@ -48,7 +49,7 @@
 		<span>时间</span>
 		<span>预览</span>
 		<span>下载</span>
-		
+
 		<% data.pagedata.forEach(function(item){ %>
 		<span class="line"></span>
 		<% if(item.file_type == "word"){%>
@@ -64,6 +65,45 @@
 		<%})%>
 
 	</div>
+
+	<section class="outer-container page-outer-container">
+        <div class="inner-container">
+            <span class="page-btn">
+                <a class="prev" id="prev">上一页</a>
+            </span>
+
+			<span class="page-btn page-redirect">
+                <a class="pager">1</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">2</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">3</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">4</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">5</a>
+            </span>
+
+			<span class="page-btn">
+                <a class="next" id="next">下一页</a>
+            </span>
+            <span>转到</span>
+            <span class="page-btn">
+                <input type="text" class="page-input" id="page-input">
+            </span>
+            <input type="button" class="page-go" value="go" id="page-go">
+			<span id="total-page" style="display: none">
+				<%= data.pageMessage.totalPages%>
+			</span>
+			<span id="current-page" style="display: none">
+				<%= data.pageMessage.currentPage%>
+			</span>
+        </div>
+    </section>
 
 	<div id="bottom">
 		<div class="bottom-con">
@@ -122,17 +162,18 @@
 		</div>
 	</div>
 </body>
+<script src="/static/js/jquery-3.1.0.min.js"></script>
 <script type="text/javascript">
 	(function(){
 		document.querySelector('.search_cl').addEventListener('click', function(){
 			window.location.href = "/home/downLoad?search=" + document.querySelector('#search_value').value;
 		})
-		document.querySelectorAll('.downLoad').forEach(function(item){
+		Array.prototype.forEach.call(document.querySelectorAll('.downLoad'), function (item) {
 			item.addEventListener('click', function(){
 				window.location.href = item.getAttribute('url');
-			})
-		})
+			});
+		});
 	})();
-
 </script>
+<script src="/static/js/download.js"></script>
 </html>
