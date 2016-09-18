@@ -27,7 +27,7 @@ export default class extends Base {
   async get_slider(){
     let data = await this.model('slider')
                          .select();
-                     
+
     return data;
   }
 
@@ -36,7 +36,7 @@ export default class extends Base {
 
     let detail = await this.model('hd')
                      .where({
-                        id: activityId 
+                        id: activityId
                      })
                      .select();
 
@@ -52,7 +52,7 @@ export default class extends Base {
 
       detail: detail,
 
-      related: related 
+      related: related
 
     }
     console.log(data);
@@ -67,7 +67,7 @@ export default class extends Base {
     this.assigness();
 
   }
- 	
+
   async competitionDetailAction(){
 
     this.assigness();
@@ -79,14 +79,14 @@ export default class extends Base {
     let data = {};
     data.detail = await this.model('hd')
                      .where({
-                        id: activityId 
+                        id: activityId
                      })
                      .select();
     data.hotAct = await this.get_hotAct();
     console.log(data);
     this.assign('data', data);
     this.display();
-        
+
   }
 
 /**
@@ -97,7 +97,7 @@ export default class extends Base {
    *    'page': 页数
    * }
    */
- 	async per_page(num = 3){
+ 	async per_page(num = 5){
 
  		let golePage = this.get('page') || 1;
 
@@ -157,7 +157,7 @@ export default class extends Base {
                       .where({
  				                 hd_state: state
  			                }).order('hd_time').countSelect();
- 		
+
     }else{
 
  			data.pageData = await this
