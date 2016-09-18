@@ -14,10 +14,11 @@ export default class extends Base {
 
   		let likeTitle = '%' + this.get('search') + '%';
 
-  		data = await this.model('download')
+  		data.pagedata = await this.model('download')
   									 	 .where({
   									     file_title: ['like', likeTitle]
   									   })
+                       .order('file_time')
   									   .select()
 
 		}else{

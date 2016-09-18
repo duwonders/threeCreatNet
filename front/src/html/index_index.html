@@ -135,6 +135,7 @@
                         精彩图库
                     </div>
                     <div class="img-container">
+                    <%if(data.album.length >= 6){%>
                         <aside class="img-left">
                             <a href="/home/album/imagef?id=<%= data.album[0].id%>">
                                 <img src="<%= data.album[0].album_cover%>" class="gallery-img up">
@@ -157,6 +158,7 @@
                                 <img src="<%= data.album[5].album_cover%>" class="gallery-img item">
                             </a>
                         </aside>
+                    <%}%>
                     </div>
                 </div>
                 <div class="main-items downloads">
@@ -202,7 +204,9 @@
                         热门资讯
                     </div>
                     <div class="hot-news">
+                        <%if(data.newActivity.topAll.length >= 1){%>
                         <img src="<%=data.newActivity.topAll[0].hd_cover%>" class="news-img">
+                        <%}%>
                         <p class="news-title">
 
                         </p>
