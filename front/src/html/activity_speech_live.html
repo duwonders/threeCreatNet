@@ -5,6 +5,7 @@
     <title>活动赛事-演讲-直播</title>
     <link rel="stylesheet" href="/static/css/public-style.css">
     <link rel="stylesheet" href="/static/css/activity-speech-live.css">
+    <link rel="stylesheet" href="/static/css/public-style.css">
 </head>
 <body>
     <section class="outer-container nav-outer-container">
@@ -77,7 +78,7 @@
                     <p class="intro-title">活动简介</p>
                     <div class="lecturer-container">
                         <div class="lecturer-detail">
-                            
+
                         </div>
                         <div class="detail">
                             <%if(data.detail[0].hd_type == '竞赛'){%>
@@ -149,7 +150,8 @@
             </aside>
         </div>
     </section>
-    <section class="outer-container page-outer-container">
+
+    <!-- <section class="outer-container page-outer-container">
         <div class="inner-container">
             <%if(data.page.currentPage <= 1){%>
             <%}else{%>
@@ -178,7 +180,47 @@
             </span>
             <input type="button" class="page-go" value="go">
         </div>
+    </section> -->
+
+    <section class="outer-container page-outer-container">
+        <div class="inner-container">
+            <span class="page-btn">
+                <a class="prev" id="prev">上一页</a>
+            </span>
+
+			<span class="page-btn page-redirect">
+                <a class="pager">1</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">2</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">3</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">4</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">5</a>
+            </span>
+
+			<span class="page-btn">
+                <a class="next" id="next">下一页</a>
+            </span>
+            <span>转到</span>
+            <span class="page-btn">
+                <input type="text" class="page-input" id="page-input">
+            </span>
+            <input type="button" class="page-go" value="go" id="page-go">
+			<span id="total-page" style="display: none">
+				<%= data.page.totalPages%>
+			</span>
+			<span id="current-page" style="display: none">
+				<%= data.page.currentPage%>
+			</span>
+        </div>
     </section>
+
     <footer class="outer-container footer-outer-container">
         <div class="inner-container">
             <div class="links-container">
