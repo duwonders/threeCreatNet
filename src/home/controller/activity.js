@@ -87,6 +87,12 @@ export default class extends Base {
 
     data.hotAct = await this.get_hotAct();
 
+    data.live = await this.model('direct')
+                          .where({
+                            hd_id: activityId
+                          })
+                          .select()
+
     console.log(data);
     this.assign('data', data);
 

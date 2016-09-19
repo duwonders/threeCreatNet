@@ -75,10 +75,9 @@
                 </div>
                 <div class="intro lecturer">
                     <p class="intro-title">活动简介</p>
-                    <img src="<%= data.detail[0].hd_cover%>" class="lecturer-img">
                     <div class="lecturer-container">
                         <div class="lecturer-detail">
-                            <%= data.detail[0].hd_detail%>
+                            
                         </div>
                         <div class="detail">
                             <%if(data.detail[0].hd_type == '竞赛'){%>
@@ -90,39 +89,19 @@
                     </div>
                 </div>
                 <div class="lives">
+                    <%data.live.forEach(function(item){%>
                     <div class="live-item">
                         <img src="/static/imgs/home-slider-test.png" class="live-avatar">
                         <div class="live-content">
                             <p class="live-user">科科</p>
-                            <p class="live-time">1分钟前</p>
+                            <p class="live-time"><%= item.time%></p>
                             <p class="live-passage">
-                                重庆邮电大学创办于1950年3月，前身是东川邮政管理局邮政人员培训班；1951年1月，改建为西南邮电分校；1953年3月，分建重庆邮电学校；1955年5月，更名为重庆电信学校；1959年3月，升格为重庆邮电学院；1970年4月，改建为电信总局529厂；1973年7月，再次改建为邮电部第九研究所；1979年5月，恢复为重庆邮电学院；2006年，更名为重庆邮电大学。
+                                <%= item.message%>
                             </p>
-                            <img src="/static/imgs/home-slider-test.png" class="live-img">
+                            <img src="<%= item.img%>" class="live-img">
                         </div>
                     </div>
-                    <div class="live-item">
-                        <img src="/static/imgs/home-slider-test.png" class="live-avatar">
-                        <div class="live-content">
-                            <p class="live-user">科科</p>
-                            <p class="live-time">1分钟前</p>
-                            <p class="live-passage">
-                                重庆邮电大学创办于1950年3月，前身是东川邮政管理局邮政人员培训班；1951年1月，改建为西南邮电分校；1953年3月，分建重庆邮电学校；1955年5月，更名为重庆电信学校；1959年3月，升格为重庆邮电学院；1970年4月，改建为电信总局529厂；1973年7月，再次改建为邮电部第九研究所；1979年5月，恢复为重庆邮电学院；2006年，更名为重庆邮电大学。
-                            </p>
-                            <img src="/static/imgs/home-slider-test.png" class="live-img">
-                        </div>
-                    </div>
-                    <div class="live-item">
-                        <img src="/static/imgs/home-slider-test.png" class="live-avatar">
-                        <div class="live-content">
-                            <p class="live-user">科科</p>
-                            <p class="live-time">1分钟前</p>
-                            <p class="live-passage">
-                                重庆邮电大学创办于1950年3月，前身是东川邮政管理局邮政人员培训班；1951年1月，改建为西南邮电分校；1953年3月，分建重庆邮电学校；1955年5月，更名为重庆电信学校；1959年3月，升格为重庆邮电学院；1970年4月，改建为电信总局529厂；1973年7月，再次改建为邮电部第九研究所；1979年5月，恢复为重庆邮电学院；2006年，更名为重庆邮电大学。
-                            </p>
-                            <img src="/static/imgs/home-slider-test.png" class="live-img">
-                        </div>
-                    </div>
+                    <%})%>
                 </div>
             </div>
             <aside class="main-right">
@@ -331,5 +310,15 @@
     <script src="/static/js/jquery-3.1.0.min.js"></script>
     <script src="/static/js/activity-speech-live.js"></script>
     <script src="/static/js/activity-search.js"></script>
+    <script>
+    !function(){
+        var a = "<%= data.detail[0].hd_detail%>";
+        var b = a.replace(/\&gt;/g, '>');
+        var c = b.replace(/\&lt;/g, '<');
+        var n = c.replace(/\&#34;/g, '"');
+        var e = n.replace(/<img.*">/g, "")
+        $( $('.lecturer-detail')[0] ).html(e);
+    }()
+    </script>
 </body>
 </html>
