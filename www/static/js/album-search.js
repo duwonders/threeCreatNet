@@ -1,0 +1,1 @@
+"use strict";!function(){$(".search").children("button").on("click",function(){var c=$(".search").children("input").val();window.location.href="/home/album?search="+c})}();

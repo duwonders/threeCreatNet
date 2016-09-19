@@ -8,8 +8,24 @@ export default class extends Base {
    * @return {Promise} []
    */
   async indexAction(){
-  	let data = await this.model('album')
-  											 .select();
+    let search = this.get('search'),
+        data
+    if(search){
+
+      let partern = '%' + search + '%';
+
+          data = await this.model('album')
+                           .where({album_name: ['like', partern]})
+                           .select()
+
+    }else{
+
+    	    data = await this.model('album')
+    											 .select();
+
+    }
+    if(!data.length)
+      return think.reject(new Error('没有找到对应数据'));
 
     this.assign('data', data);
 
@@ -60,6 +76,7 @@ export default class extends Base {
           id: album_id
         })
         .increment('album_likes')
+        
     this.json({status: 'ok'});
   }
 }
