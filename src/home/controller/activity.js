@@ -92,14 +92,14 @@ export default class extends Base {
                           .where({
                             hd_id: activityId
                           })
-                          .page(page, 1)
+                          .page(page, 5)
                           .select()
   
     data.page = await this.model('direct')
                           .where({
                             hd_id: activityId
                           })
-                          .page(page, 1)
+                          .page(page, 5)
                           .countSelect()
 
     console.log(data);
