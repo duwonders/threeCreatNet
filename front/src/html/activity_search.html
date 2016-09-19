@@ -262,5 +262,17 @@
     <script src="/static/js/jquery-3.1.0.min.js"></script>
     <script src="/static/js/activity-search.js"></script>
     <script src="/static/js/activity-search.js"></script>
+    <script>
+         !function(){
+            $('.content').map(function(i, item){
+                var a = $(item).html();
+                var b = a.replace(/\&gt;/g, '>');
+                var c = b.replace(/\&lt;/g, '<');
+                var n = c.replace(/\&#34;/g, '"');
+                var e = n.replace(/<img.*">/g, "")
+                $(item).html(e);
+            })
+        }()
+    </script>
 </body>
 </html>
