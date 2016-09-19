@@ -207,7 +207,28 @@ export default class extends Base {
     async speechliveAction () {
         return this.display();
     }
+    
     async searchAction () {
-        return this.display();
+
+      let data = {}
+
+      let partern = this.get('partern');
+
+      if(!partern) return
+
+      let likeTitle = '%' + partern + '%';
+
+          data.like = await this.model('hd')
+                           .where({
+                             hd_title: ['like', likeTitle]
+                           })
+                           .select()
+
+          data.hotAct = await this.get_hotAct();
+      this.assign('data', data);
+      console.log(data);
+
+      return this.display();
+
     }
 }

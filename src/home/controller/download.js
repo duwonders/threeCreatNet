@@ -21,6 +21,14 @@ export default class extends Base {
                        .order('file_time')
   									   .select()
 
+      data.pageMessage = await this.model('download')
+                       .where({
+                         file_title: ['like', likeTitle]
+                       })
+                       .page(1, 16)
+                       .order('file_time')
+                       .countSelect()
+
 		}else{
 
 			let type = this.get('type') || '最近上传',
@@ -42,7 +50,7 @@ export default class extends Base {
                        .countSelect()
 
 		}							
-		console.log(data);
+
   	this.assign('data', data);
 
   	return this.display();

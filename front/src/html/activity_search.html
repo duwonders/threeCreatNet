@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>活动赛事-竞赛-列表</title>
-    <link rel="stylesheet" href="../static/css/public-style.css">
-    <link rel="stylesheet" href="../static/css/activity-search.css">
+    <link rel="stylesheet" href="/static/css/public-style.css">
+    <link rel="stylesheet" href="/static/css/activity-search.css">
 </head>
 <body>
     <section class="outer-container nav-outer-container">
@@ -62,107 +62,59 @@
         <div class="inner-container">
             <div class="main-left">
                 <div class="activity-container left-wrapper">
-
+                    <% data.like.forEach(function(item){ %>
                     <div class="activity-item">
-                        <img src="../static/imgs/actitity.png" class="activity-img">
+                        <img src="<%= item.hd_cover%>" class="activity-img">
                         <div class="activity-content">
-                            <a href="#" class="title">【万圣节】化妆舞会时尚趴</a>
+                            <a href="#" class="title"><%= item.hd_title%></a>
                             <p class="content">
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                <%= item.hd_detail%>
                             </p>
                             <p class="tags">
                                 <span>
                                     <i class="iconfont icon-time">&#xe77a;</i>
-                                    2016-08-09
+                                    <%= item.hd_time%>
                                 </span>
                                 <span>
                                     <i class="iconfont icon-time">&#xe663;</i>
-                                    太极西三门
+                                    <%= item.hd_place%>
                                 </span>
                                 <span>
                                     <i class="iconfont icon-time">&#xe61b;</i>
-                                    演讲
+                                    <%= item.hd_type%>
                                 </span>
                             </p>
                         </div>
                     </div>
-
-                    <div class="activity-item">
-                        <img src="../static/imgs/actitity.png" class="activity-img">
-                        <div class="activity-content">
-                            <a href="#" class="title">【万圣节】化妆舞会时尚趴</a>
-                            <p class="content">
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容
-                            </p>
-                            <p class="tags">
-                                <span>
-                                    <i class="iconfont icon-time">&#xe77a;</i>
-                                    2016-08-09
-                                </span>
-                                <span>
-                                    <i class="iconfont icon-time">&#xe663;</i>
-                                    太极西三门
-                                </span>
-                                <span>
-                                    <i class="iconfont icon-time">&#xe61b;</i>
-                                    演讲
-                                </span>
-                            </p>
-                        </div>
-                    </div>
-                    
+                    <% }) %>
                 </div>
             </div>
             <aside class="main-right">
                 <div class="right-wrapper">
                     <p class="title">热门活动</p>
                     <div class="right-wrapper-inner">
+                        <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
-                            <img src="../static/imgs/actitity.png" class="now-img">
+                            <img src="<%=item.hd_cover%>" class="now-img">
                             <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂</a>
-                                <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
+                                <%if(item.hd_type == '竞赛'){%>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                                <%}else{%>
+                                    <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
+                                <%}%>
+                                <span class="tag"><%=item.hd_tags.replace(/\s+/g, " ").split(" ")[0]%></span>
+                                <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
+                                <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
                                 <div class="detail">
-                                    <a href="#">点击详情</a>
+                                    <%if(item.hd_type == '竞赛'){%>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title">查看详情</a>
+                                <%}else{%>
+                                    <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title">查看详情</a>
+                                <%}%>
                                 </div>
                             </div>
                         </div>
-                        <div class="now-item">
-                            <img src="../static/imgs/actitity.png" class="now-img">
-                            <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂放的萨芬</a>
-                                <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
-                                <div class="detail">
-                                    <a href="#">点击详情</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="now-item">
-                            <img src="../static/imgs/actitity.png" class="now-img">
-                            <div class="now-content">
-                                <a href="#" class="title">文峰青年大讲堂放的萨芬</a>
-                                <span class="tag">抢票</span>
-                                <p class="words">抢票时间: 2014.11.11</p>
-                                <p class="words">抢票地点: 太极西三门</p>
-                                <div class="detail">
-                                    <a href="#">点击详情</a>
-                                </div>
-                            </div>
-                        </div>
+                        <% }) %>
                     </div>
                 </div>
                 <div class="right-wrapper">
@@ -183,36 +135,6 @@
                     </div>
                 </div>
             </aside>
-        </div>
-    </section>
-    <section class="outer-container page-outer-container">
-        <div class="inner-container">
-            <span class="page-btn">
-                <a href="#" class="prev">上一页</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager current-page">1</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager">2</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager">3</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager">4</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="pager">5</a>
-            </span>
-            <span class="page-btn">
-                <a href="#" class="next">下一页</a>
-            </span>
-            <span>转到</span>
-            <span class="page-btn">
-                <input type="text" class="page-input">
-            </span>
-            <input type="button" class="page-go" value="go">
         </div>
     </section>
     <footer class="outer-container footer-outer-container">
@@ -340,7 +262,8 @@
     </footer>
 
 
-    <script src="../static/js/jquery-3.1.0.min.js"></script>
-    <script src="../static/js/activity-search.js"></script>
+    <script src="/static/js/jquery-3.1.0.min.js"></script>
+    <script src="/static/js/activity-search.js"></script>
+    <script src="/static/js/activity-search.js"></script>
 </body>
 </html>
