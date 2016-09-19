@@ -75,7 +75,8 @@ export default class extends Base {
   }
 
   async speechLiveAction(){
-    let activityId = this.get('id');
+    let activityId = this.get('id'),
+        page = this.get('page') || 1;
 
     let data = {};
 
@@ -91,7 +92,15 @@ export default class extends Base {
                           .where({
                             hd_id: activityId
                           })
+                          .page(page, 1)
                           .select()
+  
+    data.page = await this.model('direct')
+                          .where({
+                            hd_id: activityId
+                          })
+                          .page(page, 1)
+                          .countSelect()
 
     console.log(data);
     this.assign('data', data);
