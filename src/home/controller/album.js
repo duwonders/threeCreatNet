@@ -18,14 +18,24 @@ export default class extends Base {
                            .where({album_name: ['like', partern]})
                            .select()
 
+      if(!data.length)
+        return think.reject(new Error('没有找到对应数据'));
+        
     }else{
 
-    	    data = await this.model('album')
-    											 .select();
+      let type = this.get('type');
+
+      if(type)
+        data = await this.model('album')
+                         .where({
+                           album_type: type
+                         })
+    										 .select();
+      else
+    	  data = await this.model('album')
+    										 .select();
 
     }
-    if(!data.length)
-      return think.reject(new Error('没有找到对应数据'));
 
     this.assign('data', data);
 

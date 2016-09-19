@@ -78,7 +78,7 @@
                 </div>
                 <div class="intro">
                     <p class="intro-title">活动介绍:</p>
-                    <p class="intro-content"><%= data.detail[0].hd_detail%></p>
+                    <p class="intro-content"></p>
                 </div>
                 <div class="links intro">
                     <p class="intro-title">相关链接</p>
@@ -121,18 +121,15 @@
                 <div class="right-wrapper">
                     <p class="title">热门活动推荐</p>
                     <div class="right-wrapper-inner">
+                        <% data.hotAct.forEach(function(item){ %>
                         <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
+                             <%if(item.hd_type == '竞赛'){%>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>"><%=item.hd_title%></a>
+                                <%}else{%>
+                                    <a href="/home/activity/speech_detail?id=<%= item.id%>"><%=item.hd_title%></a>
+                                <%}%>
                         </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
+                        <%})%>
                     </div>
                 </div>
             </aside>
@@ -274,5 +271,14 @@
     <script src="/static/js/jquery-3.1.0.min.js"></script>
     <script src="/static/js/activity-competition-detail.js"></script>
     <script src="/static/js/activity-search.js"></script>
+    <script>
+    !function(){
+        var a = "<%= data.detail[0].hd_detail%>";
+        var b = a.replace(/\&gt;/g, '>');
+        var c = b.replace(/\&lt;/g, '<');
+        var n = c.replace(/\&#34;/g, '"');
+        $( $('.intro-content')[0] ).html(n);
+    }()
+    </script>
 </body>
 </html>

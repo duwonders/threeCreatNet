@@ -18,7 +18,7 @@ export default class extends Base {
       slider: await this.get_slider()
 
   	}
-  	// console.log(data.typeAct.pageCount.totalPages);
+    
   	this.assign('data', data);
 
     return this.display();
@@ -76,15 +76,20 @@ export default class extends Base {
 
   async speechLiveAction(){
     let activityId = this.get('id');
+
     let data = {};
+
     data.detail = await this.model('hd')
                      .where({
                         id: activityId
                      })
                      .select();
+
     data.hotAct = await this.get_hotAct();
+
     console.log(data);
     this.assign('data', data);
+
     this.display();
 
   }

@@ -144,18 +144,15 @@
                 <div class="right-wrapper">
                     <p class="title">热门活动推荐</p>
                     <div class="right-wrapper-inner">
+                        <% data.hotAct.forEach(function(item){ %>
                         <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
+                             <%if(item.hd_type == '竞赛'){%>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>"><%=item.hd_title%></a>
+                                <%}else{%>
+                                    <a href="/home/activity/speech_detail?id=<%= item.id%>"><%=item.hd_title%></a>
+                                <%}%>
                         </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
+                        <%})%>
                     </div>
                 </div>
             </aside>

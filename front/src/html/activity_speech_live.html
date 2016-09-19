@@ -65,7 +65,7 @@
                     首页>赛事活动>【设计】软件设计大赛
                 </p>
                 <div class="info">
-                    <img src="/static/imgs/<%= data.detail[0].hd_cover%>" class="info-img">
+                    <img src="<%= data.detail[0].hd_cover%>" class="info-img">
                     <div class="info-content">
                         <p class="title"><%= data.detail[0].hd_title%></p>
                         <p class="msg">地点: <%= data.detail[0].hd_place%></p>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="intro lecturer">
                     <p class="intro-title">活动简介</p>
-                    <img src="/static/imgs/home-slider-test.png" class="lecturer-img">
+                    <img src="<%= data.detail[0].hd_cover%>" class="lecturer-img">
                     <div class="lecturer-container">
                         <div class="lecturer-detail">
                             <%= data.detail[0].hd_detail%>
@@ -156,18 +156,15 @@
                 <div class="right-wrapper">
                     <p class="title">热门活动推荐</p>
                     <div class="right-wrapper-inner">
+                        <% data.hotAct.forEach(function(item){ %>
                         <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
+                             <%if(item.hd_type == '竞赛'){%>
+                                    <a href="/home/activity/competition_detail?id=<%= item.id%>"><%=item.hd_title%></a>
+                                <%}else{%>
+                                    <a href="/home/activity/speech_detail?id=<%= item.id%>"><%=item.hd_title%></a>
+                                <%}%>
                         </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
-                        <p class="hot-item">
-                            <a href="#">第二届全国高校物联网创新应用大赛</a>
-                        </p>
+                        <%})%>
                     </div>
                 </div>
             </aside>
