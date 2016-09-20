@@ -76,7 +76,7 @@
 			</p>
 		</div>
 		<div class="img-con">
-		<%data.pic.forEach(function(item){%>
+			<%data.pic.forEach(function(item){%>
 			<div class="img-home">
 				<div class="img" style="background:url(<%= item.pic_url%>) no-repeat; background-size: 100% 100%" ></div>
 				<span><%= item.pic_name%></span>
@@ -84,6 +84,13 @@
 				<span class="taoxin" id="<%= item.id%>"></span>
 			</div>
 			<%})%>
+
+			<% if (data.pic.length == 0) { %>
+				<div class="not-found">
+					咦，这个相册是空的
+				</div>
+			<% } %>
+
 		</div>
 	</div>
 	<footer class="outer-container footer-outer-container">

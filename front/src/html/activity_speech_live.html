@@ -111,7 +111,7 @@
                     <div class="right-wrapper-inner">
                         <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
-                            <img src="../static/covers/<%=item.hd_cover%>" class="now-img">
+                            <img src="<%=item.hd_cover%>" class="now-img">
                             <div class="now-content">
                             <%if(item.hd_type == '竞赛'){%>
                                 <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>

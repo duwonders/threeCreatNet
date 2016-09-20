@@ -218,3 +218,8 @@ body{
 	top: 20%;
 	border: 2px solid #ccc;
 }
+
+.not-found {
+	height: 300px;
+	text-align: center;
+}
