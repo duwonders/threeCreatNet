@@ -299,11 +299,12 @@
 /* 热门活动推荐 */
 
 .page-outer-container {
+  display: none;
   margin: 30px 0;
   .page-btn {
     margin: 0 5px;
     overflow: hidden;
-    cursor: pointer;
+	cursor: pointer;
     a {
       transition: all 500ms;
       border: 1px solid #ccc;
@@ -318,6 +319,10 @@
       border: 1px solid #3794ff;
       background-color: #e4f1ff;
     }
+	.current {
+  	 border: 1px solid #3794ff;
+   	 background-color: #e4f1ff;
+    }
   }
   .page-btn:first-of-type {
     margin-left: 0;
@@ -329,14 +334,18 @@
     height: 35px;
     text-align: center;
     font-size: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
   }
   .page-go {
     display: inline-block;
     width: 40px;
     height: 35px;
     font-size: 15px;
+	background-color: #fff;
+	border: 1px solid #ccc;
   }
-  .current {
+  .current-page {
     background-color: #3794ff !important;
     color: #fff;
   }

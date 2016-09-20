@@ -92,7 +92,7 @@
                 <div class="lives">
                     <%data.live.forEach(function(item){%>
                     <div class="live-item">
-                        <img src="/static/imgs/home-slider-test.png" class="live-avatar">
+                        <img class="live-avatar">
                         <div class="live-content">
                             <p class="live-user">科科</p>
                             <p class="live-time"><%= item.time%></p>
@@ -150,37 +150,6 @@
             </aside>
         </div>
     </section>
-
-    <!-- <section class="outer-container page-outer-container">
-        <div class="inner-container">
-            <%if(data.page.currentPage <= 1){%>
-            <%}else{%>
-            <span class="page-btn">
-                <a href="/home/activity/speech_live?id=<%= data.detail[0].id%>&page=<%= data.page.currentPage-1%>" class="prev">上一页</a>
-            </span>
-            <%}%>
-            <%for(var i=1; i <= data.page.totalPages; i++){%>
-            <span class="page-btn">
-                <%if( i == data.page.currentPage){%>
-                <a href="/home/activity/speech_live?id=<%= data.detail[0].id%>&page=<%= i%>" class="pager current-page"><%= i%></a>
-                <%}else{%>
-                <a href="/home/activity/speech_live?id=<%= data.detail[0].id%>&page=<%= i%>" class="pager"><%= i%></a>
-                <%}%>
-            </span>
-            <%}%>
-            <%if(data.page.currentPage >= data.page.totalPages){%>
-            <%}else{%>
-            <span class="page-btn">
-                <a href="/home/activity/speech_live?id=<%= data.detail[0].id%>&page=<%= data.page.currentPage+1%>" class="next">下一页</a>
-            </span>
-            <%}%>
-            <span>转到</span>
-            <span class="page-btn">
-                <input type="text" class="page-input">
-            </span>
-            <input type="button" class="page-go" value="go">
-        </div>
-    </section> -->
 
     <section class="outer-container page-outer-container">
         <div class="inner-container">

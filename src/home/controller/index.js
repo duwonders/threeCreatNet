@@ -9,6 +9,7 @@ export default class extends Base {
    */
   async indexAction(){
     let data = {
+        banner: await this.getBanner(),
 
       newActivity: {
 
@@ -41,6 +42,16 @@ export default class extends Base {
                        hd_type: '竞赛'
                      })
                      .order('hd_time')
+                     .select();
+
+    return data;
+  }
+
+  async getBanner(){
+    let data = await this.model('slider')
+                     .where({
+                       type: 'banner'
+                     })
                      .select();
 
     return data;
@@ -91,7 +102,7 @@ export default class extends Base {
         for(let i = 0; i < data.length / 2; i++){
 
           res[i] = [ data[2 * i], data[2 * i + 1] || null ];
-          
+
         }
 
     console.log(res);
