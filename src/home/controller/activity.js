@@ -18,7 +18,7 @@ export default class extends Base {
       slider: await this.get_slider()
 
   	}
-    
+
   	this.assign('data', data);
 
     return this.display();
@@ -93,13 +93,15 @@ export default class extends Base {
                             hd_id: activityId
                           })
                           .page(page, 5)
+                          .order('id DESC')
                           .select()
-  
+
     data.page = await this.model('direct')
                           .where({
                             hd_id: activityId
                           })
                           .page(page, 5)
+                          .order('id DESC')
                           .countSelect()
 
     console.log(data);
@@ -132,13 +134,13 @@ export default class extends Base {
  			data.pageData = await this
                       .model('hd')
                       .page(golePage, num)
-                      .order('hd_time')
+                      .order('id DESC')
                       .select();
 
  			data.pageCount = await this
                       .model('hd')
                       .page(golePage, num)
-                      .order('hd_time')
+                      .order('id DESC')
                       .countSelect();
 
  		}else if(type != '全部' && state == '最近'){
@@ -149,7 +151,7 @@ export default class extends Base {
                       .where({
  				                 hd_type: type
  			                })
-                      .order('hd_time')
+                      .order('id DESC')
                       .select();
 
  			data.pageCount = await this
@@ -158,7 +160,7 @@ export default class extends Base {
                       .where({
  				                 hd_type: type
  			                })
-                      .order('hd_time')
+                      .order('id DESC')
                       .countSelect();
 
  		}else if(type == '全部' && state != '最近'){
@@ -169,14 +171,14 @@ export default class extends Base {
                       .where({
  				                 hd_state: state
  			                })
-                      .order('hd_time')
+                      .order('id DESC')
                       .select();
  			data.pageCount = await this
                       .model('hd')
                       .page(golePage, num)
                       .where({
  				                 hd_state: state
- 			                }).order('hd_time').countSelect();
+ 			                }).order('id DESC').countSelect();
 
     }else{
 
@@ -187,7 +189,7 @@ export default class extends Base {
  				                 hd_state: state,
  				                 hd_type: type
  			                })
-                      .order('hd_time')
+                      .order('id DESC')
                       .select();
 
  			data.pageCount = await this
@@ -197,7 +199,7 @@ export default class extends Base {
  				                 hd_state: state,
  				                 hd_type: type
  			                })
-                      .order('hd_time')
+                      .order('id DESC')
                       .countSelect();
  		}
  		return data;
@@ -207,7 +209,7 @@ export default class extends Base {
  	 *
  	 */
  	async get_hotAct(){
- 		let data = await this.model('hd').order('hd_time').limit(3).select();
+ 		let data = await this.model('hd').order('id DESC').limit(3).select();
  		return data;
  	}
 
@@ -227,7 +229,7 @@ export default class extends Base {
     async speechliveAction () {
         return this.display();
     }
-    
+
     async searchAction () {
 
       let data = {}
