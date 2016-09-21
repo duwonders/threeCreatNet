@@ -38,7 +38,6 @@ export default class extends Base {
     *       size: 14179
     *   }
     */
-
     let filepath = file.path;
     let originalFilename = file.originalFilename;
     let suffix = (originalFilename.split('.')).pop();
