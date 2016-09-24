@@ -106,6 +106,7 @@
                                     <%= item.hd_tags.replace(/\s+/g, " ").split(" ")[i]%>
                                 <% }%>
                             </div>
+                            <!-- 首页的活动最多显示前三个标签 -->
                         </div>
                         <%})%>
                     </div>
@@ -122,8 +123,11 @@
                             </a>
                             <div class="activity-tag">
                                 <i class="iconfont icon-tag">&#xe60a;</i>
-                                <%= item.hd_tags%>
+                                <% for (var i = 0; i < 3; i++) {%>
+                                    <%= item.hd_tags.replace(/\s+/g, " ").split(" ")[i]%>
+                                <% }%>
                             </div>
+                            <!-- 首页的活动最多显示前三个标签 -->
                         </div>
                         <%})%>
                     </div>
@@ -134,31 +138,34 @@
                         精彩图库
                     </div>
                     <div class="img-container">
-                    <%if(data.album.length >= 6){%>
                         <aside class="img-left">
-                            <a href="/home/album/imagef?id=<%= data.album[0].id%>">
-                                <img src="<%= data.album[0].album_cover%>" class="gallery-img up">
-                            </a>
-                            <a href="/home/album/imagef?id=<%= data.album[1].id%>">
-                                <img src="<%= data.album[1].album_cover%>" class="gallery-img down">
-                            </a>
-                            <a href="/home/album/imagef?id=<%= data.album[2].id%>">
-                                <img src="<%= data.album[2].album_cover%>" class="gallery-img down">
-                            </a>
+                            <% for (var i = 0; i < 3; i++) { %>
+                                <% if (data.album[i]) { %>
+                                    <a href="/home/album/imagef?id=<%= data.album[i].id%>">
+                                        <img src="<%= data.album[i].album_cover%>" class="gallery-img">
+                                    </a>
+                                <% } else { %>
+                                    <a href="#">
+                                        <img src="/static/imgs/notfound.png" class="gallery-img">
+                                    </a>
+                                <% } %>
+                            <% } %>
                         </aside>
                         <aside class="img-right">
-                            <a href="/home/album/imagef?id=<%= data.album[3].id%>">
-                                <img src="<%= data.album[3].album_cover%>" class="gallery-img item">
-                            </a>
-                            <a href="/home/album/imagef?id=<%= data.album[4].id%>">
-                                <img src="<%= data.album[4].album_cover%>" class="gallery-img item">
-                            </a>
-                            <a href="/home/album/imagef?id=<%= data.album[5].id%>">
-                                <img src="<%= data.album[5].album_cover%>" class="gallery-img item">
-                            </a>
+                            <% for (var i = 3; i < 6; i++) { %>
+                                <% if (data.album[i]) { %>
+                                    <a href="/home/album/imagef?id=<%= data.album[i].id%>">
+                                        <img src="<%= data.album[i].album_cover%>" class="gallery-img item">
+                                    </a>
+                                <% } else { %>
+                                    <a href="#">
+                                        <img src="/static/imgs/notfound.png" class="gallery-img item">
+                                    </a>
+                                <% } %>
+                            <% } %>
                         </aside>
-                    <%}%>
                     </div>
+                    <!-- 解决图片不够六张的时候的 bug 解决 500 错误 -->
                 </div>
                 <div class="main-items downloads">
                     <div class="title">
