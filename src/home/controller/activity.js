@@ -15,7 +15,8 @@ export default class extends Base {
 
   		hotAct: await this.get_hotAct(),
 
-      slider: await this.get_slider()
+      slider: await this.get_slider(),
+      links: await this.getLinks()
 
   	}
 
@@ -52,7 +53,8 @@ export default class extends Base {
 
       detail: detail,
 
-      related: related
+      related: related,
+      links: await this.getLinks()
 
     }
     console.log(data);
@@ -105,6 +107,7 @@ export default class extends Base {
                           .countSelect()
 
     console.log(data);
+    data.links = await this.getLinks();
     this.assign('data', data);
 
     this.display();
@@ -218,15 +221,31 @@ export default class extends Base {
     *  加了几个页面的 display
     */
     async competitiondetailAction () {
+        let data = {
+            links: await this.getLinks()
+        }
+        this.assign('data', data);
         return this.display();
     }
     async speechdetailAction () {
+        let data = {
+            links: await this.getLinks()
+        }
+        this.assign('data', data);
         return this.display();
     }
     async speechlistAction () {
+        let data = {
+            links: await this.getLinks()
+        }
+        this.assign('data', data);
         return this.display();
     }
     async speechliveAction () {
+        let data = {
+            links: await this.getLinks()
+        }
+        this.assign('data', data);
         return this.display();
     }
 
@@ -244,13 +263,18 @@ export default class extends Base {
                            .where({
                              hd_title: ['like', likeTitle]
                            })
-                           .select()
+                           .select();
 
           data.hotAct = await this.get_hotAct();
+          data.links = await this.getLinks();
       this.assign('data', data);
       console.log(data);
 
       return this.display();
 
+    }
+    async getLinks(){
+      let data = await this.model('links').get_links();
+      return data;
     }
 }

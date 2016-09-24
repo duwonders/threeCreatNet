@@ -240,89 +240,55 @@
             <div class="links-container">
                 <ul>
                     <li>关于</li>
-                    <li>
-                        <a href="#">关于科联</a>
-                    </li>
-                    <li>
-                        <a href="#">各部门介绍</a>
-                    </li>
-                    <li>
-                        <a href="#">版权声明</a>
-                    </li>
-                    <li>
-                        <a href="#">网站地图</a>
-                    </li>
+                    <% for (var i = 0; i < data.links.about.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.about[i].url %>">
+                                <%= data.links.about[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>板块</li>
-                    <li>
-                        <a href="#">科联活动</a>
-                    </li>
-                    <li>
-                        <a href="#">赛事赛讯</a>
-                    </li>
-                    <li>
-                        <a href="#">我语科联</a>
-                    </li>
-                    <li>
-                        <a href="#">科联相册</a>
-                    </li>
-                    <li>
-                        <a href="#">教程专区</a>
-                    </li>
-                    <li>
-                        <a href="#">青年大讲堂</a>
-                    </li>
-                    <li>
-                        <a href="#">挑战杯</a>
-                    </li>
+                    <% for (var i = 0; i < data.links.part.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.part[i].url %>">
+                                <%= data.links.part[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>联系</li>
-                    <li>
-                        <a href="#">在线反馈</a>
-                    </li>
-                    <li>
-                        <a href="#">联系我们</a>
-                    </li>
+                    <% for (var i = 0; i < data.links.contact.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.contact[i].url %>">
+                                <%= data.links.contact[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>链接</li>
-                    <li>
-                        <a href="#">网址大全</a>
-                    </li>
-                    <li>
-                        <a href="#">教务在线</a>
-                    </li>
-                    <li>
-                        <a href="#">教务信息网</a>
-                    </li>
-                    <li>
-                        <a href="#">博看畅销周刊</a>
-                    </li>
-                    <li>
-                        <a href="#">重邮PT基站</a>
-                    </li>
-                    <li>
-                        <a href="#">团委</a>
-                    </li>
+                    <% for (var i = 0; i < 6; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>
                         &nbsp
                     </li>
-                    <li>
-                        <a href="#">大学生比赛信息网</a>
-                    </li>
-                    <li>
-                        <a href="#">松鼠科学会</a>
-                    </li>
-                    <li>
-                        <a href="#">知乎</a>
-                    </li>
-                    <li>
-                        <a href="#">果壳科技</a>
-                    </li>
+                    <% for (var i = 6; i < 12; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
             </div>
             <div class="qrcode-container">
@@ -366,16 +332,8 @@
     <script src="/static/js/jquery-3.1.0.min.js"></script>
     <script src="/static/js/swiper-3.3.1.jquery.min.js"></script>
     <script src="/static/js/home.js"></script>
-    <script>!function(){
-    var a = "<%=data.newActivity.topAll[0].hd_title%>";
-    var b = a.replace(/\&gt;/g, '>');
-    var c = b.replace(/\&lt;/g, '<');
-    $( $('.news-title')[0] ).html(c);
-    var e = "<%=data.newActivity.topAll[0].hd_detail%>";
-    var f = e.replace(/\&gt;/g, '>');
-    var g = f.replace(/\&lt;/g, '<');
-    $( $('.news-detail')[0] ).html(g.replace(/<img.*#34;>/g, ""));
-    console.log(g);
-}()</script>
+    <script>
+    !function(){var h="<%=data.newActivity.topAll[0].hd_title%>";var d=h.replace(/\&gt;/g,">");var l=d.replace(/\&lt;/g,"<");$($(".news-title")[0]).html(l);var k="<%=data.newActivity.topAll[0].hd_detail%>";var j=k.replace(/\&gt;/g,">");var i=j.replace(/\&lt;/g,"<");$($(".news-detail")[0]).html(i.replace(/<img.*#34;>/g,""))}();
+    </script>
 </body>
 </html>

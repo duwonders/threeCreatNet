@@ -125,101 +125,95 @@
 
 	</div>
 
-	<section class="outer-container page-outer-container">
+	<footer class="outer-container footer-outer-container">
         <div class="inner-container">
-            <span class="page-btn">
-                <a class="prev" id="prev">上一页</a>
-            </span>
-
-			<span class="page-btn page-redirect">
-                <a class="pager">1</a>
-            </span>
-			<span class="page-btn page-redirect">
-                <a class="pager">2</a>
-            </span>
-			<span class="page-btn page-redirect">
-                <a class="pager">3</a>
-            </span>
-			<span class="page-btn page-redirect">
-                <a class="pager">4</a>
-            </span>
-			<span class="page-btn page-redirect">
-                <a class="pager">5</a>
-            </span>
-
-			<span class="page-btn">
-                <a class="next" id="next">下一页</a>
-            </span>
-            <span>转到</span>
-            <span class="page-btn">
-                <input type="text" class="page-input" id="page-input">
-            </span>
-            <input type="button" class="page-go" value="go" id="page-go">
-			<span id="total-page" style="display: none">
-				<%= data.getArticle.totalPages%>
-			</span>
-			<span id="current-page" style="display: none">
-				<%= data.getArticle.currentPage%>
-			</span>
+            <div class="links-container">
+                <ul>
+                    <li>关于</li>
+                    <% for (var i = 0; i < data.links.about.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.about[i].url %>">
+                                <%= data.links.about[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>板块</li>
+                    <% for (var i = 0; i < data.links.part.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.part[i].url %>">
+                                <%= data.links.part[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>联系</li>
+                    <% for (var i = 0; i < data.links.contact.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.contact[i].url %>">
+                                <%= data.links.contact[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>链接</li>
+                    <% for (var i = 0; i < 6; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>
+                        &nbsp
+                    </li>
+                    <% for (var i = 6; i < 12; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="qrcode-container">
+                <div class="qrcode-item">
+                    <div class="qrcode"></div>
+                    <p class="qrcode-intro">
+                        学生科技联合会
+                    </p>
+                    <p class="qrcode-intro">
+                        微信二维码
+                    </p>
+                </div>
+                <div class="qrcode-item">
+                    <div class="qrcode"></div>
+                    <p class="qrcode-intro">
+                        重邮小帮手
+                    </p>
+                    <p class="qrcode-intro">
+                        微信二维码
+                    </p>
+                </div>
+            </div>
+            <p class="manage-links">
+                <a href="#">内务信息</a>
+                <span> | </span>
+                <a href="#">后台管理</a>
+            </p>
+            <p class="manage-links">
+                Copyright © SSTU All Rights Reserved  &nbsp&nbsp 重庆邮电大学学生科技联合会版权所有
+            </p>
+            <p class="manage-links">
+                Powered by Redrock Team
+            </p>
         </div>
-    </section>
-
-	<div id="bottom">
-		<div class="bottom-con">
-			<ul>
-				<li><a href="" id="f-title">关于</a></li>
-				<li><a href="##">关于我们</a></li>
-				<li><a href="##">各部门介绍</a></li>
-				<li><a href="##">版权声明</a></li>
-				<li><a href="##">网站地图</a></li>
-			</ul>
-			<ul>
-				<li><a href="" id="f-title">版权</a></li>
-				<li><a href="##">科联活动</a></li>
-				<li><a href="##">赛事资讯</a></li>
-				<li><a href="##">我语科联</a></li>
-				<li><a href="##">科联相册</a></li>
-				<li><a href="##">教程专区</a></li>
-				<li><a href="##">青年大讲堂</a></li>
-				<li><a href="##">挑战杯</a></li>
-			</ul>
-			<ul>
-				<li><a href="" id="f-title">联系</a></li>
-				<li><a href="##">在线反馈</a></li>
-				<li><a href="##">联系我们</a></li>
-			</ul>
-			<ul>
-				<li><a href="" id="f-title">链接</a></li>
-				<li><a href="##">网址大全</a></li>
-				<li><a href="##">教务在线</a></li>
-				<li><a href="##">校务信息网</a></li>
-				<li><a href="##">博看畅销期刊</a></li>
-				<li><a href="##">重邮PT基站</a></li>
-				<li><a href="##">团委</a></li>
-			</ul>
-			<ul>
-				<li><a href="##">大学生比赛信息网</a></li>
-				<li><a href="##">科技松鼠会</a></li>
-				<li><a href="##">知乎</a></li>
-				<li><a href="##">果壳科技</a></li>
-			</ul>
-			<div class="erweima">
-				<div class="xiaobangshou"></div>
-				<p>红岩网校小帮手二维码</p>
-			</div>
-			<div class="erweima erweima-right">
-				<div class="kelian"></div>
-				<p>学生科技联合会二维码</p>
-			</div>
-			<p class="bottom-info">
-				<a href="">内无信息</a>
-				<span> | </span>
-				<a href="">后台管理</a>
-				</p>
-			<p class="bottom-info">Copyright © SSTU All Rights Reserved    重庆邮电大学学生科技联合会版权所有</p>
-			<p class="bottom-info">Powered by Redcock Team</p>
-		</div>
-	</div>
+    </footer>
 
 	<script src="../static/js/jquery-3.1.0.min.js"></script>
     <script src="../static/js/speak.js"></script>

@@ -25,6 +25,8 @@ export default class extends Base {
 
       download: await this.getDownload(),
 
+      links: await this.getLinks()
+
     }
 
     console.log(data);
@@ -107,6 +109,11 @@ export default class extends Base {
 
     console.log(res);
     return res;
+  }
+
+  async getLinks(){
+    let data = await this.model('links').get_links();
+    return data;
   }
   /**
   *  16-08-22
