@@ -106,8 +106,15 @@
                         <%}%>
                             <p class="msg">地点: <%=item.hd_place%></p>
                             <p class="msg">时间: <%=item.hd_time%></p>
-                            <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
-                            <p class="msg tags">标签: <%=item.hd_tags%></p>
+                            <% if (item.hd_getTicket_place) { %>
+                                <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
+                            <% } else { %>
+                                <p class="msg">主办单位: <%=item.hd_unit%></p>
+                            <% } %>
+                            <!-- 有抢票地点就显示抢票地点，否则显示主办单位 -->
+                            <% if (item.hd_tags) { %>
+                                <p class="msg tags">标签: <%=item.hd_tags%></p>
+                            <% } %>
                         </div>
                     </div>
                     <% }) %>
@@ -123,6 +130,7 @@
             <aside class="main-right">
                 <div class="right-wrapper">
                     <p class="title">热门活动</p>
+                    <% if (data.hotAct.length > 0) { %>
                     <div class="right-wrapper-inner">
                         <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
@@ -133,9 +141,15 @@
                                 <%}else{%>
                                     <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
                                 <%}%>
-                                <span class="tag"><%=item.hd_tags.replace(/\s+/g, " ").split(" ")[0]%></span>
-                                <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
-                                <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
+                                <span class="tag"><%= item.hd_tags.replace(/\s+/g, " ").split(" ")[0].slice(0, 2)%></span>
+                                <% if (item.hd_getTicket_time) { %>
+                                    <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
+                                    <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
+                                <% } else { %>
+                                    <p class="words">地点: <%= item.hd_place%></p>
+                                    <p class="words">时间: <%= item.hd_time%></p>
+                                <% } %>
+                                <!-- 根据是否有抢票来渲染不同内容 -->
                                 <div class="detail">
                                     <%if(item.hd_type == '竞赛'){%>
                                     <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title">查看详情</a>
@@ -147,6 +161,7 @@
                         </div>
                         <% }) %>
                     </div>
+                    <% } %>
                 </div>
                 <div class="right-wrapper">
                     <p class="title">热门活动推荐</p>

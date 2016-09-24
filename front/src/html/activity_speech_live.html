@@ -63,7 +63,7 @@
         <div class="inner-container">
             <div class="main-left">
                 <p class="location">
-                    首页>赛事活动>【设计】软件设计大赛
+                    首页>赛事活动><%= data.detail[0].hd_title%>
                 </p>
                 <div class="info">
                     <img src="<%= data.detail[0].hd_cover%>" class="info-img">
@@ -71,7 +71,8 @@
                         <p class="title"><%= data.detail[0].hd_title%></p>
                         <p class="msg">地点: <%= data.detail[0].hd_place%></p>
                         <p class="msg">时间: <%= data.detail[0].hd_time%></p>
-                        <p class="msg">抢票地点: <%= data.detail[0].hd_getTicket_place%></p>
+                        <p class="msg">主办单位: <%= data.detail[0].hd_unit%></p>
+                        <p class="msg tags">标签: <%= data.detail[0].hd_tags%></p>
                     </div>
                 </div>
                 <div class="intro lecturer">
