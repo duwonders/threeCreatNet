@@ -110,6 +110,7 @@
 		<span>浏览</span>
 		<span>赞</span>
 
+		<% if (data.getArticle.data.length > 0) { %>
 		<% data.getArticle.data.forEach(function (item) { %>
 		<div class="main-con-item">
 			<span class="logo"><%=item.atc_type %></span>
@@ -122,8 +123,52 @@
 			<span class="item-id" style="display: none"><%=item.id %></span>
 		</div>
 		<% }) %>
+		<% } else { %>
+		<div class="main-con-item">
+			抱歉，没有找到任何数据
+		</div>
+		<% } %>
 
 	</div>
+
+	<section class="outer-container page-outer-container">
+        <div class="inner-container">
+            <span class="page-btn">
+                <a class="prev" id="prev">上一页</a>
+            </span>
+
+			<span class="page-btn page-redirect">
+                <a class="pager">1</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">2</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">3</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">4</a>
+            </span>
+			<span class="page-btn page-redirect">
+                <a class="pager">5</a>
+            </span>
+
+			<span class="page-btn">
+                <a class="next" id="next">下一页</a>
+            </span>
+            <span>转到</span>
+            <span class="page-btn">
+                <input type="text" class="page-input" id="page-input">
+            </span>
+            <input type="button" class="page-go" value="go" id="page-go">
+			<span id="total-page" style="display: none">
+				<%= data.getArticle.totalPages%>
+			</span>
+			<span id="current-page" style="display: none">
+				<%= data.getArticle.currentPage%>
+			</span>
+        </div>
+    </section>
 
 	<footer class="outer-container footer-outer-container">
         <div class="inner-container">

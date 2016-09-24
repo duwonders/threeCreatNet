@@ -72,6 +72,7 @@
 		<span>预览</span>
 		<span>下载</span>
 
+		<% if (data.pagedata.length > 0) { %>
 		<% data.pagedata.forEach(function(item){ %>
 		<span class="line"></span>
 		<% if(item.file_type == "word"){%>
@@ -85,7 +86,10 @@
 		<span class="eye"></span>
 		<span class="downLoad" url="<%= item.file_url%>"></span>
 		<%})%>
-
+		<% } else { %>
+			<span class="line"></span>
+			抱歉，没有找到任何数据
+		<% } %>
 	</div>
 
 	<section class="outer-container page-outer-container">
