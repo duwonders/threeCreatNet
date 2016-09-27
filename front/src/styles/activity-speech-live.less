@@ -140,7 +140,6 @@
     }
     .msg {
       margin-top: 20px;
-      text-indent: 13px;
       font-size: 13px;
       line-height: 13px;
       vertical-align: bottom;
@@ -223,7 +222,9 @@
     display: inline-block;
     width: 60px;
     height: 60px;
-    background-color: #00cc99;
+    background-color: #00cccc;
+    background: url('/static/imgs/kk.png') 100% 100% no-repeat;
+    background-size: contain;
   }
   .live-content {
     width: 600px;
@@ -342,6 +343,8 @@
     font-size: 15px;
     line-height: 25px;
     width: 65px;
+    text-align: center;
+    vertical-align: bottom;
   }
 }
 /* 正在进行 */
@@ -371,10 +374,12 @@
 /* 热门活动推荐 */
 
 .page-outer-container {
+  display: none;
   margin: 30px 0;
   .page-btn {
     margin: 0 5px;
     overflow: hidden;
+	cursor: pointer;
     a {
       transition: all 500ms;
       border: 1px solid #ccc;
@@ -389,6 +394,10 @@
       border: 1px solid #3794ff;
       background-color: #e4f1ff;
     }
+	.current {
+  	 border: 1px solid #3794ff;
+   	 background-color: #e4f1ff;
+    }
   }
   .page-btn:first-of-type {
     margin-left: 0;
@@ -400,12 +409,16 @@
     height: 35px;
     text-align: center;
     font-size: 15px;
+    background-color: #fff;
+    border: 1px solid #ccc;
   }
   .page-go {
     display: inline-block;
     width: 40px;
     height: 35px;
     font-size: 15px;
+	background-color: #fff;
+	border: 1px solid #ccc;
   }
   .current-page {
     background-color: #3794ff !important;

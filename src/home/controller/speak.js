@@ -9,7 +9,8 @@ export default class extends Base {
    */
   async indexAction(){
     let data = {
-        getArticle: await this.get_article()
+        getArticle: await this.get_article(),
+        links: await this.getLinks()
     };
 
     this.assign('data', data);
@@ -47,5 +48,10 @@ export default class extends Base {
                             .where({id: req_data.id})
                             .update(req_data);
       this.success(affectedRows);
+  }
+
+  async getLinks(){
+    let data = await this.model('links').get_links();
+    return data;
   }
 }

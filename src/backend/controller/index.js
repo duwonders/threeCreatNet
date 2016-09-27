@@ -38,7 +38,6 @@ export default class extends Base {
     *       size: 14179
     *   }
     */
-
     let filepath = file.path;
     let originalFilename = file.originalFilename;
     let suffix = (originalFilename.split('.')).pop();
@@ -97,7 +96,7 @@ export default class extends Base {
   /* 相册上传图片接口 */
 
   setCorsHeader(){
-      this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
+      this.header("Access-Control-Allow-Origin", this.header("origin") || "127.0.0.1:8080");
       this.header("Access-Control-Allow-Headers", "x-requested-with");
       this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE");
       this.header("Access-Control-Allow-Credentials", "true");
@@ -559,10 +558,10 @@ export default class extends Base {
 
       let req_obj = this.post();
       let slider = this.model('slider');
-      let home = await slider.where({type: 'home'}).select();
+      let banner = await slider.where({type: 'banner'}).select();
       let activity = await slider.where({type: 'activity'}).select();
       let ret_data = {
-          home: home,
+          banner: banner,
           activity: activity
       }
 
@@ -575,11 +574,11 @@ export default class extends Base {
 
       let req_obj = this.post();
       let slider = this.model('slider');
-      let home = JSON.parse(req_obj.home);
+      let banner = JSON.parse(req_obj.banner);
       let activity = JSON.parse(req_obj.activity);
 
       let req_data = await slider.execute(`Truncate slider`);
-      req_data = await slider.addMany(home);
+      req_data = await slider.addMany(banner);
       req_data = await slider.addMany(activity);
 
       return this.success(req_data);

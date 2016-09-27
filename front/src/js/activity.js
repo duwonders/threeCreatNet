@@ -51,7 +51,7 @@ $(document).ready(() => {
 
         let gotoPage = (() => {
             let cache = {};
-            return function (page, type = GetQueryString('type'), state = GetQueryString('state')) {
+            return function (page = GetQueryString('page'), type = GetQueryString('type'), state = GetQueryString('state')) {
                 cache.type = type || '全部';
                 cache.page = page || 1;
                 cache.state = state || '最近';

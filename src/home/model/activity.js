@@ -7,7 +7,7 @@ export default class extends think.model.base {
 		let table_hd = this.model("hd");
 		let data = await table_hd.where({
 			hd_type: type,
-		}).order('hd_time DESC').select();
+		}).order('id DESC').select();
 		return data;
-	} 
+	}
 }

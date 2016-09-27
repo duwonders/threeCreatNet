@@ -82,7 +82,7 @@ body {
     margin:12px 0;
     width: 100%;
     height: 110px;
-    background: url("../imgs/home-banner.png") no-repeat;
+    background-size: contain;
   }
   .title {
     width: 100%;
@@ -221,18 +221,20 @@ body {
     .img-left {
       display: inline-block;
       width: 395px;
-      .up {
-        display: inline-block;
-        width: 100%;
-        height: 300px;
-        line-height: 300px;
-        background-color: #0f7595;
+      a:first-of-type {
+          .gallery-img {
+              display: inline-block;
+              width: 100%;
+              height: 300px;
+              line-height: 300px;
+              background-color: #0f7595;
+          }
       }
-      .down {
-        display: inline-block;
-        width: 50%;
-        height: 230px;
-        background-color: #0b35a0;
+      .gallery-img {
+          display: inline-block;
+          width: 50%;
+          height: 230px;
+          background-color: #0b35a0;
       }
     }
     .img-right {

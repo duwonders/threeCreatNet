@@ -44,19 +44,41 @@
 	</section>
 
 	<div id="head">
-		<div class="top-menu">
-			<ul>
-				<li><a href="/home/index">首页</a></li>
-				<li><a href="/home/activity">活动赛事</a></li>
-				<li><a href="/home/album">精彩图库</a></li>
-				<li><a href="/home/download">下载专区</a></li>
-				<li><a href="##">文峰青年大讲堂</a></li>
-				<li><a href="##">学生科技节</a></li>
-				<li><a href="##">重邮青年说</a></li>
-				<li  id="right"><a href="/home/speak">我语科联</a></li>
-				<li  id="right"><a href="#">关于我们</a></li>
-			</ul>
-		</div>
+		<section class="outer-container nav-outer-container">
+	        <div class="inner-container">
+	            <ul class="nav-links">
+	                <li>
+	                    <a href="/home/index">首页</a>
+	                </li>
+	                <li>
+	                    <a href="/home/activity">活动赛事</a>
+	                </li>
+	                <li>
+	                    <a href="/home/album">精彩图库</a>
+	                </li>
+	                <li>
+	                    <a href="/home/download">下载专区</a>
+	                </li>
+	                <li>
+	                    <a href="#">文峰青年大讲堂</a>
+	                </li>
+	                <li>
+	                    <a href="#">学生科技节</a>
+	                </li>
+	                <li>
+	                    <a href="#">重邮青年说</a>
+	                </li>
+	            </ul>
+	            <ul class="nav-about">
+	                <li>
+	                    <a href="/home/speak">我语科联</a>
+	                </li>
+	                <li>
+	                    <a href="#">关于我们</a>
+	                </li>
+	            </ul>
+	        </div>
+	    </section>
 		<div class="top-search">
 			<div class="top-search-con">
 				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAWCAYAAADafVyIAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QAAAAAAAD5Q7t/AAAACXBIWXMAAAsSAAALEgHS3X78AAABN0lEQVRIx9WTzSpEYRjHf+802I2VFbGg8VF2FhTFLbgEl+AS3IOdLK0pOyml2IiSkOxoSsbHYlbEz+YcHTRz3sPMwr/e3f/reXueQBuhDgJ9QA/wDNy1w3Re3VCf/InHvxhX1C1b47D8S/NeYB+YzKEeltUy8Ao8JO8aOAI2QwgnTYSrEeYA26jdLUY8Uxe/tZ9Q383HrVpKRY0c8rranXBXIsxVl7OtTiIEawl3L4J7mhZKA1YjW82qtRxOTR35vhWzkQHp3zbDjjqU9Q6ZkANgJmIz5oAGMA30AxXgBthtsXWgVtV6xARLRW6m9DlKCFdJu+MczWiRgC+XHEK4UKeSoAVgAHgD7oFzYAMYKxJQCMkXXXY64EXtitWUYokZdAHDnQwAqHY6YPzfT1DoFqKRueZ6rOYDO2VHfhDjZR0AAAAASUVORK5CYII=">
@@ -88,6 +110,7 @@
 		<span>浏览</span>
 		<span>赞</span>
 
+		<% if (data.getArticle.data.length > 0) { %>
 		<% data.getArticle.data.forEach(function (item) { %>
 		<div class="main-con-item">
 			<span class="logo"><%=item.atc_type %></span>
@@ -100,6 +123,11 @@
 			<span class="item-id" style="display: none"><%=item.id %></span>
 		</div>
 		<% }) %>
+		<% } else { %>
+		<div class="main-con-item">
+			抱歉，没有找到任何数据
+		</div>
+		<% } %>
 
 	</div>
 
@@ -142,62 +170,95 @@
         </div>
     </section>
 
-	<div id="bottom">
-		<div class="bottom-con">
-			<ul>
-				<li><a href="" id="f-title">关于</a></li>
-				<li><a href="##">关于我们</a></li>
-				<li><a href="##">各部门介绍</a></li>
-				<li><a href="##">版权声明</a></li>
-				<li><a href="##">网站地图</a></li>
-			</ul>
-			<ul>
-				<li><a href="" id="f-title">版权</a></li>
-				<li><a href="##">科联活动</a></li>
-				<li><a href="##">赛事资讯</a></li>
-				<li><a href="##">我语科联</a></li>
-				<li><a href="##">科联相册</a></li>
-				<li><a href="##">教程专区</a></li>
-				<li><a href="##">青年大讲堂</a></li>
-				<li><a href="##">挑战杯</a></li>
-			</ul>
-			<ul>
-				<li><a href="" id="f-title">联系</a></li>
-				<li><a href="##">在线反馈</a></li>
-				<li><a href="##">联系我们</a></li>
-			</ul>
-			<ul>
-				<li><a href="" id="f-title">链接</a></li>
-				<li><a href="##">网址大全</a></li>
-				<li><a href="##">教务在线</a></li>
-				<li><a href="##">校务信息网</a></li>
-				<li><a href="##">博看畅销期刊</a></li>
-				<li><a href="##">重邮PT基站</a></li>
-				<li><a href="##">团委</a></li>
-			</ul>
-			<ul>
-				<li><a href="##">大学生比赛信息网</a></li>
-				<li><a href="##">科技松鼠会</a></li>
-				<li><a href="##">知乎</a></li>
-				<li><a href="##">果壳科技</a></li>
-			</ul>
-			<div class="erweima">
-				<div class="xiaobangshou"></div>
-				<p>红岩网校小帮手二维码</p>
-			</div>
-			<div class="erweima erweima-right">
-				<div class="kelian"></div>
-				<p>学生科技联合会二维码</p>
-			</div>
-			<p class="bottom-info">
-				<a href="">内无信息</a>
-				<span> | </span>
-				<a href="">后台管理</a>
-				</p>
-			<p class="bottom-info">Copyright © SSTU All Rights Reserved    重庆邮电大学学生科技联合会版权所有</p>
-			<p class="bottom-info">Powered by Redcock Team</p>
-		</div>
-	</div>
+	<footer class="outer-container footer-outer-container">
+        <div class="inner-container">
+            <div class="links-container">
+                <ul>
+                    <li>关于</li>
+                    <% for (var i = 0; i < data.links.about.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.about[i].url %>">
+                                <%= data.links.about[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>板块</li>
+                    <% for (var i = 0; i < data.links.part.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.part[i].url %>">
+                                <%= data.links.part[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>联系</li>
+                    <% for (var i = 0; i < data.links.contact.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.contact[i].url %>">
+                                <%= data.links.contact[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>链接</li>
+                    <% for (var i = 0; i < 6; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+                <ul>
+                    <li>
+                        &nbsp
+                    </li>
+                    <% for (var i = 6; i < 12; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="qrcode-container">
+                <div class="qrcode-item">
+                    <div class="qrcode"></div>
+                    <p class="qrcode-intro">
+                        学生科技联合会
+                    </p>
+                    <p class="qrcode-intro">
+                        微信二维码
+                    </p>
+                </div>
+                <div class="qrcode-item">
+                    <div class="qrcode"></div>
+                    <p class="qrcode-intro">
+                        重邮小帮手
+                    </p>
+                    <p class="qrcode-intro">
+                        微信二维码
+                    </p>
+                </div>
+            </div>
+            <p class="manage-links">
+                <a href="#">内务信息</a>
+                <span> | </span>
+                <a href="#">后台管理</a>
+            </p>
+            <p class="manage-links">
+                Copyright © SSTU All Rights Reserved  &nbsp&nbsp 重庆邮电大学学生科技联合会版权所有
+            </p>
+            <p class="manage-links">
+                Powered by Redrock Team
+            </p>
+        </div>
+    </footer>
 
 	<script src="../static/js/jquery-3.1.0.min.js"></script>
     <script src="../static/js/speak.js"></script>

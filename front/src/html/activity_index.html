@@ -106,16 +106,31 @@
                         <%}%>
                             <p class="msg">地点: <%=item.hd_place%></p>
                             <p class="msg">时间: <%=item.hd_time%></p>
-                            <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
-                            <p class="msg tags">标签: <%=item.hd_tags%></p>
+                            <% if (item.hd_getTicket_place) { %>
+                                <p class="msg">抢票地点: <%=item.hd_getTicket_place%></p>
+                            <% } else { %>
+                                <p class="msg">主办单位: <%=item.hd_unit%></p>
+                            <% } %>
+                            <!-- 有抢票地点就显示抢票地点，否则显示主办单位 -->
+                            <% if (item.hd_tags) { %>
+                                <p class="msg tags">标签: <%=item.hd_tags%></p>
+                            <% } %>
                         </div>
                     </div>
                     <% }) %>
+
+                    <% if (data.typeAct.pageData.length == 0) {%>
+                        <div class="activity-item">
+                            抱歉，没有找到任何数据哦
+                        </div>
+                    <% } %>
+
                 </div>
             </div>
             <aside class="main-right">
                 <div class="right-wrapper">
                     <p class="title">热门活动</p>
+                    <% if (data.hotAct.length > 0) { %>
                     <div class="right-wrapper-inner">
                         <% data.hotAct.forEach(function(item){ %>
                         <div class="now-item">
@@ -126,9 +141,15 @@
                                 <%}else{%>
                                     <a href="/home/activity/speech_detail?id=<%= item.id%>" class="title"><%=item.hd_title%></a>
                                 <%}%>
-                                <span class="tag"><%=item.hd_tags.replace(/\s+/g, " ").split(" ")[0]%></span>
-                                <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
-                                <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
+                                <span class="tag"><%= item.hd_tags.replace(/\s+/g, " ").split(" ")[0].slice(0, 2)%></span>
+                                <% if (item.hd_getTicket_time) { %>
+                                    <p class="words">抢票时间: <%=item.hd_getTicket_time%></p>
+                                    <p class="words">抢票地点: <%=item.hd_getTicket_place%></p>
+                                <% } else { %>
+                                    <p class="words">地点: <%= item.hd_place%></p>
+                                    <p class="words">时间: <%= item.hd_time%></p>
+                                <% } %>
+                                <!-- 根据是否有抢票来渲染不同内容 -->
                                 <div class="detail">
                                     <%if(item.hd_type == '竞赛'){%>
                                     <a href="/home/activity/competition_detail?id=<%= item.id%>" class="title">查看详情</a>
@@ -140,6 +161,7 @@
                         </div>
                         <% }) %>
                     </div>
+                    <% } %>
                 </div>
                 <div class="right-wrapper">
                     <p class="title">热门活动推荐</p>
@@ -203,89 +225,55 @@
             <div class="links-container">
                 <ul>
                     <li>关于</li>
-                    <li>
-                        <a href="#">关于科联</a>
-                    </li>
-                    <li>
-                        <a href="#">各部门介绍</a>
-                    </li>
-                    <li>
-                        <a href="#">版权声明</a>
-                    </li>
-                    <li>
-                        <a href="#">网站地图</a>
-                    </li>
+                    <% for (var i = 0; i < data.links.about.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.about[i].url %>">
+                                <%= data.links.about[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>板块</li>
-                    <li>
-                        <a href="#">科联活动</a>
-                    </li>
-                    <li>
-                        <a href="#">赛事赛讯</a>
-                    </li>
-                    <li>
-                        <a href="#">我语科联</a>
-                    </li>
-                    <li>
-                        <a href="#">科联相册</a>
-                    </li>
-                    <li>
-                        <a href="#">教程专区</a>
-                    </li>
-                    <li>
-                        <a href="#">青年大讲堂</a>
-                    </li>
-                    <li>
-                        <a href="#">挑战杯</a>
-                    </li>
+                    <% for (var i = 0; i < data.links.part.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.part[i].url %>">
+                                <%= data.links.part[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>联系</li>
-                    <li>
-                        <a href="#">在线反馈</a>
-                    </li>
-                    <li>
-                        <a href="#">联系我们</a>
-                    </li>
+                    <% for (var i = 0; i < data.links.contact.length; i++) { %>
+                        <li>
+                            <a href="<%= data.links.contact[i].url %>">
+                                <%= data.links.contact[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>链接</li>
-                    <li>
-                        <a href="#">网址大全</a>
-                    </li>
-                    <li>
-                        <a href="#">教务在线</a>
-                    </li>
-                    <li>
-                        <a href="#">教务信息网</a>
-                    </li>
-                    <li>
-                        <a href="#">博看畅销周刊</a>
-                    </li>
-                    <li>
-                        <a href="#">重邮PT基站</a>
-                    </li>
-                    <li>
-                        <a href="#">团委</a>
-                    </li>
+                    <% for (var i = 0; i < 6; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
                 <ul>
                     <li>
                         &nbsp
                     </li>
-                    <li>
-                        <a href="#">大学生比赛信息网</a>
-                    </li>
-                    <li>
-                        <a href="#">松鼠科学会</a>
-                    </li>
-                    <li>
-                        <a href="#">知乎</a>
-                    </li>
-                    <li>
-                        <a href="#">果壳科技</a>
-                    </li>
+                    <% for (var i = 6; i < 12; i++) { %>
+                        <li>
+                            <a href="<%= data.links.link[i].url %>">
+                                <%= data.links.link[i].text %>
+                            </a>
+                        </li>
+                    <% } %>
                 </ul>
             </div>
             <div class="qrcode-container">

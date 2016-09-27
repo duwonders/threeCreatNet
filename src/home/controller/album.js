@@ -20,7 +20,7 @@ export default class extends Base {
 
       if(!data.length)
         return think.reject(new Error('没有找到对应数据'));
-        
+
     }else{
 
       let type = this.get('type');
@@ -36,6 +36,8 @@ export default class extends Base {
     										 .select();
 
     }
+
+    data.links = await this.getLinks();
 
     this.assign('data', data);
 
@@ -56,10 +58,11 @@ export default class extends Base {
                                .where({
                                  id: this.get('id'),
                                })
-                               .select(); 
+                               .select();
+        data.links = await this.getLinks();
     console.log(data);
 
-    this.assign('data', data);                     
+    this.assign('data', data);
 
     return this.display();
   }
@@ -86,7 +89,12 @@ export default class extends Base {
           id: album_id
         })
         .increment('album_likes')
-        
+
     this.json({status: 'ok'});
+  }
+
+  async getLinks(){
+    let data = await this.model('links').get_links();
+    return data;
   }
 }

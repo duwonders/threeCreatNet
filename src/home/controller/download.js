@@ -49,12 +49,17 @@ export default class extends Base {
                        .order('file_time')
                        .countSelect()
 
-		}							
+		}
+    data.links = await this.getLinks();
 
   	this.assign('data', data);
 
   	return this.display();
   }
 
+  async getLinks(){
+    let data = await this.model('links').get_links();
+    return data;
+  }
 
 }
